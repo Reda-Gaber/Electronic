@@ -22,7 +22,7 @@ export default function Logo({ size = 'md' }: LogoProps) {
         }`}
       >
         <img
-          src="/logo-icon.png"
+          src="/logo.jpg"
           alt="شعار عبدالنبي بي سي تيك"
           className="h-full w-full object-contain"
         />
