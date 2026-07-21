@@ -1,0 +1,375 @@
+<!DOCTYPE html><html dir="rtl" lang="ar" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;700;800;900&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        try {
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        "colors": {
+                            "primary-container": "#e41f22",
+                            "on-secondary-container": "#700408",
+                            "on-secondary-fixed-variant": "#8a1b18",
+                            "on-background": "#291714",
+                            "surface-container-highest": "#fddbd6",
+                            "on-primary": "#ffffff",
+                            "tertiary": "#00628e",
+                            "on-tertiary-container": "#fcfcff",
+                            "surface": "#fff8f7",
+                            "secondary-container": "#ff7164",
+                            "on-secondary": "#ffffff",
+                            "surface-tint": "#c00011",
+                            "on-error": "#ffffff",
+                            "surface-bright": "#fff8f7",
+                            "on-primary-container": "#fffbff",
+                            "surface-container-lowest": "#ffffff",
+                            "secondary-fixed-dim": "#ffb4ab",
+                            "inverse-primary": "#ffb4ab",
+                            "outline": "#926f6a",
+                            "on-tertiary-fixed-variant": "#004b6f",
+                            "on-surface-variant": "#5d3f3c",
+                            "error": "#ba1a1a",
+                            "inverse-on-surface": "#ffedea",
+                            "primary-fixed-dim": "#ffb4ab",
+                            "on-tertiary": "#ffffff",
+                            "outline-variant": "#e7bdb7",
+                            "inverse-surface": "#402b28",
+                            "on-tertiary-fixed": "#001e2f",
+                            "on-surface": "#291714",
+                            "tertiary-fixed-dim": "#8bceff",
+                            "tertiary-fixed": "#c9e6ff",
+                            "surface-variant": "#fddbd6",
+                            "primary-fixed": "#ffdad6",
+                            "surface-container": "#ffe9e6",
+                            "error-container": "#ffdad6",
+                            "on-primary-fixed": "#410002",
+                            "on-error-container": "#93000a",
+                            "on-primary-fixed-variant": "#93000a",
+                            "background": "#fff8f7",
+                            "surface-container-high": "#ffe2dd",
+                            "on-secondary-fixed": "#410002",
+                            "surface-container-low": "#fff0ee",
+                            "secondary": "#ab332c",
+                            "secondary-fixed": "#ffdad6",
+                            "tertiary-container": "#007cb3",
+                            "primary": "#e82324",
+                            "surface-dim": "#f4d3ce"
+                        },
+                        "borderRadius": {
+                            "DEFAULT": "0.25rem",
+                            "lg": "0.5rem",
+                            "xl": "12px",
+                            "2xl": "16px",
+                            "full": "9999px"
+                        },
+                        "spacing": {
+                            "stack-lg": "32px",
+                            "stack-sm": "8px",
+                            "gutter": "24px",
+                            "margin-mobile": "16px",
+                            "container-max": "1280px",
+                            "unit": "8px",
+                            "margin-desktop": "40px",
+                            "stack-md": "16px"
+                        },
+                        "fontFamily": {
+                            "display-lg": ["Be Vietnam Pro", "sans-serif"],
+                            "label-bold": ["Noto Sans", "sans-serif"],
+                            "body-lg": ["Noto Sans", "sans-serif"],
+                            "label-sm": ["Noto Sans", "sans-serif"],
+                            "headline-sm": ["Be Vietnam Pro", "sans-serif"],
+                            "headline-md": ["Be Vietnam Pro", "sans-serif"],
+                            "display-lg-mobile": ["Be Vietnam Pro", "sans-serif"],
+                            "body-md": ["Noto Sans", "sans-serif"]
+                        },
+                        "fontSize": {
+                            "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                            "label-bold": ["14px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                            "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                            "label-sm": ["12px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                            "headline-sm": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                            "headline-md": ["30px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                            "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                            "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+                        }
+                    }
+                }
+            }
+        } catch (_e) {}
+    </script>
+<meta charset="utf-8">
+</head>
+<body class="text-on-surface bg-background">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 backdrop-blur-xl bg-white/70 shadow-[0_4px_20px_rgba(0,0,0,0.03)] h-20">
+<div class="flex flex-row-reverse justify-between items-center h-full px-margin-desktop w-full max-w-container-max mx-auto">
+<!-- Brand -->
+<div class="font-headline-md text-headline-md font-extrabold text-primary shrink-0"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9Mvs-3S2hYwO_Vllb4i5dGMkxsUWFHtdHmB1kgmYfiyeL7kH8CgsO0DYXqboI0F6F3WBBL5OsxNEJwzkfpAJtlfCm4CSeY7Z0hpw41SU98zZwOqwfR4e67GlG6po40zf-9wrvUswTXoBaAn4gufavOU1y144S8cqF5jKLIGezJTicDR69a7tQEXgyjDZq0fUoXoJ2twES6H-H89gj8zx-i9iIvbHCHCXTTXmChtNZ0ew2COA5RDsU5mOfIY4bKS7LrA" alt="PC-TECH ARABIA" class="h-12 w-auto object-contain"></div>
+<!-- Navigation Links (Desktop) -->
+<nav class="hidden md:flex items-center gap-8 font-body-md text-body-md">
+<a class="text-primary font-bold border-b-2 border-primary pb-1" href="#">الرئيسية</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">المعالجات</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">بطاقات الشاشة</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">اللوحات الأم</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">الذاكرة</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">صناديق الحاسوب</a>
+</nav>
+<!-- Actions -->
+<div class="flex items-center gap-4">
+<div class="hidden lg:flex items-center bg-surface-container-low px-4 py-2 rounded-full w-64">
+<span class="material-symbols-outlined text-outline">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full text-right" placeholder="ابحث عن منتج..." type="text">
+</div>
+<div class="flex items-center gap-3">
+<button class="p-2 hover:bg-primary-container/10 rounded-full transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+</button>
+<button class="p-2 hover:bg-primary-container/10 rounded-full transition-all active:scale-95 relative">
+<span class="material-symbols-outlined text-primary" data-icon="shopping_cart">shopping_cart</span>
+<span class="absolute top-1 right-1 bg-primary text-on-primary text-[10px] w-4 h-4 flex items-center justify-center rounded-full">0</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<main class="mb-stack-lg max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mt-28">
+<div class="flex flex-col lg:flex-row gap-gutter">
+<!-- Right Column: Checkout Form -->
+<div class="lg:w-2/3 flex flex-col gap-stack-md">
+<div class="bg-white p-stack-lg rounded-2xl shadow-sm border border-outline-variant/30">
+<h1 class="font-headline-md text-headline-md mb-stack-md flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="local_shipping" style="font-size: 32px;">local_shipping</span>
+                    تفاصيل الشحن (زائر)
+                </h1>
+<form class="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
+<div class="md:col-span-2">
+<label class="block font-label-bold text-label-bold mb-2 text-on-surface-variant">الاسم بالكامل</label>
+<input class="w-full h-12 px-4 rounded-2xl border border-outline-variant bg-surface-container-lowest focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all text-body-md font-body-md" placeholder="أدخل اسمك الثلاثي" required="" type="text">
+</div>
+<div>
+<label class="block font-label-bold text-label-bold mb-2 text-on-surface-variant">رقم الهاتف</label>
+<input class="w-full h-12 px-4 rounded-2xl border border-outline-variant bg-surface-container-lowest focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all text-body-md font-body-md" placeholder="01XXXXXXXXX" required="" type="tel">
+</div>
+<div>
+<label class="block font-label-bold text-label-bold mb-2 text-on-surface-variant">المحافظة</label>
+<select class="w-full h-12 px-4 rounded-2xl border border-outline-variant bg-surface-container-lowest focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all text-body-md font-body-md">
+<option>القاهرة</option>
+<option>الجيزة</option>
+<option>الإسكندرية</option>
+<option>الدقهلية</option>
+</select>
+</div>
+<div>
+<label class="block font-label-bold text-label-bold mb-2 text-on-surface-variant">المدينة / المركز</label>
+<input class="w-full h-12 px-4 rounded-2xl border border-outline-variant bg-surface-container-lowest focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all text-body-md font-body-md" placeholder="اسم المدينة" required="" type="text">
+</div>
+<div>
+<label class="block font-label-bold text-label-bold mb-2 text-on-surface-variant">الحي / المنطقة</label>
+<input class="w-full h-12 px-4 rounded-2xl border border-outline-variant bg-surface-container-lowest focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all text-body-md font-body-md" placeholder="اسم الحي" required="" type="text">
+</div>
+<div class="md:col-span-2">
+<label class="block font-label-bold text-label-bold mb-2 text-on-surface-variant">الشارع</label>
+<input class="w-full h-12 px-4 rounded-2xl border border-outline-variant bg-surface-container-lowest focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all text-body-md font-body-md" placeholder="اسم الشارع بالتفصيل" required="" type="text">
+</div>
+<div class="grid grid-cols-3 gap-stack-sm md:col-span-2">
+<div>
+<label class="block font-label-bold text-label-bold mb-2 text-on-surface-variant">رقم المبنى</label>
+<input class="w-full h-12 px-4 rounded-2xl border border-outline-variant bg-surface-container-lowest focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all text-body-md font-body-md" required="" type="text">
+</div>
+<div>
+<label class="block font-label-bold text-label-bold mb-2 text-on-surface-variant">الطابق</label>
+<input class="w-full h-12 px-4 rounded-2xl border border-outline-variant bg-surface-container-lowest focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all text-body-md font-body-md" type="text">
+</div>
+<div>
+<label class="block font-label-bold text-label-bold mb-2 text-on-surface-variant">رقم الشقة</label>
+<input class="w-full h-12 px-4 rounded-2xl border border-outline-variant bg-surface-container-lowest focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all text-body-md font-body-md" type="text">
+</div>
+</div>
+<div class="md:col-span-2">
+<label class="block font-label-bold text-label-bold mb-2 text-on-surface-variant">ملاحظات إضافية (اختياري)</label>
+<textarea class="w-full p-4 rounded-2xl border border-outline-variant bg-surface-container-lowest focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all text-body-md font-body-md" placeholder="أي تفاصيل أخرى تساعد مندوب التوصيل..." rows="3"></textarea>
+</div>
+</form>
+</div>
+<!-- Payment Section -->
+<div class="bg-white p-stack-lg rounded-2xl shadow-sm border border-outline-variant/30">
+<h2 class="font-headline-sm text-headline-sm mb-stack-md flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="payments">payments</span>
+                    طريقة الدفع
+                </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<label class="relative flex items-center p-4 rounded-2xl border-2 border-outline-variant cursor-pointer hover:border-primary/50 transition-all has-[:checked]:border-primary has-[:checked]:bg-primary-container/5">
+<input checked="" class="hidden peer" name="payment" onchange="toggleInstapay(false)" type="radio" value="cod">
+<div class="flex items-center gap-4">
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant flex items-center justify-center peer-checked:border-primary">
+<div class="w-3 h-3 rounded-full bg-primary opacity-0 peer-checked:opacity-100 transition-opacity"></div>
+</div>
+<div>
+<p class="font-label-bold text-label-bold">الدفع عند الاستلام</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">ادفع نقداً عند استلام طلبك</p>
+</div>
+</div>
+</label>
+<label class="relative flex items-center p-4 rounded-2xl border-2 border-outline-variant cursor-pointer hover:border-primary/50 transition-all has-[:checked]:border-primary has-[:checked]:bg-primary-container/5">
+<input class="hidden peer" name="payment" onchange="toggleInstapay(true)" type="radio" value="instapay">
+<div class="flex items-center gap-4">
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant flex items-center justify-center peer-checked:border-primary">
+<div class="w-3 h-3 rounded-full bg-primary opacity-0 peer-checked:opacity-100 transition-opacity"></div>
+</div>
+<div>
+<p class="font-label-bold text-label-bold">Instapay</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">تحويل سريع وآمن</p>
+</div>
+</div>
+</label>
+</div>
+<!-- Instapay Details (Hidden by Default) -->
+<div class="hidden mt-stack-md p-stack-md bg-surface-container-low rounded-2xl border border-outline-variant/30 border-dashed animate-in fade-in slide-in-from-top-4 duration-300" id="instapay-card">
+<div class="flex flex-col md:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-white flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-primary" data-icon="account_balance_wallet" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+</div>
+<div>
+<p class="font-label-bold text-label-bold text-on-surface-variant">رقم إنستاباي للدفع</p>
+<p class="font-headline-sm text-headline-sm text-on-surface tabular-nums" id="instapay-number">01234567890</p>
+</div>
+</div>
+<button class="flex items-center gap-2 bg-white px-6 py-3 rounded-xl border border-outline-variant hover:border-primary hover:text-primary transition-colors group" onclick="copyToClipboard(event)">
+<span class="material-symbols-outlined group-active:scale-90 transition-transform" data-icon="content_copy">content_copy</span>
+<span class="font-label-bold text-label-bold">نسخ الرقم</span>
+</button>
+</div>
+<p class="mt-4 text-label-sm font-label-sm text-primary flex items-start gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="info">info</span>
+                        يرجى إرسال لقطة شاشة للتحويل عبر الواتساب مع رقم الطلب بعد تأكيد العملية.
+                    </p>
+</div>
+</div>
+</div>
+<!-- Left Column: Order Summary -->
+<aside class="lg:w-1/3">
+<div class="bg-white p-stack-lg rounded-2xl shadow-sm border border-outline-variant/30 sticky top-28">
+<h2 class="font-headline-sm text-headline-sm mb-stack-md border-b border-outline-variant pb-stack-sm">ملخص الطلب</h2>
+<div class="flex flex-col gap-stack-md mb-stack-lg">
+<!-- Product Item 1 -->
+<div class="flex gap-4">
+<div class="w-20 h-20 bg-surface-container-highest rounded-xl overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCV3ib10xi4jDNm88l1GY-_HYKZd0M5-AQme5fTduIKiKSfYmInvlOSFCxqa0UriqzVMq-R_3HXNfYU6t9cju9D9gKMJIsjCVb1iAq0dWXvr2IdikZ6IQfgTwv5ryOab3-fu4MXFjKHcbVQSIef6AtONadjmaJv4pxvdGTLfvJP9CExeG0Z1lmdrhqrFwubPdWByuKZh2CNtU5dMFYouBU6NWa0tGUUnKe5ysg6JZb7sEJNH-3nS0rb">
+</div>
+<div class="flex-grow">
+<h3 class="font-label-bold text-label-bold leading-tight">NVIDIA RTX 4080 Super OC</h3>
+<p class="text-label-sm font-label-sm text-on-surface-variant mt-1">الكمية: 1</p>
+<p class="font-label-bold text-label-bold text-primary mt-1">54,000 ج.م</p>
+</div>
+</div>
+<!-- Product Item 2 -->
+<div class="flex gap-4">
+<div class="w-20 h-20 bg-surface-container-highest rounded-xl overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOIew7NAyXxmGr8VxniiUZ7bJ_q-7U3k0qMgPtd0TQQHms6q2_tZnOnQ-Oq5PHYtLwJVwFnkrpi8DnwAlG9vsjm_FFr_p7KW-66gtUrkGuutIY3nQl_4trYBZapoH8PpZ7bPkW5gSkvAkDJi78AzqHZ7fOeZjmn4aEi2Nx1X-x733oPVj7gB2_l4dnh7SCGZW4AUhcrad2DjJYaz5e1M1n44FCrwGxLRPw5QoHUEO-SrJ9MfVSHU0Q">
+</div>
+<div class="flex-grow">
+<h3 class="font-label-bold text-label-bold leading-tight">Corsair Vengeance 32GB DDR5</h3>
+<p class="text-label-sm font-label-sm text-on-surface-variant mt-1">الكمية: 2</p>
+<p class="font-label-bold text-label-bold text-primary mt-1">8,500 ج.م</p>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-stack-sm border-t border-outline-variant pt-stack-md">
+<div class="flex justify-between items-center text-on-surface-variant">
+<span class="font-body-md text-body-md">المجموع الفرعي</span>
+<span class="font-label-bold text-label-bold">62,500 ج.م</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant">
+<span class="font-body-md text-body-md">مصاريف الشحن</span>
+<span class="font-label-bold text-label-bold">150 ج.م</span>
+</div>
+<div class="flex justify-between items-center text-secondary">
+<span class="font-body-md text-body-md">الخصم</span>
+<span class="font-label-bold text-label-bold">0 ج.م</span>
+</div>
+<div class="flex justify-between items-center pt-stack-sm mt-stack-sm border-t-2 border-primary/10">
+<span class="font-headline-sm text-headline-sm text-on-surface">الإجمالي</span>
+<span class="font-headline-sm text-headline-sm text-primary">62,650 ج.م</span>
+</div>
+</div>
+<button class="w-full mt-stack-lg bg-primary text-on-primary h-14 rounded-2xl font-headline-sm text-headline-sm hover:opacity-90 transition-all active:scale-95 flex items-center justify-center gap-3 shadow-lg shadow-primary/30">
+                    تأكيد الطلب
+                    <span class="material-symbols-outlined" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</button>
+<p class="text-center mt-4 text-label-sm font-label-sm text-on-surface-variant flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="lock">lock</span>
+                    جميع معاملاتك آمنة ومشفره
+                </p>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-white border-t border-outline-variant">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-stack-lg max-w-container-max mx-auto text-right">
+<div>
+<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8DwO_7qQNBqTf10tgIhNoYqsEdmSTTHCQvYnzPVyVyz6NfVuOKzj6jNmS6ktHDV3VQyc2JfIcl94zSJ3xzHoDx6ibKCgypeSp62XttJMDtNPZaqI8Qpfvlx_im0vbnzZplREMQ_a01cuwWLv5MNcIR7gN5ImzVZEAaRXPsblVfIGP4KB3YkT8ZdJD_lESyWD513zDGjFfQojpWhBFwauC3MOgJBBik0cRsGUwbJBRaKzQLRYT__33Y8Hbrp72SiKVqw" alt="PC-TECH ARABIA" class="h-14 w-auto object-contain mb-stack-sm">
+<p class="text-body-md font-body-md text-on-surface-variant">وجهتك الأولى لأفضل قطع الكمبيوتر والتجميعات الاحترافية في الوطن العربي.</p>
+</div>
+<div>
+<h4 class="font-label-bold text-label-bold text-on-surface mb-stack-sm">روابط سريعة</h4>
+<ul class="flex flex-col gap-2">
+<li class=""><a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">من نحن</a></li>
+<li class=""><a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">الأقسام</a></li>
+<li class=""><a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">خدمة العملاء</a></li>
+<li class=""><a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">الخصوصية</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-bold text-label-bold text-on-surface mb-stack-sm">طرق الدفع</h4>
+<div class="flex gap-4">
+<div class="w-10 h-6 bg-surface-container rounded border border-outline-variant"></div>
+<div class="w-10 h-6 bg-surface-container rounded border border-outline-variant"></div>
+<div class="w-10 h-6 bg-surface-container rounded border border-outline-variant"></div>
+</div>
+</div>
+<div>
+<h4 class="font-label-bold text-label-bold text-on-surface mb-stack-sm">تابعنا</h4>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary" data-icon="facebook">facebook</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary" data-icon="language">language</span>
+</div>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-margin-desktop py-4 border-t border-outline-variant/30 text-center text-label-sm font-label-sm text-on-surface-variant">
+        © 2024 بي سي تيك أرابيا. جميع الحقوق محفوظة
+    </div>
+</footer>
+<script>
+    function toggleInstapay(show) {
+        const card = document.getElementById('instapay-card');
+        if (show) {
+            card.classList.remove('hidden');
+        } else {
+            card.classList.add('hidden');
+        }
+    }
+
+    function copyToClipboard(event) {
+        const number = document.getElementById('instapay-number').innerText;
+        const btn = event.currentTarget;
+        navigator.clipboard.writeText(number).then(() => {
+            const labelSpan = btn.querySelector('span:last-child');
+            const originalText = labelSpan.innerText;
+            labelSpan.innerText = 'تم النسخ!';
+            btn.classList.add('bg-primary', 'text-on-primary', 'border-primary');
+            setTimeout(() => {
+                labelSpan.innerText = originalText;
+                btn.classList.remove('bg-primary', 'text-on-primary', 'border-primary');
+            }, 2000);
+        });
+    }
+</script>
+
+
+</body></html>

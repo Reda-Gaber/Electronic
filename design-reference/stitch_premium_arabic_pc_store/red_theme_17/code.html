@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>إدارة الطلبات | PC-TECH ARABIA</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;family=Noto+Sans+Arabic:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Noto Sans Arabic', 'Be Vietnam Pro', sans-serif;
+            background-color: #f7f9fb;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#f7f9fb",
+                        "primary-fixed": "#dbe1ff",
+                        "on-secondary-fixed": "#131b2e",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f2f4f6",
+                        "outline": "#737686",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-primary-container": "#eeefff",
+                        "on-secondary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#dae2fd",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#d3e4fe",
+                        "surface": "#f7f9fb",
+                        "on-secondary-container": "#5c647a",
+                        "on-background": "#191c1e",
+                        "surface-variant": "#e0e3e5",
+                        "surface-container-highest": "#e0e3e5",
+                        "secondary-fixed": "#dae2fd",
+                        "on-tertiary-container": "#e9f0ff",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "inverse-primary": "#b4c5ff",
+                        "primary": "#004ac6",
+                        "on-error": "#ffffff",
+                        "surface-dim": "#d8dadc",
+                        "tertiary-fixed-dim": "#b7c8e1",
+                        "inverse-surface": "#2d3133",
+                        "on-surface-variant": "#434655",
+                        "error": "#ba1a1a",
+                        "surface-container": "#eceef0",
+                        "tertiary-container": "#5e6e85",
+                        "primary-container": "#2563eb",
+                        "background": "#f7f9fb",
+                        "on-primary-fixed": "#00174b",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#c3c6d7",
+                        "on-error-container": "#93000a",
+                        "on-surface": "#191c1e",
+                        "inverse-on-surface": "#eff1f3",
+                        "tertiary": "#46566c",
+                        "surface-container-high": "#e6e8ea",
+                        "secondary-fixed-dim": "#bec6e0",
+                        "on-secondary-fixed-variant": "#3f465c",
+                        "on-tertiary-fixed": "#0b1c30",
+                        "surface-tint": "#0053db",
+                        "secondary": "#565e74",
+                        "on-primary-fixed-variant": "#003ea8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "unit": "4px",
+                        "section-gap": "80px",
+                        "margin-desktop": "40px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Be Vietnam Pro", "Noto Sans Arabic"],
+                        "body-md": ["Be Vietnam Pro", "Noto Sans Arabic"],
+                        "mono-spec": ["Geist"],
+                        "label-sm": ["Be Vietnam Pro", "Noto Sans Arabic"],
+                        "headline-md": ["Be Vietnam Pro", "Noto Sans Arabic"],
+                        "display-lg": ["Be Vietnam Pro", "Noto Sans Arabic"],
+                        "body-lg": ["Be Vietnam Pro", "Noto Sans Arabic"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "mono-spec": ["13px", {"lineHeight": "1.0", "fontWeight": "500"}],
+                        "label-sm": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 backdrop-blur-xl bg-white/70 shadow-[0_4px_20px_rgba(0,0,0,0.03)] h-20 flex items-center">
+<div class="flex flex-row-reverse justify-between items-center h-full px-margin-desktop w-full max-w-container-max mx-auto">
+<!-- Brand -->
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md font-bold text-primary" style="color: rgb(232, 35, 36);">PC-TECH ARABIA</span>
+<div class="h-8 w-[1px] bg-outline-variant hidden md:block"></div>
+<div class="hidden md:flex flex-row-reverse gap-6">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">المعالجات</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">بطاقات الشاشة</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">اللوحات الأم</a>
+</div>
+</div>
+<!-- Actions & Search -->
+<div class="flex items-center gap-6">
+<div class="relative hidden lg:block group">
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-primary transition-colors">search</span>
+<input class="pr-12 pl-4 py-2 bg-surface-container-low border-none rounded-full w-64 focus:ring-2 focus:ring-primary focus:bg-white transition-all text-right font-body-md text-body-md" placeholder="بحث عن طلب..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-primary-container/10 active:scale-95 transition-all text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+</button>
+<button class="p-2 rounded-full hover:bg-primary-container/10 active:scale-95 transition-all text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+<button class="flex items-center gap-2 pr-4 pl-2 py-2 bg-red-500 text-on-primary rounded-full hover:shadow-lg active:scale-95 transition-all"><span class="font-label-sm text-label-sm">تسجيل الدخول</span><span class="material-symbols-outlined text-[20px]" data-icon="person">person</span></button>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-28 pb-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<!-- Dashboard Header -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-10">
+<div>
+<h1 class="font-display-lg text-display-lg text-on-surface">إدارة الطلبات</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">تتبع ومعالجة طلبات العملاء بكفاءة عالية.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-6 py-3 bg-red-500 text-on-primary rounded-xl font-label-sm text-label-sm hover:shadow-xl transition-all active:scale-95"><span class="material-symbols-outlined">add</span>إضافة طلب يدوي</button>
+<button class="flex items-center gap-2 px-6 py-3 border-2 border-outline-variant text-on-surface-variant rounded-xl font-label-sm text-label-sm hover:bg-surface-container-high transition-all active:scale-95">
+<span class="material-symbols-outlined">download</span>
+                    تصدير التقارير
+                </button>
+</div>
+</div>
+<!-- Filters Bento -->
+<section class="grid grid-cols-1 lg:grid-cols-4 gap-gutter mb-10">
+<!-- Search & Date Filter -->
+<div class="lg:col-span-3 glass-panel p-6 rounded-[20px] flex flex-col md:flex-row items-center gap-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+<div class="flex-1 w-full relative">
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-2">البحث برقم الطلب أو العميل</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pr-12 pl-4 py-3 bg-surface-container rounded-xl border-none focus:ring-2 focus:ring-primary text-right" placeholder="رقم الطلب #12345..." type="text"/>
+</div>
+</div>
+<div class="w-full md:w-auto">
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-2">النطاق الزمني</label>
+<div class="flex items-center gap-2 bg-surface-container p-1 rounded-xl">
+<input class="bg-transparent border-none focus:ring-0 text-on-surface font-label-sm text-label-sm" type="date"/>
+<span class="text-outline-variant">إلى</span>
+<input class="bg-transparent border-none focus:ring-0 text-on-surface font-label-sm text-label-sm" type="date"/>
+</div>
+</div>
+</div>
+<!-- Quick Stats -->
+<div class="lg:col-span-1 glass-panel p-6 rounded-[20px] flex items-center justify-between shadow-[0_4px_20px_rgba(0,0,0,0.03)] bg-primary-container/5">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">إجمالي الطلبات اليوم</p>
+<h3 class="font-headline-md text-headline-md text-primary mt-1" style="color: #ef4444;">142 طلب</h3>
+<p class="text-[12px] text-green-600 font-bold flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+                        +12% عن أمس
+                    </p>
+</div>
+<div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[32px]" style="font-variation-settings: 'FILL' 1;">analytics</span>
+</div>
+</div>
+</section>
+<!-- Status Filter Tabs -->
+<div class="flex items-center gap-4 overflow-x-auto pb-4 mb-6 custom-scrollbar">
+<button class="flex items-center gap-2 px-6 py-3 bg-red-500 text-on-primary rounded-xl font-label-sm text-label-sm hover:shadow-xl transition-all active:scale-95"><span class="material-symbols-outlined">add</span>إضافة طلب يدوي</button>
+<button class="whitespace-nowrap px-6 py-2 bg-white text-on-surface-variant border border-outline-variant rounded-full font-label-sm text-label-sm hover:border-primary hover:text-primary transition-all active:scale-95">قيد الانتظار (45)</button>
+<button class="whitespace-nowrap px-6 py-2 bg-white text-on-surface-variant border border-outline-variant rounded-full font-label-sm text-label-sm hover:border-primary hover:text-primary transition-all active:scale-95">تم الشحن (12)</button>
+<button class="whitespace-nowrap px-6 py-2 bg-white text-on-surface-variant border border-outline-variant rounded-full font-label-sm text-label-sm hover:border-primary hover:text-primary transition-all active:scale-95">تم التوصيل (890)</button>
+<button class="whitespace-nowrap px-6 py-2 bg-white text-on-surface-variant border border-outline-variant rounded-full font-label-sm text-label-sm hover:border-primary hover:text-primary transition-all active:scale-95">ملغي (14)</button>
+</div>
+<!-- Orders Table -->
+<div class="glass-panel rounded-[24px] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.03)] bg-white">
+<div class="overflow-x-auto custom-scrollbar">
+<table class="w-full text-right border-collapse">
+<thead>
+<tr class="bg-surface-container-high/50 border-b border-outline-variant">
+<th class="px-6 py-4 font-label-sm text-label-sm text-on-surface-variant">رقم الطلب</th>
+<th class="px-6 py-4 font-label-sm text-label-sm text-on-surface-variant">العميل</th>
+<th class="px-6 py-4 font-label-sm text-label-sm text-on-surface-variant">التاريخ</th>
+<th class="px-6 py-4 font-label-sm text-label-sm text-on-surface-variant">إجمالي المبلغ</th>
+<th class="px-6 py-4 font-label-sm text-label-sm text-on-surface-variant">الحالة</th>
+<th class="px-6 py-4 font-label-sm text-label-sm text-on-surface-variant">إجراءات</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Order Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-6">
+<span class="font-mono-spec text-mono-spec font-bold text-primary" style="color: #ef4444;">#ORD-2024-9401</span>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-[20px]">person</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface">أحمد العتيبي</p>
+<p class="text-[12px] text-on-surface-variant">ahmed.o@example.com</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-6 font-body-md text-body-md text-on-surface">14 مايو، 2024</td>
+<td class="px-6 py-6 font-bold text-primary font-body-md text-body-md" style="color: #ef4444;">12,450.00 ر.س</td>
+<td class="px-6 py-6">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-red-100 text-red-700 text-[12px] font-bold"><span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>قيد الانتظار</span>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 rounded-lg hover:bg-primary/10 text-primary transition-all"><span class="material-symbols-outlined">visibility</span></button>
+<button class="p-2 rounded-lg hover:bg-on-surface/10 text-on-surface-variant transition-all"><span class="material-symbols-outlined">edit</span></button>
+<button class="p-2 rounded-lg hover:bg-error/10 text-error transition-all"><span class="material-symbols-outlined">delete</span></button>
+</div>
+</td>
+</tr>
+<!-- Order Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-6">
+<span class="font-mono-spec text-mono-spec font-bold text-primary" style="color: #ef4444;">#ORD-2024-9399</span>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-[20px]">person</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface">سارة الغامدي</p>
+<p class="text-[12px] text-on-surface-variant">sara.g@example.com</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-6 font-body-md text-body-md text-on-surface">13 مايو، 2024</td>
+<td class="px-6 py-6 font-bold text-primary font-body-md text-body-md" style="color: #ef4444;">4,200.00 ر.س</td>
+<td class="px-6 py-6">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-[12px] font-bold">
+<span class="w-2 h-2 rounded-full bg-blue-500"></span>
+                                    تم الشحن
+                                </span>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 rounded-lg hover:bg-primary/10 text-primary transition-all"><span class="material-symbols-outlined">visibility</span></button>
+<button class="p-2 rounded-lg hover:bg-on-surface/10 text-on-surface-variant transition-all"><span class="material-symbols-outlined">edit</span></button>
+<button class="p-2 rounded-lg hover:bg-error/10 text-error transition-all"><span class="material-symbols-outlined">delete</span></button>
+</div>
+</td>
+</tr>
+<!-- Order Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-6">
+<span class="font-mono-spec text-mono-spec font-bold text-primary" style="color: #ef4444;">#ORD-2024-9350</span>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-[20px]">person</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface">خالد منصور</p>
+<p class="text-[12px] text-on-surface-variant">khaled.m@example.com</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-6 font-body-md text-body-md text-on-surface">12 مايو، 2024</td>
+<td class="px-6 py-6 font-bold text-primary font-body-md text-body-md" style="color: #ef4444;">28,900.00 ر.س</td>
+<td class="px-6 py-6">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-green-100 text-green-700 text-[12px] font-bold">
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+                                    تم التوصيل
+                                </span>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 rounded-lg hover:bg-primary/10 text-primary transition-all"><span class="material-symbols-outlined">visibility</span></button>
+<button class="p-2 rounded-lg hover:bg-on-surface/10 text-on-surface-variant transition-all"><span class="material-symbols-outlined">edit</span></button>
+<button class="p-2 rounded-lg hover:bg-error/10 text-error transition-all"><span class="material-symbols-outlined">delete</span></button>
+</div>
+</td>
+</tr>
+<!-- Order Row 4 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-6">
+<span class="font-mono-spec text-mono-spec font-bold text-primary" style="color: #ef4444;">#ORD-2024-9302</span>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-[20px]">person</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface">فاطمة الشمري</p>
+<p class="text-[12px] text-on-surface-variant">fatima.s@example.com</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-6 font-body-md text-body-md text-on-surface">10 مايو، 2024</td>
+<td class="px-6 py-6 font-bold text-primary font-body-md text-body-md" style="color: #ef4444;">1,150.00 ر.س</td>
+<td class="px-6 py-6">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-red-100 text-red-700 text-[12px] font-bold">
+<span class="w-2 h-2 rounded-full bg-red-500"></span>
+                                    ملغي
+                                </span>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 rounded-lg hover:bg-primary/10 text-primary transition-all"><span class="material-symbols-outlined">visibility</span></button>
+<button class="p-2 rounded-lg hover:bg-on-surface/10 text-on-surface-variant transition-all"><span class="material-symbols-outlined">edit</span></button>
+<button class="p-2 rounded-lg hover:bg-error/10 text-error transition-all"><span class="material-symbols-outlined">delete</span></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-6 py-4 border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-label-sm text-label-sm text-on-surface-variant">عرض 1-10 من أصل 1,240 طلب</p>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-lg border border-outline-variant hover:bg-surface-container transition-all disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+<div class="flex items-center gap-1">
+<button class="flex items-center gap-2 px-6 py-3 bg-red-500 text-on-primary rounded-xl font-label-sm text-label-sm hover:shadow-xl transition-all active:scale-95"><span class="material-symbols-outlined">add</span>إضافة طلب يدوي</button>
+<button class="w-10 h-10 rounded-lg hover:bg-surface-container text-on-surface-variant font-bold text-label-sm transition-all">2</button>
+<button class="w-10 h-10 rounded-lg hover:bg-surface-container text-on-surface-variant font-bold text-label-sm transition-all">3</button>
+<span class="px-2 text-outline-variant">...</span>
+<button class="w-10 h-10 rounded-lg hover:bg-surface-container text-on-surface-variant font-bold text-label-sm transition-all">124</button>
+</div>
+<button class="p-2 rounded-lg border border-outline-variant hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Order Summary Visual -->
+<section class="mt-section-gap grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="glass-panel p-8 rounded-[32px] overflow-hidden relative group">
+<div class="relative z-10">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">أداء المبيعات الشهري</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">نمو مستمر في عدد الطلبات المكتملة.</p>
+<div class="h-48 flex items-end gap-2 px-2">
+<div class="flex-1 bg-primary/20 rounded-t-lg group-hover:bg-primary/40 transition-all cursor-pointer h-[40%]" title="يناير"></div>
+<div class="flex-1 bg-primary/20 rounded-t-lg group-hover:bg-primary/40 transition-all cursor-pointer h-[55%]" title="فبراير"></div>
+<div class="flex-1 bg-primary/20 rounded-t-lg group-hover:bg-primary/40 transition-all cursor-pointer h-[35%]" title="مارس"></div>
+<div class="flex-1 bg-primary/20 rounded-t-lg group-hover:bg-primary/40 transition-all cursor-pointer h-[75%]" title="أبريل"></div>
+<div class="flex-1 bg-red-500/60 rounded-t-lg transition-all cursor-pointer h-[90%]" title="مايو (الحالي)"></div>
+</div>
+<div class="flex justify-between mt-4 font-label-sm text-label-sm text-on-surface-variant px-1">
+<span class="">يناير</span>
+<span class="">مايو</span>
+</div>
+</div>
+<div class="absolute -bottom-10 -left-10 w-40 h-40 bg-primary/5 rounded-full blur-3xl"></div>
+</div>
+<div class="glass-panel p-8 rounded-[32px] flex flex-col justify-center items-center text-center">
+<div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-4">
+<span class="material-symbols-outlined text-[40px]" style="font-variation-settings: 'FILL' 1;">package_2</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">الطلبات الجاهزة للشحن</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xs mb-6">هناك 12 طلباً بانتظار تأكيد شركة الشحن للبدء في عملية التوصيل.</p>
+<button class="px-8 py-3 bg-on-surface text-surface rounded-full font-label-sm text-label-sm hover:bg-red-500 transition-all">مراجعة الطلبات</button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full pt-section-gap pb-10 bg-surface-container-highest border-t border-outline-variant">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop w-full max-w-container-max mx-auto text-right">
+<div class="md:col-span-1">
+<span class="font-headline-md text-headline-md font-bold text-primary" style="color: rgb(232, 35, 36);">PC-TECH ARABIA</span>
+<p class="mt-4 font-body-md text-body-md text-on-surface-variant">وجهتك الأولى لأقوى قطع الحاسوب في العالم العربي. دقة، قوة، واحترافية.</p>
+</div>
+<div>
+<h4 class="font-bold text-on-surface mb-6">الشركة</h4>
+<ul class="space-y-4">
+<li class=""><a class="text-on-surface-variant hover:text-primary hover:translate-x-[-4px] transition-all inline-block font-body-md text-body-md" href="#">عن الشركة</a></li>
+<li class=""><a class="text-on-surface-variant hover:text-primary hover:translate-x-[-4px] transition-all inline-block font-body-md text-body-md" href="#">اتصل بنا</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-on-surface mb-6">قانوني</h4>
+<ul class="space-y-4">
+<li class=""><a class="text-on-surface-variant hover:text-primary hover:translate-x-[-4px] transition-all inline-block font-body-md text-body-md" href="#">الشروط والأحكام</a></li>
+<li class=""><a class="text-on-surface-variant hover:text-primary hover:translate-x-[-4px] transition-all inline-block font-body-md text-body-md" href="#">سياسة الخصوصية</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-on-surface mb-6">الدعم</h4>
+<ul class="space-y-4">
+<li class=""><a class="text-on-surface-variant hover:text-primary hover:translate-x-[-4px] transition-all inline-block font-body-md text-body-md" href="#">الأسئلة الشائعة</a></li>
+</ul>
+</div>
+</div>
+<div class="mt-20 border-t border-outline-variant pt-8 px-margin-desktop w-full max-w-container-max mx-auto text-center">
+<p class="font-body-md text-body-md text-on-surface-variant">© 2024 بي سي تيك أرابيا. جميع الحقوق محفوظة.</p>
+</div>
+</footer>
+<script>
+        // Micro-interactions and effects
+        document.querySelectorAll('button, a').forEach(elem => {
+            elem.addEventListener('mousedown', () => {
+                elem.classList.add('scale-95');
+            });
+            elem.addEventListener('mouseup', () => {
+                elem.classList.remove('scale-95');
+            });
+            elem.addEventListener('mouseleave', () => {
+                elem.classList.remove('scale-95');
+            });
+        });
+
+        // Sticky header background shift on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('bg-white/90');
+                header.classList.remove('bg-white/70');
+            } else {
+                header.classList.add('bg-white/70');
+                header.classList.remove('bg-white/90');
+            }
+        });
+    </script>
+</body></html>

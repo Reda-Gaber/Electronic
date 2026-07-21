@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>إضافة منتج جديد | Silicon Horizon</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-container": "#ffe8e8",
+                    "surface-dim": "#d8dadc",
+                    "on-secondary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed-dim": "#b7c8e1",
+                    "outline": "#737686",
+                    "surface-tint": "#e82324",
+                    "surface-container-high": "#e6e8ea",
+                    "surface-container": "#eceef0",
+                    "on-primary": "#ffffff",
+                    "tertiary": "#46566c",
+                    "on-primary-fixed": "#3d0001",
+                    "secondary": "#565e74",
+                    "tertiary-fixed": "#d3e4fe",
+                    "on-secondary-container": "#5c647a",
+                    "error-container": "#ffdad6",
+                    "on-error": "#ffffff",
+                    "on-surface": "#191c1e",
+                    "tertiary-container": "#5e6e85",
+                    "secondary-fixed-dim": "#bec6e0",
+                    "inverse-primary": "#ffb4b2",
+                    "on-primary-fixed-variant": "#8c000c",
+                    "on-tertiary-container": "#e9f0ff",
+                    "surface-bright": "#f7f9fb",
+                    "primary-fixed": "#ffdad9",
+                    "on-tertiary-fixed": "#0b1c30",
+                    "secondary-container": "#dae2fd",
+                    "surface-container-low": "#f2f4f6",
+                    "surface": "#f7f9fb",
+                    "primary-fixed-dim": "#ffb4b2",
+                    "on-error-container": "#93000a",
+                    "background": "#f7f9fb",
+                    "on-surface-variant": "#434655",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-variant": "#e0e3e5",
+                    "secondary-fixed": "#dae2fd",
+                    "outline-variant": "#c3c6d7",
+                    "inverse-on-surface": "#eff1f3",
+                    "on-secondary-fixed-variant": "#3f465c",
+                    "on-primary-container": "#410006",
+                    "surface-container-highest": "#e0e3e5",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed": "#131b2e",
+                    "on-tertiary-fixed-variant": "#38485d",
+                    "on-background": "#191c1e",
+                    "inverse-surface": "#2d3133",
+                    "primary": "#e82324"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "margin-mobile": "16px",
+                    "unit": "4px",
+                    "section-gap": "80px",
+                    "margin-desktop": "40px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Be Vietnam Pro"],
+                    "display-lg": ["Be Vietnam Pro"],
+                    "mono-spec": ["Geist"],
+                    "headline-md": ["Be Vietnam Pro"],
+                    "display-lg-mobile": ["Be Vietnam Pro"],
+                    "body-md": ["Be Vietnam Pro"],
+                    "label-sm": ["Be Vietnam Pro"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "mono-spec": ["13px", {"lineHeight": "1.0", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-sm": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #f7f9fb;
+            font-family: 'Be Vietnam Pro', sans-serif;
+            color: #191c1e;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+        }
+        .custom-input {
+            background-color: #f8fafc;
+            border: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+        .custom-input:focus {
+            border-color: #e82324;
+            box-shadow: 0 0 0 4px rgba(232, 35, 36, 0.1);
+            background-color: #ffffff;
+            outline: none;
+        }
+        .drag-drop-area {
+            border: 2px dashed #cbd5e1;
+            transition: all 0.2s ease;
+        }
+        .drag-drop-area:hover {
+            border-color: #e82324;
+            background-color: rgba(232, 35, 36, 0.02);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+<!-- SideNavBar (Authority: Shared Components JSON) -->
+<aside class="h-screen w-64 fixed right-0 top-0 bg-surface-container-lowest dark:bg-surface-container-high border-l border-outline-variant shadow-lg flex flex-col p-gutter gap-4 h-full z-50">
+<div class="mb-8">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Silicon Admin</h1>
+<p class="text-on-surface-variant font-label-sm text-label-sm">Precision Hardware Management</p>
+</div>
+<nav class="flex-1 flex flex-col gap-2">
+<!-- Dashboard -->
+<a class="flex items-center gap-3 px-4 py-3 text-on-secondary-container hover:bg-surface-container-low transition-all duration-200 font-label-sm text-label-sm rounded-lg group" href="#">
+<span class="material-symbols-outlined group-active:scale-98">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- Products - Active -->
+<a class="flex items-center gap-3 px-4 py-3 bg-primary text-white rounded-lg font-bold font-label-sm text-label-sm shadow-sm" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span>Products</span>
+</a>
+<!-- Orders -->
+<a class="flex items-center gap-3 px-4 py-3 text-on-secondary-container hover:bg-surface-container-low transition-all duration-200 font-label-sm text-label-sm rounded-lg group" href="#">
+<span class="material-symbols-outlined group-active:scale-98">shopping_basket</span>
+<span>Orders</span>
+</a>
+<!-- Customers -->
+<a class="flex items-center gap-3 px-4 py-3 text-on-secondary-container hover:bg-surface-container-low transition-all duration-200 font-label-sm text-label-sm rounded-lg group" href="#">
+<span class="material-symbols-outlined group-active:scale-98">group</span>
+<span>Customers</span>
+</a>
+<!-- Categories -->
+<a class="flex items-center gap-3 px-4 py-3 text-on-secondary-container hover:bg-surface-container-low transition-all duration-200 font-label-sm text-label-sm rounded-lg group" href="#">
+<span class="material-symbols-outlined group-active:scale-98">category</span>
+<span>Categories</span>
+</a>
+<!-- Settings -->
+<a class="flex items-center gap-3 px-4 py-3 text-on-secondary-container hover:bg-surface-container-low transition-all duration-200 font-label-sm text-label-sm rounded-lg group" href="#">
+<span class="material-symbols-outlined group-active:scale-98">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-outline-variant flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-primary flex items-center justify-center text-white font-bold">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a high-end tech administrator in a modern office, soft bokeh background with server lights, cinematic lighting, corporate professional style, clean and crisp portrait." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIXgqE1_R0H-WF50Rv2DmAJbroWGN_9s0pC2psuDk5hL9s2lCyhyXu1XPibQErYNj14Ji_QU01f8NF2PO8yNmrVHvE8z8jnChHos3GyTzjYapc-e4BnhzzV7OeFZiR2FY-jGEr8gECqT721HRvUZn36GLKYLK6bYEN4830iEKHJzlrtxY_FgNQmM0Qxp5mhlW8OggxPJPVxQI2vQ17KhgFG7FgpzGPDcKWgpJu407ljA7YLgzycWTW"/>
+</div>
+<div class="overflow-hidden">
+<p class="font-label-sm text-label-sm font-bold text-on-surface truncate">Admin User</p>
+<p class="text-[12px] text-on-surface-variant truncate">admin@siliconhorizon.com</p>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="mr-64 p-margin-desktop min-h-screen">
+<div class="max-w-4xl mx-auto">
+<!-- Header Section -->
+<header class="flex justify-between items-end mb-8">
+<div>
+<h2 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-2">إضافة منتج تقني جديد</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">أدخل تفاصيل الأجهزة بدقة سريرية للحصول على أفضل أداء في المتجر.</p>
+</div>
+<div class="flex gap-4">
+<button class="px-6 py-2 rounded-xl border-1.5 border-primary text-primary font-label-sm text-label-sm hover:bg-primary/5 transition-all active:scale-95">إلغاء</button>
+<button class="px-8 py-2 rounded-xl bg-primary text-white font-label-sm text-label-sm shadow-lg hover:shadow-primary/20 transition-all active:scale-95">حفظ المنتج</button>
+</div>
+</header>
+<form class="space-y-gutter">
+<!-- Grid: Basic Info & Media -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Right Column: Basic Info (2/3) -->
+<div class="lg:col-span-2 space-y-gutter">
+<!-- Information Card -->
+<div class="glass-card p-8 rounded-[20px] space-y-6">
+<div class="flex items-center gap-2 text-primary border-b border-outline-variant/30 pb-4 mb-2">
+<span class="material-symbols-outlined">info</span>
+<h3 class="font-headline-md text-headline-md">المعلومات الأساسية</h3>
+</div>
+<div class="space-y-4">
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant">اسم المنتج</label>
+<input class="custom-input p-4 rounded-xl font-body-md text-body-md w-full" placeholder="مثلاً: NVIDIA GeForce RTX 4090 Founders Edition" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant">وصف المنتج (محرر النصوص)</label>
+<div class="custom-input rounded-xl overflow-hidden">
+<div class="bg-surface-container flex gap-2 p-2 border-b border-outline-variant">
+<button class="p-1 hover:bg-primary/10 rounded group" type="button"><span class="material-symbols-outlined text-[20px] group-hover:text-primary">format_bold</span></button>
+<button class="p-1 hover:bg-primary/10 rounded group" type="button"><span class="material-symbols-outlined text-[20px] group-hover:text-primary">format_italic</span></button>
+<button class="p-1 hover:bg-primary/10 rounded group" type="button"><span class="material-symbols-outlined text-[20px] group-hover:text-primary">format_list_bulleted</span></button>
+<button class="p-1 hover:bg-primary/10 rounded group" type="button"><span class="material-symbols-outlined text-[20px] group-hover:text-primary">link</span></button>
+</div>
+<textarea class="w-full p-4 bg-transparent border-none focus:ring-0 font-body-md text-body-md" placeholder="اكتب تفاصيل المنتج التقنية هنا..." rows="6"></textarea>
+</div>
+</div>
+</div>
+</div>
+<!-- Inventory & Logistics Card -->
+<div class="glass-card p-8 rounded-[20px] space-y-6">
+<div class="flex items-center gap-2 text-primary border-b border-outline-variant/30 pb-4 mb-2">
+<span class="material-symbols-outlined">inventory</span>
+<h3 class="font-headline-md text-headline-md">المخزون والخدمات اللوجستية</h3>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant">SKU (رمز التخزين)</label>
+<input class="custom-input p-4 rounded-xl font-mono-spec text-mono-spec w-full" placeholder="SH-GPU-4090-FE" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant">كمية المخزون</label>
+<input class="custom-input p-4 rounded-xl font-body-md text-body-md w-full" placeholder="0" type="number"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Left Column: Attributes & Media (1/3) -->
+<div class="space-y-gutter">
+<!-- Media Card -->
+<div class="glass-card p-6 rounded-[20px] space-y-4">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined">image</span>
+<h3 class="font-headline-md text-headline-md">الصور</h3>
+</div>
+<div class="drag-drop-area rounded-xl p-8 flex flex-col items-center justify-center text-center gap-3 cursor-pointer">
+<span class="material-symbols-outlined text-primary text-[48px]">cloud_upload</span>
+<div class="space-y-1">
+<p class="font-label-sm text-label-sm font-bold">اسحب الصور هنا أو تصفح</p>
+<p class="text-[12px] text-on-surface-variant">PNG, JPG حتى 10 ميجابايت</p>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<div class="aspect-square bg-surface-container rounded-lg border border-outline-variant/20 overflow-hidden group relative">
+<img class="w-full h-full object-cover" data-alt="Close-up studio photography of a high-end graphics card heatsink, brushed aluminum textures, vibrant blue accent lighting, shallow depth of field, sleek tech aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfSauiahLXwup9bl7qajIAS87XMgkVxS6KqSrVKRRvFIfovupW56AQeSe8QHuobZpyqz-f-5IPP8pwqBLl8F88GkrdJta2FkC_PY-qa0SwVuJBY_vv5HPnGax00rrjfKNkzwfgVIvVb3d28bA9UjscO81_sQtFDqyiC8NOK7nSU1ZuWzs6p-iPagk4WR4m6t7v4EbNjvcdpCoD1DsKu3_3Yd4a0-3bRKdzgO6tappzFAbTFsZHRCyP"/>
+<button class="absolute top-1 right-1 bg-error text-white rounded-full p-0.5 opacity-0 group-hover:opacity-100 transition-opacity" type="button"><span class="material-symbols-outlined text-[14px]">close</span></button>
+</div>
+<div class="aspect-square bg-surface-container rounded-lg border border-outline-variant/20 flex items-center justify-center border-dashed border-2 hover:border-primary transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary">add</span>
+</div>
+<div class="aspect-square bg-surface-container rounded-lg border border-outline-variant/20 flex items-center justify-center border-dashed border-2 hover:border-primary transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary">add</span>
+</div>
+</div>
+</div>
+<!-- Pricing Card -->
+<div class="glass-card p-6 rounded-[20px] space-y-4">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined">payments</span>
+<h3 class="font-headline-md text-headline-md">التسعير</h3>
+</div>
+<div class="space-y-4">
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant">السعر الأساسي (SAR)</label>
+<input class="custom-input p-4 rounded-xl font-bold text-primary w-full" placeholder="0.00" type="number"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant">سعر الخصم (اختياري)</label>
+<input class="custom-input p-4 rounded-xl font-body-md text-body-md w-full" placeholder="0.00" type="number"/>
+</div>
+</div>
+</div>
+<!-- Organization Card -->
+<div class="glass-card p-6 rounded-[20px] space-y-4">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined">category</span>
+<h3 class="font-headline-md text-headline-md">التصنيف</h3>
+</div>
+<div class="space-y-4">
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant">الفئة</label>
+<select class="custom-input p-4 rounded-xl font-body-md text-body-md w-full appearance-none">
+<option>اختر الفئة...</option>
+<option>بطاقات الرسوميات (GPUs)</option>
+<option>المعالجات (CPUs)</option>
+<option>اللوحات الأم (Motherboards)</option>
+</select>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant">العلامة التجارية</label>
+<select class="custom-input p-4 rounded-xl font-body-md text-body-md w-full appearance-none">
+<option>اختر العلامة...</option>
+<option>NVIDIA</option>
+<option>AMD</option>
+<option>Intel</option>
+<option>ASUS</option>
+</select>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Specifications Bento Section -->
+<div class="glass-card p-8 rounded-[20px]">
+<div class="flex justify-between items-center mb-6">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined">settings_input_component</span>
+<h3 class="font-headline-md text-headline-md">المواصفات التقنية</h3>
+</div>
+<button class="flex items-center gap-1 text-primary font-label-sm text-label-sm hover:underline" onclick="addSpecRow()" type="button">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+                            إضافة خاصية
+                        </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="specifications-container">
+<!-- Spec Row 1 -->
+<div class="flex gap-2 items-center bg-surface-container-low p-3 rounded-xl border border-outline-variant/30">
+<input class="bg-transparent border-none focus:ring-0 font-label-sm text-label-sm w-1/3" placeholder="الخاصية (مثلاً: VRAM)" type="text" value="VRAM"/>
+<div class="h-6 w-[1px] bg-outline-variant"></div>
+<input class="bg-transparent border-none focus:ring-0 font-body-md text-body-md flex-1" placeholder="القيمة" type="text" value="24GB GDDR6X"/>
+<button class="text-on-surface-variant hover:text-primary transition-colors" type="button"><span class="material-symbols-outlined">delete</span></button>
+</div>
+<!-- Spec Row 2 -->
+<div class="flex gap-2 items-center bg-surface-container-low p-3 rounded-xl border border-outline-variant/30">
+<input class="bg-transparent border-none focus:ring-0 font-label-sm text-label-sm w-1/3" placeholder="الخاصية" type="text" value="CUDA Cores"/>
+<div class="h-6 w-[1px] bg-outline-variant"></div>
+<input class="bg-transparent border-none focus:ring-0 font-body-md text-body-md flex-1" placeholder="القيمة" type="text" value="16384"/>
+<button class="text-on-surface-variant hover:text-primary transition-colors" type="button"><span class="material-symbols-outlined">delete</span></button>
+</div>
+<!-- Spec Row 3 -->
+<div class="flex gap-2 items-center bg-surface-container-low p-3 rounded-xl border border-outline-variant/30">
+<input class="bg-transparent border-none focus:ring-0 font-label-sm text-label-sm w-1/3" placeholder="الخاصية" type="text" value="Architecture"/>
+<div class="h-6 w-[1px] bg-outline-variant"></div>
+<input class="bg-transparent border-none focus:ring-0 font-body-md text-body-md flex-1" placeholder="القيمة" type="text" value="Ada Lovelace"/>
+<button class="text-on-surface-variant hover:text-primary transition-colors" type="button"><span class="material-symbols-outlined">delete</span></button>
+</div>
+</div>
+</div>
+<!-- Footer Actions (Mobile Sticky) -->
+<div class="flex justify-end gap-4 pt-8 border-t border-outline-variant">
+<button class="px-8 py-3 rounded-xl border-1.5 border-outline-variant text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container transition-all active:scale-95" type="button">إلغاء التغييرات</button>
+<button class="px-12 py-3 rounded-xl bg-primary text-white font-bold font-label-sm text-label-sm shadow-xl hover:shadow-primary/30 transition-all active:scale-95" type="submit">حفظ ونشر المنتج</button>
+</div>
+</form>
+</div>
+<!-- Footer (Authority: Shared Components JSON) -->
+<footer class="mt-section-gap w-full py-section-gap border-t border-outline-variant bg-surface-container-lowest dark:bg-surface-container-highest">
+<div class="flex flex-col md:flex-row-reverse justify-between items-center px-margin-desktop max-w-container-max mx-auto gap-gutter">
+<div class="flex gap-6">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Warranty Info</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Support</a>
+</div>
+<div class="text-center md:text-right">
+<h4 class="font-headline-md text-headline-md font-bold text-primary mb-2">Silicon Horizon</h4>
+<p class="text-secondary dark:text-secondary-fixed font-body-md text-body-md">© 2024 Silicon Horizon. Clinical Precision. High Performance.</p>
+</div>
+</div>
+</footer>
+</main>
+<script>
+        function addSpecRow() {
+            const container = document.getElementById('specifications-container');
+            const newRow = document.createElement('div');
+            newRow.className = 'flex gap-2 items-center bg-surface-container-low p-3 rounded-xl border border-outline-variant/30 animate-in fade-in slide-in-from-bottom-2 duration-300';
+            newRow.innerHTML = `
+                <input type="text" placeholder="الخاصية" class="bg-transparent border-none focus:ring-0 font-label-sm text-label-sm w-1/3">
+                <div class="h-6 w-[1px] bg-outline-variant"></div>
+                <input type="text" placeholder="القيمة" class="bg-transparent border-none focus:ring-0 font-body-md text-body-md flex-1">
+                <button type="button" onclick="this.parentElement.remove()" class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">delete</span></button>
+            `;
+            container.appendChild(newRow);
+        }
+
+        // Drop zone interaction
+        const dropZone = document.querySelector('.drag-drop-area');
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.style.borderColor = '#e82324';
+            dropZone.style.backgroundColor = 'rgba(232, 35, 36, 0.05)';
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.style.borderColor = '#cbd5e1';
+            dropZone.style.backgroundColor = 'transparent';
+        });
+
+        // Form submission prevention for demo
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('تم حفظ المنتج بنجاح في قاعدة بيانات Silicon Horizon');
+        });
+    </script>
+</body></html>

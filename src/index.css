@@ -1,0 +1,152 @@
+/* استيراد Tailwind CSS v4 — الأساس لكل التنسيقات في المشروع */
+@import "tailwindcss";
+
+/* تعريف نظام ألوان Silicon Sapphire حسب ملف التصميم */
+@theme {
+  --color-primary: #bb0010;
+  --color-primary-container: #e41f22;
+  --color-on-primary: #ffffff;
+  --color-on-primary-container: #fffbff;
+  --color-secondary: #ab332c;
+  --color-secondary-container: #ff7164;
+  --color-on-secondary: #ffffff;
+  --color-on-secondary-container: #700408;
+  --color-tertiary: #00628e;
+  --color-tertiary-container: #007cb3;
+  --color-on-tertiary: #ffffff;
+  --color-on-tertiary-container: #fcfcff;
+  --color-background: #fff8f7;
+  --color-surface: #fff8f7;
+  --color-surface-dim: #f4d3ce;
+  --color-surface-container: #ffe9e6;
+  --color-surface-container-low: #fff0ee;
+  --color-surface-container-high: #ffe2dd;
+  --color-surface-container-highest: #fddbd6;
+  --color-surface-container-lowest: #ffffff;
+  --color-on-background: #291714;
+  --color-on-surface: #291714;
+  --color-on-surface-variant: #5d3f3c;
+  --color-outline: #926f6a;
+  --color-outline-variant: #e7bdb7;
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+  --color-on-error: #ffffff;
+  --color-on-error-container: #93000a;
+
+  --font-display: "Be Vietnam Pro", sans-serif;
+  --font-body: "Noto Sans Arabic", sans-serif;
+
+  --spacing-margin-mobile: 16px;
+  --spacing-margin-desktop: 40px;
+  --spacing-gutter: 24px;
+  --spacing-container-max: 1280px;
+
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+}
+
+/* تنسيقات عامة للجسم — RTL وخط عربي وخلفية دافئة */
+@layer base {
+  html {
+    direction: rtl;
+  }
+
+  body {
+    @apply bg-background text-on-background font-body antialiased;
+    font-family: var(--font-body);
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+  }
+}
+
+/* أيقونات Material Symbols — تبقى LTR داخلياً لعرض صحيح */
+@layer components {
+  .material-symbols-outlined {
+    font-family: "Material Symbols Outlined";
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  }
+
+  /* حاوية المحتوى الرئيسية — عرض أقصى 1280px مع هوامش متجاوبة */
+  .container-main {
+    @apply mx-auto w-full max-w-[1280px] px-4 md:px-10;
+  }
+
+  /* تأثير زجاجي للهيدر الثابت */
+  .glass-header {
+    @apply bg-surface/80 backdrop-blur-md shadow-sm;
+  }
+
+  /* إخفاء شريط التمرير في القوائم الأفقية */
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* تدرج خلفية البanner الرئيسي */
+  .hero-gradient {
+    background: linear-gradient(135deg, rgba(187, 0, 16, 0.05) 0%, rgba(255, 248, 247, 1) 100%);
+  }
+
+  /* ظل بطاقة المنتج — ناعم كما في التصميم */
+  .product-card-shadow {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  }
+
+  /* بطاقة زجاجية للعروض */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  /* حركة ظهور بطاقات المنتجات */
+  @keyframes slideInUp {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .animate-card {
+    animation: slideInUp 0.4s ease-out forwards;
+  }
+}
+
+/* إعدادات عامة للطباعة — تطبّق على أي صفحة تحتوي عناصر بها print:block */
+@media print {
+  @page {
+    margin: 12mm;
+  }
+
+  body {
+    background: #ffffff !important;
+  }
+}

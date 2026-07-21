@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Silicon Horizon - سلة التسوق</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;family=Noto+Sans+Arabic:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-container": "#e82324",
+                    "surface-dim": "#d8dadc",
+                    "on-secondary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed-dim": "#b7c8e1",
+                    "outline": "#737686",
+                    "surface-tint": "#e82324",
+                    "surface-container-high": "#e6e8ea",
+                    "surface-container": "#eceef0",
+                    "on-primary": "#ffffff",
+                    "tertiary": "#46566c",
+                    "on-primary-fixed": "#410002",
+                    "secondary": "#8a1b18",
+                    "tertiary-fixed": "#d3e4fe",
+                    "on-secondary-container": "#700408",
+                    "error-container": "#ffdad6",
+                    "on-error": "#ffffff",
+                    "on-surface": "#191c1e",
+                    "tertiary-container": "#5e6e85",
+                    "secondary-fixed-dim": "#ffb4ab",
+                    "inverse-primary": "#ffb4ab",
+                    "on-primary-fixed-variant": "#93000a",
+                    "on-tertiary-container": "#e9f0ff",
+                    "surface-bright": "#f7f9fb",
+                    "primary-fixed": "#ffdad6",
+                    "on-tertiary-fixed": "#0b1c30",
+                    "secondary-container": "#ff7164",
+                    "surface-container-low": "#f2f4f6",
+                    "surface": "#fff8f7",
+                    "primary-fixed-dim": "#ffb4ab",
+                    "on-error-container": "#93000a",
+                    "background": "#fff8f7",
+                    "on-surface-variant": "#5d3f3c",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-variant": "#fddbd6",
+                    "secondary-fixed": "#ffdad6",
+                    "outline-variant": "#e7bdb7",
+                    "inverse-on-surface": "#eff1f3",
+                    "on-secondary-fixed-variant": "#3f465c",
+                    "on-primary-container": "#fffbff",
+                    "surface-container-highest": "#e0e3e5",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed": "#410002",
+                    "on-tertiary-fixed-variant": "#38485d",
+                    "on-background": "#191c1e",
+                    "inverse-surface": "#2d3133",
+                    "primary": "#e82324"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "margin-mobile": "16px",
+                    "unit": "4px",
+                    "section-gap": "80px",
+                    "margin-desktop": "40px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Noto Sans Arabic", "Be Vietnam Pro"],
+                    "display-lg": ["Noto Sans Arabic", "Be Vietnam Pro"],
+                    "mono-spec": ["Geist", "monospace"],
+                    "headline-md": ["Noto Sans Arabic", "Be Vietnam Pro"],
+                    "display-lg-mobile": ["Noto Sans Arabic", "Be Vietnam Pro"],
+                    "body-md": ["Noto Sans Arabic", "Be Vietnam Pro"],
+                    "label-sm": ["Noto Sans Arabic", "Be Vietnam Pro"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "mono-spec": ["13px", {"lineHeight": "1.0", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-sm": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Noto Sans Arabic', 'Be Vietnam Pro', sans-serif;
+            background-color: #fff8f7;
+            overflow-x: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .cart-drawer-open {
+            transform: translateX(0);
+        }
+        .cart-drawer-closed {
+            transform: translateX(100%);
+        }
+        .backdrop-visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .backdrop-hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .product-image-container {
+            background-color: #fff0ee;
+            border-radius: 12px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-40 bg-surface/70 backdrop-blur-xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] h-20">
+<div class="flex flex-row-reverse justify-between items-center h-full px-margin-desktop w-full max-w-container-max mx-auto">
+<!-- Brand -->
+<div class="font-headline-md text-headline-md font-bold text-primary">Silicon Horizon</div>
+<!-- Links (Desktop) -->
+<div class="hidden md:flex flex-row gap-8 items-center">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">CPUs</a>
+<a class="text-primary border-b-2 border-primary pb-1 font-body-md text-body-md" href="#">GPUs</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Motherboards</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Storage</a>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-all relative" id="openCart">
+<span class="material-symbols-outlined text-[28px]" data-icon="shopping_cart">shopping_cart</span>
+<span class="absolute top-0 right-0 bg-primary text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full border-2 border-surface">2</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-all">
+<span class="material-symbols-outlined text-[28px]" data-icon="person">person</span>
+</button>
+<button class="md:hidden p-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[28px]" data-icon="menu">menu</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Main Content Background -->
+<main class="pt-32 pb-section-gap px-margin-desktop max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<div class="md:col-span-8">
+<div class="h-96 w-full rounded-[20px] shadow-[0_4px_20px_rgba(0,0,0,0.03)] bg-white p-8 flex items-center justify-center overflow-hidden">
+<div class="text-center">
+<h1 class="text-display-lg font-display-lg text-primary mb-4">أداء لا يضاهى</h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant max-w-lg mx-auto">استكشف أحدث قطع الهاردوير المصممة للمحترفين واللاعبين المبدعين.</p>
+</div>
+</div>
+</div>
+<div class="md:col-span-4 flex flex-col gap-gutter">
+<div class="bg-white p-6 rounded-[20px] shadow-[0_4px_20px_rgba(0,0,0,0.03)] flex-1">
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-surface-container-low text-on-surface-variant px-3 py-1 rounded-full font-label-sm text-label-sm">RTX 4090</span>
+<span class="bg-surface-container-low text-on-surface-variant px-3 py-1 rounded-full font-label-sm text-label-sm">DDR5</span>
+</div>
+<h3 class="text-headline-md font-headline-md mb-2">معالجات الجيل القادم</h3>
+<p class="text-on-surface-variant text-body-md font-body-md">دقة سريرية في معالجة البيانات الضخمة.</p>
+</div>
+<div class="bg-primary text-white p-6 rounded-[20px] shadow-[0_4px_20px_rgba(0,0,0,0.03)] flex-1">
+<h3 class="text-headline-md font-headline-md mb-2">عروض حصرية</h3>
+<p class="opacity-90 text-body-md font-body-md">وفر حتى 20% على حلول التبريد المائي.</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Overlay / Backdrop -->
+<div class="fixed inset-0 bg-black/40 z-[60] backdrop-hidden transition-opacity duration-300" id="cartBackdrop"></div>
+<!-- Shopping Cart Drawer -->
+<aside class="fixed top-0 right-0 h-screen w-full max-w-[450px] bg-surface-container-lowest z-[70] shadow-2xl cart-drawer-closed transition-transform duration-500 ease-out flex flex-col" id="cartDrawer">
+<!-- Header -->
+<header class="flex items-center justify-between px-8 h-24 border-b border-outline-variant">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[28px]" data-icon="shopping_basket">shopping_basket</span>
+<h2 class="text-headline-md font-headline-md text-primary">سلة التسوق</h2>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors group" id="closeCart">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary" data-icon="close">close</span>
+</button>
+</header>
+<!-- Cart Items List -->
+<div class="flex-1 overflow-y-auto px-8 py-6 space-y-6">
+<!-- Item 1 -->
+<div class="flex gap-4 p-4 bg-white rounded-[20px] shadow-[0_4px_12px_rgba(0,0,0,0.02)] border border-transparent hover:border-outline-variant transition-all">
+<div class="w-24 h-24 product-image-container flex-shrink-0 flex items-center justify-center overflow-hidden">
+<img class="w-20 h-20 object-contain" data-alt="A professional studio product shot of an NVIDIA RTX 4090 graphics card, showcasing its intricate cooling fins and sleek metallic design. The lighting is clinical and high-tech, with subtle blue accents against a clean white background. The image has a premium, high-performance aesthetic typical of high-end PC hardware marketing." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAklV5SQ6R6nQQQEnb7SeU0CqJADfMa8ClXmgT-WPHFc_NELkQoNwfI-_nHRTZu6c7lo3ZDI2ig_sZeOTRxhmIB1jrkV3xXfUfO-ziZHzc6KCRzcrJT_oLr8msx0lEZ-BEdHwa63J2QkH_XvsSTP9oHf2vOKIdifsuhG2eJ_ioivc6nWefXCOrWO-Stl_H1BvBv4Bo83O2nUlxM6mlBFrpeypC3kSsXR-78-kzzXndx6h8d69M8Oy9T"/>
+</div>
+<div class="flex-1 flex flex-col justify-between py-1">
+<div>
+<h4 class="font-body-lg text-body-lg font-bold text-on-surface leading-tight">NVIDIA RTX 4090 Founders Edition</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">بطاقة رسوميات - 24GB VRAM</p>
+</div>
+<div class="flex items-center justify-between mt-2">
+<div class="flex items-center bg-surface-container-low rounded-lg p-1 gap-3">
+<button class="w-7 h-7 flex items-center justify-center bg-white rounded-md shadow-sm hover:text-primary transition-all active:scale-95">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+</button>
+<span class="font-mono-spec text-mono-spec font-bold px-1">1</span>
+<button class="w-7 h-7 flex items-center justify-center bg-white rounded-md shadow-sm hover:text-primary transition-all active:scale-95">
+<span class="material-symbols-outlined text-[18px]" data-icon="remove">remove</span>
+</button>
+</div>
+<span class="text-primary font-bold font-body-md text-body-md">8,999 SAR</span>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex gap-4 p-4 bg-white rounded-[20px] shadow-[0_4px_12px_rgba(0,0,0,0.02)] border border-transparent hover:border-outline-variant transition-all">
+<div class="w-24 h-24 product-image-container flex-shrink-0 flex items-center justify-center overflow-hidden">
+<img class="w-20 h-20 object-contain" data-alt="A close-up photograph of a premium liquid CPU cooler with vibrant RGB lighting, highlighting the sleek pump head and braided tubes. The background is a minimalist tech laboratory setting with soft focus, emphasizing the clinical precision and cooling efficiency of the hardware. The color palette features whites and soft greys with vivid lighting accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYuOYgd36n_6qbhCZcXPXAsdEskJJl2Xkg0Tb6RdYvyBLeu340Qtj0nySaDZkuI8Ad4YK7ZQXUQmwCsKeMXgDo64vMdwMwtJwmPlaAoTGKFmbqVx5TQ4o72oYcVvxg9uIBQXjgM_sGqwVOZcunwI_ZFK71pS9nrcmJIQxIoBGXrt4f8_6zokb6V9J8DbjF-lqn8pRVJIj9IU47j012BOW8e0QY7Hp-eydkyek18w8-v0poUkAroNxe"/>
+</div>
+<div class="flex-1 flex flex-col justify-between py-1">
+<div>
+<h4 class="font-body-lg text-body-lg font-bold text-on-surface leading-tight">NZXT Kraken Elite 360 RGB</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">نظام تبريد مائي - شاشة LCD</p>
+</div>
+<div class="flex items-center justify-between mt-2">
+<div class="flex items-center bg-surface-container-low rounded-lg p-1 gap-3">
+<button class="w-7 h-7 flex items-center justify-center bg-white rounded-md shadow-sm hover:text-primary transition-all active:scale-95">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+</button>
+<span class="font-mono-spec text-mono-spec font-bold px-1">1</span>
+<button class="w-7 h-7 flex items-center justify-center bg-white rounded-md shadow-sm hover:text-primary transition-all active:scale-95">
+<span class="material-symbols-outlined text-[18px]" data-icon="remove">remove</span>
+</button>
+</div>
+<span class="text-primary font-bold font-body-md text-body-md">1,249 SAR</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer / Checkout Section -->
+<footer class="p-8 bg-surface-container-low border-t border-outline-variant space-y-4">
+<div class="space-y-2">
+<div class="flex justify-between items-center text-on-surface-variant font-body-md text-body-md">
+<span>المجموع الفرعي:</span>
+<span class="font-mono-spec">10,248 SAR</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant font-body-md text-body-md">
+<span>الشحن:</span>
+<span class="text-primary font-medium">مجاني</span>
+</div>
+<div class="flex justify-between items-center pt-2 border-t border-outline-variant/30 text-on-surface">
+<span class="font-bold text-headline-md font-headline-md">الإجمالي:</span>
+<span class="font-bold text-headline-md font-headline-md text-primary">10,248 SAR</span>
+</div>
+</div>
+<div class="flex flex-col gap-3 pt-2">
+<button class="w-full h-14 bg-primary text-white font-bold text-body-lg font-body-lg rounded-xl flex items-center justify-center gap-2 hover:bg-primary-container transition-all active:scale-95 shadow-sm group">
+                    إتمام الطلب
+                    <span class="material-symbols-outlined group-hover:translate-x-[-4px] transition-transform" data-icon="arrow_back">arrow_back</span>
+</button>
+<button class="w-full h-14 bg-transparent border-2 border-primary text-primary font-bold text-body-lg font-body-lg rounded-xl hover:bg-primary/5 transition-all active:scale-95" id="continueShopping">
+                    متابعة التسوق
+                </button>
+</div>
+<p class="text-center text-on-surface-variant text-label-sm font-label-sm opacity-60">
+                جميع الأسعار تشمل ضريبة القيمة المضافة
+            </p>
+</footer>
+</aside>
+<!-- Footer Main Page -->
+<footer class="w-full py-section-gap border-t border-outline-variant bg-surface-container-lowest">
+<div class="flex flex-col md:flex-row-reverse justify-between items-center px-margin-desktop max-w-container-max mx-auto gap-gutter">
+<div class="font-headline-md text-headline-md font-bold text-primary">Silicon Horizon</div>
+<div class="flex gap-6">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">سياسة الخصوصية</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">شروط الخدمة</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">الدعم الفني</a>
+</div>
+<p class="text-on-surface-variant font-body-md text-body-md opacity-70">© 2024 Silicon Horizon. Clinical Precision. High Performance.</p>
+</div>
+</footer>
+<script>
+        const cartDrawer = document.getElementById('cartDrawer');
+        const cartBackdrop = document.getElementById('cartBackdrop');
+        const openCartBtn = document.getElementById('openCart');
+        const closeCartBtn = document.getElementById('closeCart');
+        const continueShoppingBtn = document.getElementById('continueShopping');
+
+        function toggleCart(show) {
+            if (show) {
+                cartDrawer.classList.remove('cart-drawer-closed');
+                cartDrawer.classList.add('cart-drawer-open');
+                cartBackdrop.classList.remove('backdrop-hidden');
+                cartBackdrop.classList.add('backdrop-visible');
+                document.body.style.overflow = 'hidden';
+            } else {
+                cartDrawer.classList.remove('cart-drawer-open');
+                cartDrawer.classList.add('cart-drawer-closed');
+                cartBackdrop.classList.remove('backdrop-visible');
+                cartBackdrop.classList.add('backdrop-hidden');
+                document.body.style.overflow = '';
+            }
+        }
+
+        openCartBtn.addEventListener('click', () => toggleCart(true));
+        closeCartBtn.addEventListener('click', () => toggleCart(false));
+        continueShoppingBtn.addEventListener('click', () => toggleCart(false));
+        cartBackdrop.addEventListener('click', () => toggleCart(false));
+
+        // Interaction for buttons within items
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mousedown', function() {
+                this.classList.add('scale-95');
+            });
+            btn.addEventListener('mouseup', function() {
+                this.classList.remove('scale-95');
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>تأكيد الطلب | Silicon Horizon</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            background-color: #F8FAFC;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .checkmark-animation {
+            stroke-dasharray: 100;
+            stroke-dashoffset: 100;
+            animation: dash 0.8s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+        }
+        @keyframes dash {
+            from { stroke-dashoffset: 100; }
+            to { stroke-dashoffset: 0; }
+        }
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+            opacity: 0;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#2563eb",
+                        "surface-dim": "#d8dadc",
+                        "on-secondary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#b7c8e1",
+                        "outline": "#737686",
+                        "surface-tint": "#0053db",
+                        "surface-container-high": "#e6e8ea",
+                        "surface-container": "#eceef0",
+                        "on-primary": "#ffffff",
+                        "tertiary": "#46566c",
+                        "on-primary-fixed": "#00174b",
+                        "secondary": "#565e74",
+                        "tertiary-fixed": "#d3e4fe",
+                        "on-secondary-container": "#5c647a",
+                        "error-container": "#ffdad6",
+                        "on-error": "#ffffff",
+                        "on-surface": "#191c1e",
+                        "tertiary-container": "#5e6e85",
+                        "secondary-fixed-dim": "#bec6e0",
+                        "inverse-primary": "#b4c5ff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-tertiary-container": "#e9f0ff",
+                        "surface-bright": "#f7f9fb",
+                        "primary-fixed": "#dbe1ff",
+                        "on-tertiary-fixed": "#0b1c30",
+                        "secondary-container": "#dae2fd",
+                        "surface-container-low": "#f2f4f6",
+                        "surface": "#f7f9fb",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-error-container": "#93000a",
+                        "background": "#f7f9fb",
+                        "on-surface-variant": "#434655",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-variant": "#e0e3e5",
+                        "secondary-fixed": "#dae2fd",
+                        "outline-variant": "#c3c6d7",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-secondary-fixed-variant": "#3f465c",
+                        "on-primary-container": "#eeefff",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#131b2e",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "on-background": "#191c1e",
+                        "inverse-surface": "#2d3133",
+                        "primary": "#004ac6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "12px",
+                        "xl": "20px",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "margin-mobile": "16px",
+                        "unit": "4px",
+                        "section-gap": "80px",
+                        "margin-desktop": "40px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Be Vietnam Pro"],
+                        "display-lg": ["Be Vietnam Pro"],
+                        "mono-spec": ["Geist"],
+                        "headline-md": ["Be Vietnam Pro"],
+                        "body-md": ["Be Vietnam Pro"],
+                        "label-sm": ["Be Vietnam Pro"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-sm": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface overflow-x-hidden min-h-screen">
+<!-- Shell Suppression Check: Navigation is hidden for transactional success flow -->
+<main class="relative flex flex-col items-center justify-center min-h-screen px-margin-mobile md:px-margin-desktop py-section-gap">
+<!-- Atmospheric Background Element -->
+<div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+<div class="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-primary/5 blur-[120px] rounded-full"></div>
+<div class="absolute top-[20%] -right-[5%] w-[30%] h-[30%] bg-secondary/5 blur-[100px] rounded-full"></div>
+</div>
+<div class="w-full max-w-2xl z-10">
+<!-- Success Status Header -->
+<div class="text-center mb-10 fade-in-up" style="animation-delay: 0.1s">
+<div class="inline-flex items-center justify-center w-24 h-24 mb-8 rounded-full bg-primary/10 border-4 border-white shadow-xl relative" style="background-color: rgba(232, 35, 36, 0.1);">
+<svg class="w-12 h-12 text-primary" style="color: #e82324;" viewbox="0 0 52 52">
+<circle class="opacity-0" cx="26" cy="26" fill="none" r="25"></circle>
+<path class="checkmark-animation" d="M14 27l7.5 7.5L38 18" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"></path>
+</svg>
+<!-- Floating Particle Effect -->
+<div class="absolute inset-0 flex items-center justify-center opacity-40">
+<div class="w-32 h-32 border border-primary/20 rounded-full animate-ping" style="border-color: rgba(232, 35, 36, 0.2);"></div>
+</div>
+</div>
+<h1 class="font-display-lg text-display-lg text-primary mb-3" style="color: #e82324;">تم استلام طلبك بنجاح!</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">شكراً لتسوقك معنا في بي سي تيك أرابيا</p>
+</div>
+<!-- Order Confirmation Details Card -->
+<div class="glass-card rounded-xl p-8 md:p-10 shadow-sm fade-in-up mb-8" style="animation-delay: 0.2s">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-right">
+<div class="space-y-2">
+<p class="font-label-sm text-label-sm text-on-surface-variant flex items-center justify-center md:justify-start gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]" style="color: #e82324;">tag</span>
+                            رقم الطلب
+                        </p>
+<p class="font-headline-md text-headline-md text-on-surface">#ORD-2024-9401</p>
+</div>
+<div class="space-y-2 border-y md:border-y-0 md:border-x border-outline-variant/30 py-6 md:py-0 px-0 md:px-8">
+<p class="font-label-sm text-label-sm text-on-surface-variant flex items-center justify-center md:justify-start gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]" style="color: #e82324;">local_shipping</span>
+                            التوصيل المتوقع
+                        </p>
+<p class="font-headline-md text-headline-md text-on-surface">24 أكتوبر, 2024</p>
+</div>
+<div class="space-y-2">
+<p class="font-label-sm text-label-sm text-on-surface-variant flex items-center justify-center md:justify-start gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]" style="color: #e82324;">payments</span>
+                            المبلغ الإجمالي
+                        </p>
+<p class="font-headline-md text-headline-md text-primary" style="color: #e82324;">12,450.00 ر.س</p>
+</div>
+</div>
+<div class="mt-10 pt-8 border-t border-outline-variant/30">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-12 h-12 bg-surface-container-low rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">inventory_2</span>
+</div>
+<div class="flex-1">
+<p class="font-body-md text-body-md font-bold">معالجة القطع المتطورة</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">سيتم شحن 5 منتجات عبر ناقل الأداء السريع</p>
+</div>
+</div>
+<!-- Micro Progress Visual -->
+<div class="relative h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="absolute top-0 right-0 h-full w-1/4 bg-primary rounded-full" style="background-color: #e82324;"></div>
+</div>
+<div class="flex justify-between mt-2">
+<p class="font-label-sm text-label-sm text-primary" style="color: #e82324;">تم التأكيد</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">قيد التجهيز</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">في الطريق</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">تم التوصيل</p>
+</div>
+</div>
+</div>
+<!-- CTA Actions -->
+<div class="flex flex-col md:flex-row gap-4 fade-in-up" style="animation-delay: 0.3s">
+<button class="flex-1 bg-primary text-white h-14 rounded-lg font-body-md font-bold hover:bg-primary-container transition-all hover:shadow-lg active:scale-95 flex items-center justify-center gap-2" style="background-color: #e82324;">
+<span class="material-symbols-outlined">track_changes</span>
+                    تتبع الطلب
+                </button>
+<button class="flex-1 bg-white border-2 border-primary text-primary h-14 rounded-lg font-body-md font-bold hover:bg-primary/5 transition-all active:scale-95 flex items-center justify-center gap-2" style="border-color: #e82324; color: #e82324;">
+<span class="material-symbols-outlined">home</span>
+                    العودة للرئيسية
+                </button>
+</div>
+<!-- Upsell Section (Optional but high-end) -->
+<div class="mt-16 fade-in-up" style="animation-delay: 0.4s">
+<p class="text-center font-label-sm text-label-sm text-on-surface-variant mb-6 uppercase tracking-widest">قد يعجبك أيضاً</p>
+<div class="grid grid-cols-2 md:grid-cols-2 gap-gutter">
+<div class="glass-card p-4 rounded-xl flex items-center gap-4 group cursor-pointer hover:shadow-md transition-all">
+<div class="w-16 h-16 bg-surface rounded-lg flex-shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A macro studio shot of a high-end mechanical keyboard with RGB backlighting reflecting off its metallic chassis. The lighting is clinical and cool-toned, fitting a professional gaming hardware aesthetic. High detail, 8k resolution, cinematic hardware photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdepqZWZVUF__tiScKmYZipPNMF0T9H1cwnFgMV_B3Xqq7iEhftxHVRj7Da4_pZc_dWmYFaJHncbiHRSkkG9sURrLdhL5EnxXkJLP3EiIFu-aneURSTT-Nb_I0leH1qAS1EMerxanTZ8Ab9S2MexYVdE2nmvvlGcB1xPXwG4R89Vle06YtRCL-t2uYerXHauMKJlsCeAHrE5dTOkUZzn4hccGCVvKKY4lC0NbXKCGgR2303ksWjHr3"/>
+</div>
+<div class="flex-1 text-right">
+<p class="font-label-sm text-label-sm font-bold group-hover:text-primary transition-colors">لوحة مفاتيح ميكانيكية</p>
+<p class="font-mono-spec text-primary" style="color: #e82324;">599 ر.س</p>
+</div>
+</div>
+<div class="glass-card p-4 rounded-xl flex items-center gap-4 group cursor-pointer hover:shadow-md transition-all">
+<div class="w-16 h-16 bg-surface rounded-lg flex-shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close-up of a high-performance computer cooling fan with glowing blue LED rings. The fan blades are sharp and precisely engineered. Dark studio background with soft ambient blue light, showcasing technical superiority and premium hardware design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvh_tthhzFJWIzHFXIBzk6kZw9SHl1xJ_DabOMii38Ws_pxB0pMionZV6Xgm1UmHy2QveChjdRkfAB-riy_eeVrorpVudxhKa4pfuHSZdGsYZIaOizUS8DjTIZ_mpM3ukk7nuUzAO0MtHtjDb0--FZZP-MUiblhj_CMT8c7HV7eQ7fgngfYlLdx6cS3QCNwIYlLzbfKyrWJ6R4th7HOSXd3s_mFCHbBfBOeIiCl_pBwf-PZg8WqWxA"/>
+</div>
+<div class="flex-1 text-right">
+<p class="font-label-sm text-label-sm font-bold group-hover:text-primary transition-colors">نظام تبريد مائي</p>
+<p class="font-mono-spec text-primary" style="color: #e82324;">850 ر.س</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer from Shared Components -->
+<footer class="w-full py-section-gap border-t border-outline-variant bg-surface-container-lowest dark:bg-surface-container-highest">
+<div class="flex flex-col md:flex-row-reverse justify-between items-center px-margin-desktop max-w-container-max mx-auto gap-gutter">
+<div class="flex gap-6">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">السياسة الخصوصية</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">شروط الخدمة</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">معلومات الضمان</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">الدعم</a>
+</div>
+<div class="text-center md:text-right">
+<h2 class="font-headline-md text-headline-md font-bold text-primary mb-2" style="color: #e82324;">Silicon Horizon</h2>
+<p class="font-body-md text-body-md text-secondary">© 2024 Silicon Horizon. Clinical Precision. High Performance.</p>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interaction for the CTA buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.style.transform = 'scale(0.95)';
+            });
+            button.addEventListener('mouseup', () => {
+                button.style.transform = 'scale(1)';
+            });
+        });
+
+        // Dynamic background particle effect
+        const createParticle = () => {
+            const particle = document.createElement('div');
+            const size = Math.random() * 4 + 2;
+            particle.className = 'absolute bg-primary/10 rounded-full pointer-events-none z-0';
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.top = `${Math.random() * 100}%`;
+            particle.style.opacity = '0';
+            
+            document.body.appendChild(particle);
+
+            const animation = particle.animate([
+                { transform: 'translateY(0) opacity(0)', opacity: 0 },
+                { transform: `translateY(-${Math.random() * 100 + 50}px) opacity(0.5)`, opacity: 0.5, offset: 0.5 },
+                { transform: `translateY(-${Math.random() * 200 + 100}px) opacity(0)`, opacity: 0 }
+            ], {
+                duration: Math.random() * 3000 + 2000,
+                easing: 'ease-out'
+            });
+
+            animation.onfinish = () => particle.remove();
+        };
+
+        setInterval(createParticle, 500);
+    </script>
+</body></html>

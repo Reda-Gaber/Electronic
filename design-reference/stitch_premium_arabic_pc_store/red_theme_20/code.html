@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NVIDIA RTX 4090 - حاسوب تك</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-high": "#e6e8ea",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed-variant": "#38485d",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-highest": "#e0e3e5",
+                    "outline-variant": "#c3c6d7",
+                    "on-secondary-container": "#5c647a",
+                    "on-surface": "#191c1e",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "error-container": "#ffdad6",
+                    "on-primary-container": "#eeefff",
+                    "primary-container": "#2563eb",
+                    "surface-variant": "#e0e3e5",
+                    "on-secondary": "#ffffff",
+                    "inverse-primary": "#b4c5ff",
+                    "secondary-fixed": "#dae2fd",
+                    "surface-bright": "#f7f9fb",
+                    "surface-tint": "#0053db",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-low": "#f2f4f6",
+                    "on-secondary-fixed-variant": "#3f465c",
+                    "on-primary-fixed": "#00174b",
+                    "background": "#f7f9fb",
+                    "on-tertiary-container": "#e9f0ff",
+                    "on-surface-variant": "#434655",
+                    "primary": "#004ac6",
+                    "on-tertiary-fixed": "#0b1c30",
+                    "surface-dim": "#d8dadc",
+                    "surface-container": "#eceef0",
+                    "outline": "#737686",
+                    "secondary-container": "#dae2fd",
+                    "tertiary-fixed-dim": "#b7c8e1",
+                    "tertiary": "#46566c",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "primary-fixed": "#dbe1ff",
+                    "tertiary-fixed": "#d3e4fe",
+                    "on-secondary-fixed": "#131b2e",
+                    "on-primary": "#ffffff",
+                    "secondary": "#565e74",
+                    "on-error": "#ffffff",
+                    "inverse-on-surface": "#eff1f3"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "margin-desktop": "40px",
+                    "container-max": "1280px",
+                    "section-gap": "80px",
+                    "unit": "4px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "body-md": ["Be Vietnam Pro"],
+                    "display-lg": ["Be Vietnam Pro"],
+                    "display-lg-mobile": ["Be Vietnam Pro"],
+                    "label-sm": ["Be Vietnam Pro"],
+                    "body-lg": ["Be Vietnam Pro"],
+                    "mono-spec": ["Geist"],
+                    "headline-md": ["Be Vietnam Pro"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "label-sm": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "mono-spec": ["13px", {"lineHeight": "1.0", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .product-gradient {
+            background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(247,249,251,1) 100%);
+        }
+        .spec-row:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased pb-40">
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface/70 backdrop-blur-xl border-b border-outline-variant/30 shadow-sm">
+<div class="flex flex-row-reverse justify-between items-center h-20 px-margin-mobile w-full">
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-headline-md">search</span>
+</button>
+<div class="relative">
+<span class="material-symbols-outlined text-headline-md text-on-surface-variant">shopping_cart</span>
+<span class="absolute -top-1 -right-1 bg-primary text-on-primary text-[10px] w-4 h-4 flex items-center justify-center rounded-full" style="background-color: #bb0010;">2</span>
+</div>
+</div>
+<h1 class="text-headline-md font-headline-md font-bold text-[#bb0010]">حاسوب تك</h1>
+<button class="text-on-surface-variant active:scale-95 transition-transform" onclick="history.back()">
+<span class="material-symbols-outlined text-headline-md">arrow_forward</span>
+</button>
+</div>
+</header>
+<main class="pt-20">
+<!-- Image Gallery -->
+<section class="relative bg-surface-container-lowest overflow-hidden">
+<div class="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-0 py-8">
+<div class="flex-none w-full snap-center px-margin-mobile">
+<div class="aspect-square rounded-3xl overflow-hidden bg-surface-container-low flex items-center justify-center shadow-sm">
+<img class="w-full h-full object-contain p-4 scale-110" data-alt="A professional, high-resolution product shot of the NVIDIA GeForce RTX 4090 Founders Edition graphics card. The image is captured in a clinical, high-key studio environment with soft, multi-layered shadows. The card's metallic finish and sleek industrial design are highlighted by subtle blue accent lighting, reflecting a premium and powerful technological aesthetic. The background is a pristine, minimalist white gradient." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsfPPwqr0-FViEyYIN9mgc7cG8z4dk0vD-wkHWQCfYcM_Qx3veFO5ziR2ULGlZVv86MvpIJjumFsFkmKZWlXOx4ZWPjXTxsvYj-QPW2Ib6EeR6cSd6CiygYAeQMkYMtkrr7C9VHK-NanlXcqKY44swJ4CRfKQy-8mw-jvc6NWzMIQ6MBQWJPxBxSCHRd-odwgtnh_bIyh-nTt8qwFwTT2mZRZxHMfZHEsc3X0VEF48sH41HedA7cam"/>
+</div>
+</div>
+<div class="flex-none w-full snap-center px-margin-mobile">
+<div class="aspect-square rounded-3xl overflow-hidden bg-surface-container-low flex items-center justify-center shadow-sm">
+<img class="w-full h-full object-contain p-8" data-alt="A detailed close-up shot of the cooling fans and heatsink array of the NVIDIA RTX 4090. The focus is on the intricate fin design and the premium brushed metal texture. High-performance engineering is visible through the precision of the components. The lighting is cold and clinical, emphasizing the professional hardware nature of the product, with soft white and gray tones dominant." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBexhNGRJpdJ7i3zSlx0EVN75CzV2fU0WSnR0tHeFqTzLPOS3mu66Ajfws3uKG-Yj_VyJG_WhNc25YbraWmc39Ix1U-99rmUgBmebJYhxKZaBUZxSUa_V8VL5MKmxJw9hC0qpbiYHlCsZ5I8Rt1l3fbQXMPlly4IDjQbmWmL4wBqFyrE2BogncGJOM9B1He0yttF5BPRIl5a9ataz9W2Q__oHIG6SGTh28tNv0g_WfOe4-SERIr2Slv"/>
+</div>
+</div>
+<div class="flex-none w-full snap-center px-margin-mobile">
+<div class="aspect-square rounded-3xl overflow-hidden bg-surface-container-low flex items-center justify-center shadow-sm">
+<img class="w-full h-full object-contain p-8" data-alt="The rear I/O panel of the NVIDIA RTX 4090, showing the DisplayPort and HDMI connectors. The image emphasizes the high-speed connectivity and professional-grade build quality. The background is slightly blurred to keep the focus on the connectors. The color palette remains consistent with a clean, high-tech laboratory feel using whites and light blues." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrL0BIAm99Cyi8Oq-4M8UoAENoVMYWKsbPq4bHAG3aKVPnAR33BM9Tjt7DexOoGOEeZfIVX6q_VlCSnNOu0jLIRVGwLWcVVmdTjXjCCVlaQtwsuhLvtI-d1onyYeINJcjxgCwc27cMJ2JMsm8gJ8Cs4v2oXcdmvqL90sQfUtSd9PuP0Bi7ppz0zcMzgkpXTIoSrAhDujlwOKEpr0DvF2x2yby1QqriR1zw0oY0QS9H1VSETelRP31w"/>
+</div>
+</div>
+</div>
+<!-- Pagination Dots -->
+<div class="flex justify-center gap-2 pb-6">
+<div class="w-2 h-2 rounded-full bg-primary" style="background-color: #bb0010;"></div>
+<div class="w-2 h-2 rounded-full bg-outline-variant"></div>
+<div class="w-2 h-2 rounded-full bg-outline-variant"></div>
+</div>
+</section>
+<!-- Product Info -->
+<section class="px-margin-mobile mt-6">
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-label-sm font-label-sm">NVIDIA</span>
+<span class="bg-primary-container/10 text-primary px-3 py-1 rounded-full text-label-sm font-label-sm" style="color: #bb0010; background-color: rgba(228, 31, 34, 0.1);">متوفر في المخزن</span>
+</div>
+<h2 class="text-display-lg-mobile font-display-lg-mobile text-on-surface leading-tight mt-2">GeForce RTX 4090 Founders Edition</h2>
+<div class="flex items-baseline gap-3 mt-4">
+<span class="text-3xl font-bold text-primary tracking-tight" style="color: #bb0010;">8,499 ر.س</span>
+<span class="text-body-md text-outline line-through">9,200 ر.س</span>
+</div>
+</div>
+</section>
+<!-- Spec Highlights (Chips) -->
+<section class="px-margin-mobile mt-8">
+<div class="flex flex-wrap gap-2">
+<div class="flex items-center gap-2 bg-white border border-outline-variant/30 px-4 py-3 rounded-2xl shadow-sm">
+<span class="material-symbols-outlined text-secondary">memory</span>
+<div>
+<p class="text-[10px] text-outline leading-none">VRAM</p>
+<p class="text-label-sm font-bold">24GB GDDR6X</p>
+</div>
+</div>
+<div class="flex items-center gap-2 bg-white border border-outline-variant/30 px-4 py-3 rounded-2xl shadow-sm">
+<span class="material-symbols-outlined text-secondary">bolt</span>
+<div>
+<p class="text-[10px] text-outline leading-none">Power</p>
+<p class="text-label-sm font-bold">450W TDP</p>
+</div>
+</div>
+<div class="flex items-center gap-2 bg-white border border-outline-variant/30 px-4 py-3 rounded-2xl shadow-sm">
+<span class="material-symbols-outlined text-secondary">speed</span>
+<div>
+<p class="text-[10px] text-outline leading-none">Clock</p>
+<p class="text-label-sm font-bold">2.52 GHz</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Description -->
+<section class="px-margin-mobile mt-10">
+<h3 class="text-headline-md font-headline-md mb-3">نظرة عامة</h3>
+<p class="text-on-surface-variant text-body-md leading-relaxed">
+                تعد بطاقة NVIDIA® GeForce RTX™ 4090 أفضل بطاقة GeForce على الإطلاق. إنها تحقق قفزة هائلة في الأداء والكفاءة والرسومات المدعومة بالذكاء الاصطناعي. استمتع بتجربة ألعاب عالية الأداء، وعوالم افتراضية مفصلة بشكل لا يصدق مع تتبع الأشعة، وإنتاجية لم يسبق لها مثيل.
+            </p>
+</section>
+<!-- Technical Specs (Accordion Style) -->
+<section class="px-margin-mobile mt-10 space-y-4">
+<div class="bg-white rounded-3xl border border-outline-variant/30 overflow-hidden shadow-sm">
+<button class="w-full flex items-center justify-between p-5 text-right" onclick="toggleAccordion('spec1')">
+<span class="font-bold text-body-lg">المواصفات التقنية</span>
+<span class="material-symbols-outlined transition-transform" id="icon-spec1">expand_more</span>
+</button>
+<div class="hidden px-5 pb-5 animate-in fade-in slide-in-from-top-2 duration-300" id="spec1">
+<div class="space-y-3">
+<div class="flex justify-between py-2 border-b border-outline-variant/10 spec-row">
+<span class="text-on-surface-variant">نواة CUDA</span>
+<span class="font-mono-spec font-medium">16384</span>
+</div>
+<div class="flex justify-between py-2 border-b border-outline-variant/10 spec-row">
+<span class="text-on-surface-variant">تردد التعزيز</span>
+<span class="font-mono-spec font-medium">2.52 GHz</span>
+</div>
+<div class="flex justify-between py-2 border-b border-outline-variant/10 spec-row">
+<span class="text-on-surface-variant">سعة الذاكرة</span>
+<span class="font-mono-spec font-medium">24 GB</span>
+</div>
+<div class="flex justify-between py-2 border-b border-outline-variant/10 spec-row">
+<span class="text-on-surface-variant">نوع الذاكرة</span>
+<span class="font-mono-spec font-medium">GDDR6X</span>
+</div>
+<div class="flex justify-between py-2 border-b border-outline-variant/10 spec-row">
+<span class="text-on-surface-variant">عرض واجهة الذاكرة</span>
+<span class="font-mono-spec font-medium">384-bit</span>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-3xl border border-outline-variant/30 overflow-hidden shadow-sm">
+<button class="w-full flex items-center justify-between p-5 text-right" onclick="toggleAccordion('spec2')">
+<span class="font-bold text-body-lg">الأبعاد والحرارة</span>
+<span class="material-symbols-outlined transition-transform" id="icon-spec2">expand_more</span>
+</button>
+<div class="hidden px-5 pb-5" id="spec2">
+<div class="space-y-3">
+<div class="flex justify-between py-2 border-b border-outline-variant/10 spec-row">
+<span class="text-on-surface-variant">الطول</span>
+<span class="font-mono-spec font-medium">304 مم</span>
+</div>
+<div class="flex justify-between py-2 border-b border-outline-variant/10 spec-row">
+<span class="text-on-surface-variant">العرض</span>
+<span class="font-mono-spec font-medium">137 مم</span>
+</div>
+<div class="flex justify-between py-2 border-b border-outline-variant/10 spec-row">
+<span class="text-on-surface-variant">أقصى درجة حرارة</span>
+<span class="font-mono-spec font-medium">90 درجة مئوية</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Recommended Products -->
+<section class="mt-12 mb-20">
+<div class="px-margin-mobile flex justify-between items-center mb-6">
+<h3 class="text-headline-md font-headline-md">منتجات مكملة</h3>
+<button class="text-primary font-bold text-label-sm" style="color: #bb0010;">عرض الكل</button>
+</div>
+<div class="flex overflow-x-auto hide-scrollbar gap-4 px-margin-mobile">
+<!-- Mini Card 1 -->
+<div class="flex-none w-48 bg-white rounded-[20px] p-3 border border-outline-variant/30 shadow-sm">
+<div class="aspect-square bg-surface-container-low rounded-xl mb-3 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A high-performance modular power supply unit (PSU) 1200W, featuring black cables and a clean industrial casing. Shot on a white background with soft studio lighting, matching the premium hardware theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcheHYkSHggYUGIC830PALYb9QUQ7tYMLYSx-02lnBHoPQUJ0C6cpXh0UmIfZfTgJa3Jw9UAMY4z5cVOCR5ifgf9acbpvBnYZ81Os_GkZcwNWwa7TS5jhHbKq2wBFrRGf2Bv7krt4NG7xQ8PsP9ROmUd7olOqYyfxT9NnpQbMjRqHuX3eEFBLeOXfzVjUaSoLbPSvyxEoJfqRLlFeG2-Vr4-wo5AIkWuH2WygvvU2rJDQdeUaKkhoi"/>
+</div>
+<p class="text-label-sm font-bold truncate">PSU 1200W Gold</p>
+<p class="text-primary font-bold text-label-sm mt-1" style="color: #bb0010;">1,200 ر.س</p>
+</div>
+<!-- Mini Card 2 -->
+<div class="flex-none w-48 bg-white rounded-[20px] p-3 border border-outline-variant/30 shadow-sm">
+<div class="aspect-square bg-surface-container-low rounded-xl mb-3 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A sleek, modern dual-tower CPU air cooler with high-performance fans. Minimalist aesthetic, metallic silver and matte black finish. Studio lighting, white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCl8QYqoWJbAFEopRKAncGU8tZb4rhYL8oaKE8rx1xqb4Bqc25rqBzdtQxuFq7Jukl2R6OekfuoNy__rd_Fj8lV6zMFL0wqUMO6qAq6s33r4QC4jgrPvW8jpDo9HdJfXbBv4y-r0NNtsEV97atVudOGNfnt2CEWBt2XwWbA2WohVRhO1wsvU2cTgi4puSRwxLWtnw5IMrH_tumKyBSX2IPeGzicMvvpDOmP4psCCtpbMco4fIOehO8o"/>
+</div>
+<p class="text-label-sm font-bold truncate">CPU Cooler X-Pro</p>
+<p class="text-primary font-bold text-label-sm mt-1" style="color: #bb0010;">450 ر.س</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Sticky Purchase Bar -->
+<div class="fixed bottom-16 left-0 w-full z-40 bg-white/80 backdrop-blur-xl border-t border-outline-variant/20 p-4 shadow-[0_-4px_20px_rgba(0,0,0,0.03)] flex gap-4 transition-transform duration-300" id="sticky-bar">
+<button class="flex-1 bg-primary text-on-primary py-4 rounded-xl font-bold flex items-center justify-center gap-2 active:scale-95 transition-transform shadow-lg shadow-primary/20" style="background-color: #bb0010; box-shadow: 0 10px 15px -3px rgba(187, 0, 16, 0.2);">
+<span class="material-symbols-outlined">shopping_bag</span>
+            اشتري الآن
+        </button>
+<button class="flex-1 border-2 border-primary text-primary py-4 rounded-xl font-bold flex items-center justify-center gap-2 active:scale-95 transition-transform" style="border-color: #bb0010; color: #bb0010;">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+            أضف للسلة
+        </button>
+</div>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-2xl rounded-t-xl border-t border-outline-variant/20 shadow-[0_-4px_20px_rgba(0,0,0,0.03)] h-16">
+<div class="flex flex-row-reverse justify-around items-center h-full px-2">
+<!-- Navigation Items -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="text-label-sm font-label-sm">الرئيسية</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined text-[24px]">grid_view</span>
+<span class="text-label-sm font-label-sm">الفئات</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-bold bg-primary-container/20 rounded-xl px-4 py-1 transition-all active:scale-90" href="#" style="color: #bb0010; background-color: rgba(228, 31, 34, 0.2);">
+<span class="material-symbols-outlined text-[24px]">shopping_cart</span>
+<span class="text-label-sm font-label-sm">السلة</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined text-[24px]">person</span>
+<span class="text-label-sm font-label-sm">حسابي</span>
+</a>
+</div>
+</nav>
+<script>
+        function toggleAccordion(id) {
+            const el = document.getElementById(id);
+            const icon = document.getElementById('icon-' + id);
+            
+            if (el.classList.contains('hidden')) {
+                el.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                el.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Hide sticky bar on scroll down, show on scroll up
+        let lastScrollTop = 0;
+        const stickyBar = document.getElementById('sticky-bar');
+        
+        window.addEventListener("scroll", function() {
+            let st = window.pageYOffset || document.documentElement.scrollTop;
+            if (st > lastScrollTop && st > 200) {
+                // Scroll Down
+                stickyBar.style.transform = "translateY(150%)";
+            } else {
+                // Scroll Up
+                stickyBar.style.transform = "translateY(0)";
+            }
+            lastScrollTop = st <= 0 ? 0 : st;
+        }, false);
+    </script>
+</body></html>

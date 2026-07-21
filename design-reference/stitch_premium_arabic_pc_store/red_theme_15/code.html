@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar" style=""><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;800;900&amp;family=Noto+Sans+Arabic:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"/><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "secondary-fixed": "#ffdad6",
+                "secondary-container": "#ff7164",
+                "outline": "#926f6a",
+                "primary-container": "#e41f22",
+                "outline-variant": "#e7bdb7",
+                "inverse-primary": "#ffb4ab",
+                "on-primary-fixed": "#410002",
+                "on-primary-container": "#fffbff",
+                "on-secondary-fixed": "#410002",
+                "on-secondary": "#ffffff",
+                "tertiary-fixed": "#c9e6ff",
+                "surface-container-highest": "#fddbd6",
+                "primary-fixed-dim": "#ffb4ab",
+                "on-secondary-container": "#700408",
+                "on-primary": "#ffffff",
+                "error": "#ba1a1a",
+                "background": "#fff8f7",
+                "on-tertiary-fixed": "#001e2f",
+                "on-secondary-fixed-variant": "#8a1b18",
+                "surface-variant": "#fddbd6",
+                "on-tertiary": "#ffffff",
+                "on-surface": "#291714",
+                "inverse-surface": "#402b28",
+                "on-tertiary-container": "#fcfcff",
+                "tertiary-fixed-dim": "#8bceff",
+                "surface-container-high": "#ffe2dd",
+                "tertiary": "#00628e",
+                "surface": "#fff8f7",
+                "surface-container": "#ffe9e6",
+                "error-container": "#ffdad6",
+                "on-surface-variant": "#5d3f3c",
+                "surface-dim": "#f4d3ce",
+                "on-error": "#ffffff",
+                "primary": "#bb0010",
+                "surface-tint": "#c00011",
+                "surface-container-low": "#fff0ee",
+                "on-primary-fixed-variant": "#93000a",
+                "tertiary-container": "#007cb3",
+                "on-background": "#291714",
+                "secondary-fixed-dim": "#ffb4ab",
+                "on-tertiary-fixed-variant": "#004b6f",
+                "inverse-on-surface": "#ffedea",
+                "secondary": "#ab332c",
+                "primary-fixed": "#ffdad6",
+                "on-error-container": "#93000a",
+                "surface-container-lowest": "#ffffff",
+                "surface-bright": "#fff8f7"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px",
+                "premium": "20px"
+        },
+        "spacing": {
+                "gutter": "24px",
+                "container-max": "1280px",
+                "stack-sm": "8px",
+                "unit": "8px",
+                "margin-mobile": "16px",
+                "margin-desktop": "40px",
+                "stack-lg": "32px",
+                "stack-md": "16px"
+        },
+        "fontFamily": {
+                "body-md": [
+                        "Noto Sans Arabic"
+                ],
+                "headline-md": [
+                        "Be Vietnam Pro", "Noto Sans Arabic"
+                ],
+                "label-bold": [
+                        "Noto Sans Arabic"
+                ],
+                "headline-sm": [
+                        "Be Vietnam Pro", "Noto Sans Arabic"
+                ],
+                "display-lg-mobile": [
+                        "Be Vietnam Pro", "Noto Sans Arabic"
+                ],
+                "label-sm": [
+                        "Noto Sans Arabic"
+                ],
+                "display-lg": [
+                        "Be Vietnam Pro", "Noto Sans Arabic"
+                ],
+                "body-lg": [
+                        "Noto Sans Arabic"
+                ]
+        },
+        "fontSize": {
+                "body-md": [
+                        "16px",
+                        {
+                                "lineHeight": "1.5",
+                                "fontWeight": "400"
+                        }
+                ],
+                "headline-md": [
+                        "30px",
+                        {
+                                "lineHeight": "1.3",
+                                "fontWeight": "700"
+                        }
+                ],
+                "label-bold": [
+                        "14px",
+                        {
+                                "lineHeight": "1.4",
+                                "fontWeight": "700"
+                        }
+                ],
+                "headline-sm": [
+                        "24px",
+                        {
+                                "lineHeight": "1.3",
+                                "fontWeight": "700"
+                        }
+                ],
+                "display-lg-mobile": [
+                        "32px",
+                        {
+                                "lineHeight": "1.2",
+                                "fontWeight": "800"
+                        }
+                ],
+                "label-sm": [
+                        "12px",
+                        {
+                                "lineHeight": "1.4",
+                                "fontWeight": "500"
+                        }
+                ],
+                "display-lg": [
+                        "48px",
+                        {
+                                "lineHeight": "1.2",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "800"
+                        }
+                ],
+                "body-lg": [
+                        "18px",
+                        {
+                                "lineHeight": "1.6",
+                                "fontWeight": "400"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script><meta charset="utf-8"/></head><body class="text-on-surface bg-background">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 backdrop-blur-xl bg-white/70 shadow-[0_4px_20px_rgba(0,0,0,0.03)] h-20">
+<div class="flex flex-row-reverse justify-between items-center h-full px-margin-desktop w-full max-w-container-max mx-auto">
+<!-- Brand -->
+<div class="font-headline-md text-headline-md font-extrabold text-primary shrink-0">
+                PC-TECH ARABIA
+            </div>
+<!-- Navigation Links (Desktop) -->
+<nav class="hidden md:flex items-center gap-8 font-body-md text-body-md">
+<a class="text-primary font-bold border-b-2 border-primary pb-1" href="#">الرئيسية</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">المعالجات</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">بطاقات الشاشة</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">اللوحات الأم</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">الذاكرة</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">صناديق الحاسوب</a>
+</nav>
+<!-- Actions -->
+<div class="flex items-center gap-4">
+<div class="hidden lg:flex items-center bg-surface-container-low px-4 py-2 rounded-full w-64">
+<span class="material-symbols-outlined text-outline">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full text-right" placeholder="ابحث عن منتج..." type="text"/>
+</div>
+<div class="flex items-center gap-3">
+<button class="p-2 hover:bg-primary/10 rounded-full transition-all active:scale-95">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+<button class="p-2 hover:bg-primary/10 rounded-full transition-all active:scale-95 relative">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="absolute top-1 right-1 bg-primary text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full">0</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<main class="mt-20"><!-- Hero Section -->
+<section class="px-margin-desktop py-stack-lg max-w-container-max mx-auto">
+<div class="relative rounded-premium overflow-hidden h-[600px] flex items-center bg-inverse-surface group">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 opacity-60" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC9d-OjZcQK0bKzdmMY1eGNfXYNpP5FxHFBpsDB7cGzGAWYInVs6Nwgv2r5yDtDobvJnD-0ovESoq3olO83-Wnl1KJOZdNZjypma0B1TN0RUUYSBIQp-PM8sUF8qFtUCmXO4XPSmPdBv551EKTam8n3eZGk6x9zAlo6UFf2zrfJNdWkA6QX-P6jWYIg8cxYCxnfbvGEIoz-D7cv9hbq5XXuTIQMoeL9ZN3Dx63fpVNoLl-Pk_s_V1WV')"></div>
+<div class="absolute inset-0 bg-gradient-to-l from-black/80 via-black/40 to-transparent"></div>
+<div class="relative z-10 w-full md:w-1/2 px-12 text-white">
+<span class="inline-block px-4 py-1 bg-primary text-white rounded-full font-label-bold text-label-sm mb-6 uppercase tracking-widest">إصدارات 2024</span>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg mb-6 leading-tight">
+                        قوة الأداء بين يديك<br/>
+<span class="text-primary-fixed-dim">أحدث كروت الشاشة</span>
+</h1>
+<p class="font-body-lg text-body-lg mb-10 opacity-90 leading-relaxed max-w-lg">
+                        اكتشف التشكيلة الأوسع من معالجات الرسوميات للجيل القادم. تجربة لعب استثنائية وأداء لا يضاهى في صناعة المحتوى.
+                    </p>
+<div class="flex gap-4">
+<button class="bg-primary text-white px-10 py-4 rounded-premium font-label-bold text-label-bold hover:bg-primary/90 transition-all shadow-lg active:scale-95">تسوق الآن</button>
+<button class="border-2 border-white/30 backdrop-blur-md text-white px-10 py-4 rounded-premium font-label-bold text-label-bold hover:bg-white/10 transition-all active:scale-95">شاهد العروض</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Categories Bento Grid -->
+<section class="px-margin-desktop py-stack-lg max-w-container-max mx-auto">
+<div class="flex justify-between items-end mb-10">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">تسوق حسب الفئة</h2>
+<p class="text-on-surface-variant font-body-md">اختر العتاد المناسب لجهازك القادم</p>
+</div>
+<button class="text-primary font-label-bold hover:underline">عرض الكل</button>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-6 gap-gutter">
+<!-- GPU -->
+<div class="col-span-1 md:col-span-2 bg-surface-container-low p-8 rounded-premium flex flex-col items-center justify-center gap-4 hover:shadow-xl transition-all cursor-pointer group border border-outline-variant/30">
+<div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-4xl">memory</span>
+</div>
+<span class="font-label-bold text-label-bold">كروت الشاشة (GPU)</span>
+</div>
+<!-- CPU -->
+<div class="bg-surface-container-low p-8 rounded-premium flex flex-col items-center justify-center gap-4 hover:shadow-xl transition-all cursor-pointer group border border-outline-variant/30">
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">circle</span>
+</div>
+<span class="font-label-bold text-label-bold">المعالجات</span>
+</div>
+<!-- RAM -->
+<div class="bg-surface-container-low p-8 rounded-premium flex flex-col items-center justify-center gap-4 hover:shadow-xl transition-all cursor-pointer group border border-outline-variant/30">
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">straighten</span>
+</div>
+<span class="font-label-bold text-label-bold">الرامات</span>
+</div>
+<!-- SSD -->
+<div class="bg-surface-container-low p-8 rounded-premium flex flex-col items-center justify-center gap-4 hover:shadow-xl transition-all cursor-pointer group border border-outline-variant/30">
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">save</span>
+</div>
+<span class="font-label-bold text-label-bold">التخزين</span>
+</div>
+<!-- Cases -->
+<div class="bg-surface-container-low p-8 rounded-premium flex flex-col items-center justify-center gap-4 hover:shadow-xl transition-all cursor-pointer group border border-outline-variant/30">
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">computer</span>
+</div>
+<span class="font-label-bold text-label-bold">الصناديق</span>
+</div>
+</div>
+</section>
+<!-- Featured Products -->
+<section class="bg-surface-container-lowest py-stack-lg border-y border-outline-variant/20">
+<div class="px-margin-desktop max-w-container-max mx-auto">
+<div class="flex justify-between items-center mb-12">
+<h2 class="font-headline-md text-headline-md">وصل حديثاً</h2>
+<div class="flex gap-2">
+<button class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+<button class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Product Card 1 -->
+<div class="product-card group relative bg-white p-4 rounded-premium border border-outline-variant/50 hover:shadow-[0_10px_40px_rgba(0,0,0,0.06)] transition-all">
+<div class="absolute top-4 right-4 z-10 flex flex-col gap-2">
+<span class="bg-primary text-white px-3 py-1 rounded-full text-[10px] font-bold">متوفر</span>
+<button class="w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">favorite</span>
+</button>
+</div>
+<div class="relative bg-surface-container-low rounded-xl h-64 mb-6 overflow-hidden">
+<img class="w-full h-full object-contain p-6 mix-blend-multiply group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnyHlVa--tMTiNUeNSuSuQQQgNUC1ZaD5pS09UGdVrqj4i4_bckZJit5YB4SbxrWjzw9u11i8I9_NmSWbXVJoFGXTy735hvJ1zpu7wCYelXToE0vk7adV8c-IrvmZ2SMqwY1RhGmAZbA28FBkEgBR04wwteF9L1Dd-k10A9qV_RouYpkgackLLzBNqgonlGNlaUrmx4d--YGlud0Cjm4DKITM4zTWC4fOpAKglOPZab4rKx-5uzZRh"/>
+<div class="quick-add absolute bottom-4 inset-x-4">
+<button class="w-full bg-primary text-white py-3 rounded-xl font-label-bold flex items-center justify-center gap-2 shadow-lg">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+                                    إضافة للسلة
+                                </button>
+</div>
+</div>
+<div class="text-right">
+<span class="text-on-surface-variant font-label-sm text-label-sm">ASUS ROG</span>
+<h3 class="font-label-bold text-body-md mt-1 mb-3 line-clamp-2">كرت شاشة ASUS ROG Strix GeForce RTX 4080 Super OC</h3>
+<div class="flex flex-row-reverse items-center justify-between">
+<span class="text-primary font-display-lg text-headline-sm">4,899 ر.س</span>
+<div class="flex text-amber-400">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-on-surface-variant text-label-sm mr-1">4.9</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="product-card group relative bg-white p-4 rounded-premium border border-outline-variant/50 hover:shadow-[0_10px_40px_rgba(0,0,0,0.06)] transition-all">
+<div class="absolute top-4 right-4 z-10">
+<span class="bg-primary text-white px-3 py-1 rounded-full text-[10px] font-bold">خصم 15%</span>
+</div>
+<div class="relative bg-surface-container-low rounded-xl h-64 mb-6 overflow-hidden">
+<img class="w-full h-full object-contain p-6 mix-blend-multiply group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaRB2MSW8h4Q0S3V0T8fYkYB1_KWXdaaUQ5kCw1dM5K_LY0uTOR08cMSXrK2tByRm343Ge_c4QQf0ZTGxazyXooe-7dJ4cCjabvPplAHwSAp8JhSH_X1VEv5-MGX0UPmpgWc0wowP23Mj_36mbjsRe4INbxyOJXnHY3vHwGSYqTxPETF-FHHXW2P6sR9hkMoyDCREHFLeeFXZ4Oj5pCZV4UR60MY0YuQgvqpc9kO7X7tstAUVH9LmU"/>
+<div class="quick-add absolute bottom-4 inset-x-4">
+<button class="w-full bg-primary text-white py-3 rounded-xl font-label-bold flex items-center justify-center gap-2 shadow-lg">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+                                    إضافة للسلة
+                                </button>
+</div>
+</div>
+<div class="text-right">
+<span class="text-on-surface-variant font-label-sm text-label-sm">Intel</span>
+<h3 class="font-label-bold text-body-md mt-1 mb-3 line-clamp-2">معالج Intel Core i9-14900K الجيل الرابع عشر</h3>
+<div class="flex flex-row-reverse items-center justify-between">
+<div class="flex flex-col">
+<span class="text-primary font-display-lg text-headline-sm">2,450 ر.س</span>
+<span class="text-on-surface-variant line-through text-xs">2,899 ر.س</span>
+</div>
+<div class="flex text-amber-400">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-on-surface-variant text-label-sm mr-1">5.0</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="product-card group relative bg-white p-4 rounded-premium border border-outline-variant/50 hover:shadow-[0_10px_40px_rgba(0,0,0,0.06)] transition-all">
+<div class="relative bg-surface-container-low rounded-xl h-64 mb-6 overflow-hidden">
+<img class="w-full h-full object-contain p-6 mix-blend-multiply group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbVnEOY51hq4FNwp7GgIpysGif2fiDLgrZGUAiUwRDOx1tRP8JfiZX3aJnJ4yU99PTuCcuTGI0KGpJ2ivUnOqeQJmDRE5TFcoslNuQ-nW-5foGGh3riQW5VJBzssjwuynruca3Ke1ljhoqsTQjLCHAGiqyzF4Knqm6gPJzOGi_dwCo8L9vqmstVbw54TWWP6qhQlfy-F1bmBGaj14rwY1fKkYIOkf_lcBhq2gOfF6tVFJZ1Yr7QhNu"/>
+<div class="quick-add absolute bottom-4 inset-x-4">
+<button class="w-full bg-primary text-white py-3 rounded-xl font-label-bold flex items-center justify-center gap-2 shadow-lg">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+                                    إضافة للسلة
+                                </button>
+</div>
+</div>
+<div class="text-right">
+<span class="text-on-surface-variant font-label-sm text-label-sm">Corsair</span>
+<h3 class="font-label-bold text-body-md mt-1 mb-3 line-clamp-2">رامات Corsair Dominator Titanium 32GB (2x16GB) DDR5 7200MHz</h3>
+<div class="flex flex-row-reverse items-center justify-between">
+<span class="text-primary font-display-lg text-headline-sm">1,150 ر.س</span>
+<div class="flex text-amber-400">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-on-surface-variant text-label-sm mr-1">4.8</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="product-card group relative bg-white p-4 rounded-premium border border-outline-variant/50 hover:shadow-[0_10px_40px_rgba(0,0,0,0.06)] transition-all">
+<div class="relative bg-surface-container-low rounded-xl h-64 mb-6 overflow-hidden">
+<img class="w-full h-full object-contain p-6 mix-blend-multiply group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdFzy7-8vhSK_rU7PQq4rkaep5xClfvq08g_3cTPOlh8chAzz7l1QAQZeAteQCHadapZNcXmPqvivmA4VOnhwZQqNWpo-ZFX5ygPaN5xt5Ou72_8YAT2PHQxMNwkYvOpAd9S8xXj5P4KTKlrl6g8ohQOcvQuV_AsVOKoLDqfvt6pFQd1yFIabVJDYoaDYXa9rggTJ_0jrOB1XLhFGn075FXbk1j8oUvHqz6qXuQs51iegeh2KKNr3r"/>
+<div class="quick-add absolute bottom-4 inset-x-4">
+<button class="w-full bg-primary text-white py-3 rounded-xl font-label-bold flex items-center justify-center gap-2 shadow-lg">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+                                    إضافة للسلة
+                                </button>
+</div>
+</div>
+<div class="text-right">
+<span class="text-on-surface-variant font-label-sm text-label-sm">Samsung</span>
+<h3 class="font-label-bold text-body-md mt-1 mb-3 line-clamp-2">هارد SSD Samsung 990 Pro 2TB PCIe Gen4 NVMe</h3>
+<div class="flex flex-row-reverse items-center justify-between">
+<span class="text-primary font-display-lg text-headline-sm">740 ر.س</span>
+<div class="flex text-amber-400">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-on-surface-variant text-label-sm mr-1">4.9</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Today's Deals Promo Banner -->
+<section class="px-margin-desktop py-stack-lg max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="relative h-[300px] rounded-premium overflow-hidden group bg-surface-container-high border border-outline-variant/30 flex items-center">
+<div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-700 opacity-20" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDhQ-FMc7n57ez-pKqOu0zFJZhbpk_jN1n3Bjw7yjJREeK9sGnrSfJElm782Anuof0BIV4EdBWaqoSLZ7toE0lODTNM5ftn0ysgkzdSWo4zAx9EAJBecenpuVSFRPLMc6DmuHeJJEgM8jKvYVGB8B35F9cJAvAEPZnOLlqXN2JpsU_Le_eNLsvCFfhI5jFKfKrNZtH-PWu2iXoPDD4XHEW_WzUBhis1u-ZkoT8IblwoOHgJiA5GT5ds')"></div>
+<div class="relative z-10 p-12 text-right">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-2">عروض التبريد المائي</h3>
+<p class="text-on-surface-variant mb-6 font-body-md">خصومات تصل إلى 30% على جميع المبردات المائية</p>
+<button class="bg-primary text-white px-8 py-3 rounded-full font-label-bold hover:shadow-lg transition-all active:scale-95">تسوق العروض</button>
+</div>
+</div>
+<div class="relative h-[300px] rounded-premium overflow-hidden group bg-surface-container-high border border-outline-variant/30 flex items-center">
+<div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-700 opacity-20" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC06kfDr31NMropFvH88iQI3UDVuoMNuT5EWAfV3J0USI1eThCMlrRVgxYVoFivVpaq4e1JlvrmdDe_kHAHMhxDH_5Py8l3e6kWqVFYeIYRhL38vvWZcFA5jmV_Yw4j1zst9jgKK85MjSNLcB3N6f1jv-485YqQsuwoiryI_leQV_KiXUgJb_sUoFLEBFBMSQn53KCzlI77RQ05Dn_z4SasszEXt66ZtCWLNyZKlkkw7XoyNbybyen9')"></div>
+<div class="relative z-10 p-12 text-right">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-2">إكسسوارات الجيمنج</h3>
+<p class="text-on-surface-variant mb-6 font-body-md">اجمع نقاطك واحصل على خصم فوري على الماوس والكيبورد</p>
+<button class="bg-primary text-white px-8 py-3 rounded-full font-label-bold hover:shadow-lg transition-all active:scale-95">اكتشف المزيد</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Popular Brands -->
+<section class="px-margin-desktop py-stack-lg max-w-container-max mx-auto mb-16">
+<h2 class="font-headline-sm text-headline-sm text-center mb-10">شركاء النجاح</h2>
+<div class="flex flex-wrap justify-center gap-12 opacity-50 grayscale hover:grayscale-0 transition-all">
+<div class="h-12 w-32 flex items-center justify-center"><img alt="ASUS" class="max-h-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkv75wod0bczY-V8D9w83cSsCcMzJHxVTR0tCh1KtpIYU7SN_KahoZCsttggcZiv1o_-kWU48-ldG4n8qnIiQ1IcE3mfnTXckAdqXyB-w-kn-IV5vmh6l0iIavM5jhgm_QPkNgRbOu6gyKrazEjtpJQ1Xvik-x5pe1LyeAnvpYP8C6HuSvrvU65jDlKGG4Ynrrji5mhGCymPD2gYlQAq8cbjb8c3mAdOItA30CTjM4RWIg1jDe8NsW"/></div>
+<div class="h-12 w-32 flex items-center justify-center"><img alt="MSI" class="max-h-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXCfKPYlW0nPvvUcP2kzzgXa2FEcD6Gx2oeoqeBtZ4Su17Hfj2DE5pBsf6vfI8WuPHM2QW3TCx8lFjR58aSrUtsPEh46t1FzIYF22rk8GKV1578DqxRQqvUETl5s1mLnOE766e6OwT8YqeaHnbqUDdNNaOP1nU0hTRNB0fq4PC-ju_s5CVHPch0PouRKQpaCB3uSPC7OVjl9GLVlhbIAajrXdsQvqVuTv8L07cEXiOqHr6vwV1_eb9"/></div>
+<div class="h-12 w-32 flex items-center justify-center"><img alt="Gigabyte" class="max-h-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB68YZkas6SJYuxSMWh9okixyFye6weE4Lftn1WIB5wsccrbhvIsApCDQax3xWc3tdg1G7MYZzFG90e3rFcF3fKk5eKfWmbju8KXvXAuEYotfbt-gb3fmHmnDywOcNrx-rBuhjjlpO1JmqYX93biZpKoLaImp4wmvZ3Qru6SdRWsdG-S2OZ4wB3Rb2HJFGu8MesU_XbHbuZUrrquYT8AdyHXtheq7-XGguS8pmOAeO9rQ08N1S8kf9m"/></div>
+<div class="h-12 w-32 flex items-center justify-center"><img alt="Corsair" class="max-h-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKUZA1ahJMmVb0uz6CpVUmpNvHUo23D2UYHO3s6A483Gwdl9eONztNIPIO8dUsYvixXvpvjbvOCQN9Ss8GclxrDxUE4Z9ydSWqmuKUgVeARU9UJpc4sSMthBJ0LFuGUOACloh0um5AFa5HvbtKQMdzGPIuxPGdohZcVaAHxf4HBwY5k9hImdZoFd1fiwgLQroCl56bu5VBiQypyR8QLDUcSKP41cdBsk8vZBZy_dHbEDi9yjlAM7it"/></div>
+<div class="h-12 w-32 flex items-center justify-center"><img alt="Samsung" class="max-h-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZMhTQDxkPUiAiziTEEjx1kugBw6ZVVBAhYeFPEyUy0D1_4sKu9PH113cjG39DPLA5qlBXBbc_j-vut9n7m0y-bG6ZIGZqJIzCnw89sYw5qkA6Ef_gHYWXwyKi5xDcS2yY-9UrmEtorUo1wVwRtggCFfIfyKVV_OQvWBxgQrWVG0IMaYNHzdzDzfgKVDUbF6VaY-5XaZkCZGJgncmaKF95UTbedNUnz_i-XBF9bqq_Efyok9cocysb"/></div>
+</div>
+</section></main>
+<!-- Footer -->
+<footer class="bg-surface dark:bg-inverse-surface border-t border-outline-variant dark:border-outline">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-stack-lg max-w-container-max mx-auto text-right">
+<!-- Brand Info -->
+<div class="flex flex-col gap-4">
+<div class="font-headline-sm text-headline-sm font-bold text-on-surface dark:text-inverse-on-surface">PC-TECH ARABIA</div>
+<p class="font-body-md text-on-surface-variant leading-relaxed">
+                    وجهتك الأولى في العالم العربي للحصول على أحدث قطع الكمبيوتر والعتاد الاحترافي بأسعار تنافسية وضمان حقيقي.
+                </p>
+<div class="flex gap-4 mt-2">
+<a class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center hover:bg-primary hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="facebook">facebook</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center hover:bg-primary hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="instagram" data-original-icon="instagram">circle</span>
+</a>
+</div>
+</div>
+<!-- Links 1 -->
+<div class="flex flex-col gap-stack-sm">
+<h4 class="font-label-bold text-label-bold text-primary mb-2">من نحن</h4>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">عن المتجر</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">المدونة التقنية</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">وظائف</a>
+</div>
+<!-- Links 2 -->
+<div class="flex flex-col gap-stack-sm">
+<h4 class="font-label-bold text-label-bold text-primary mb-2">خدمة العملاء</h4>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">تتبع الطلب</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">سياسة الاستبدال</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">الأسئلة الشائعة</a>
+</div>
+<!-- Newsletter -->
+<div class="flex flex-col gap-stack-sm">
+<h4 class="font-label-bold text-label-bold text-primary mb-2">اشترك في النشرة</h4>
+<p class="font-body-md text-on-surface-variant mb-4">كن أول من يعرف عن العروض الحصرية والمنتجات الجديدة.</p>
+<div class="flex gap-2">
+<button class="bg-primary text-white px-4 py-2 rounded-lg font-label-bold">اشترك</button>
+<input class="bg-surface-container border-none rounded-lg focus:ring-2 focus:ring-primary w-full text-right" placeholder="البريد الإلكتروني" type="email"/>
+</div>
+</div>
+</div>
+<div class="border-t border-outline-variant/30 py-6 text-center text-on-surface-variant font-label-sm">
+            © 2024 بي سي تيك أرابيا. جميع الحقوق محفوظة
+        </div>
+</footer>
+<!-- Floating Action Button -->
+<button class="fixed bottom-8 left-8 w-16 h-16 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center z-50 hover:scale-110 active:scale-90 transition-all animate-bounce">
+<span class="material-symbols-outlined text-3xl" data-icon="support_agent">support_agent</span>
+</button>
+<script>
+        // Simple Micro-interactions
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-8px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Sticky Header effect on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-md');
+            } else {
+                header.classList.remove('shadow-md');
+            }
+        });
+    </script>
+</body></html>

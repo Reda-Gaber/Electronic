@@ -1,0 +1,400 @@
+<!DOCTYPE html><html dir="rtl" lang="ar"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>PC-TECH ARABIA | لوحة التحكم</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;family=Noto+Sans+Arabic:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        body {
+            font-family: 'Noto Sans Arabic', 'Be Vietnam Pro', sans-serif;
+            background-color: #f7f9fb;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        /* Custom scrollbar for a tech feel */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e0e3e5;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b91a24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#690005",
+                        "surface-container-high": "#292932",
+                        "primary": "#b91a24",
+                        "inverse-surface": "#e4e1ed",
+                        "on-primary": "#ffffff",
+                        "on-tertiary": "#561e20",
+                        "on-background": "#e4e1ed",
+                        "on-primary-fixed-variant": "#930013",
+                        "secondary-container": "#464557",
+                        "error-container": "#93000a",
+                        "surface": "#f7f9fb",
+                        "tertiary-container": "#ca7b7b",
+                        "surface-container": "#1f1f27",
+                        "secondary": "#c6c4da",
+                        "surface-container-low": "#1b1b23",
+                        "outline": "#ab8986",
+                        "inverse-primary": "#ffb3ad",
+                        "tertiary": "#ffb3b2",
+                        "on-secondary-fixed-variant": "#464557",
+                        "secondary-fixed-dim": "#c6c4da",
+                        "on-tertiary-container": "#4d171a",
+                        "on-surface": "#191c1e",
+                        "tertiary-fixed": "#ffdad9",
+                        "secondary-fixed": "#e3e0f7",
+                        "outline-variant": "#5b403e",
+                        "on-primary-fixed": "#410004",
+                        "inverse-on-surface": "#302f38",
+                        "surface-variant": "#e0e3e5",
+                        "on-tertiary-fixed": "#3a090d",
+                        "on-secondary": "#2f2f40",
+                        "on-secondary-fixed": "#1a1a2a",
+                        "on-secondary-container": "#b5b3c8",
+                        "primary-fixed-dim": "#ffb3ad",
+                        "tertiary-fixed-dim": "#ffb3b2",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-container": "#ff5451",
+                        "surface-bright": "#f7f9fb",
+                        "on-error-container": "#ffdad6",
+                        "background": "#f7f9fb",
+                        "primary-fixed": "#ffdad7",
+                        "on-surface-variant": "#434655",
+                        "surface-tint": "#ffb3ad",
+                        "surface-dim": "#d8dadc",
+                        "on-primary-container": "#5c0008",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-tertiary-fixed-variant": "#723335",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "12px",
+                        "2xl": "20px",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "unit": "4px",
+                        "section-gap": "80px",
+                        "margin-desktop": "40px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px"
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 backdrop-blur-xl bg-white/70 shadow-[0_4px_20px_rgba(0,0,0,0.03)] h-20">
+<div class="flex flex-row-reverse justify-between items-center h-full px-margin-desktop w-full max-w-container-max mx-auto">
+<!-- Brand -->
+<div class="flex items-center gap-4"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtx5ZEdzg9biXwk73DccbFIwS3Nua9w0iBW2f-JzHB8sjwMx4b9qFiwTh7FIhN2z6yAmj4-molAA0xpVefWUrcqYCstbjfvIZ195aZlT82Dq9nhhoBItF44WcRRRlbKHQ7PUPRPnVZdQV7KD_YSAAueh2gR6yxVEsFkYFTyodLNyIxXxfPbr8Z_y-QM1WBqsnSu-c8QlpCeL0Wf0rYjpo2ZvyIFgi9k9ND7d4hBcWhRPPcCUjGm9LElF57JlzdTuHkzQ" alt="PC-TECH ARABIA" class="h-12 w-auto object-contain"></div>
+<!-- Global Search (Center focus) -->
+<div class="hidden md:flex flex-1 max-w-xl mx-8">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full bg-surface-container-low/10 border-none rounded-full py-2.5 pr-12 pl-4 focus:ring-2 focus:ring-primary/20 text-body-md transition-all" placeholder="بحث في المنتجات، الطلبات، أو العملاء..." type="text">
+</div>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-full hover:bg-primary/10 transition-all active:scale-95">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-primary/10 transition-all active:scale-95">
+<span class="material-symbols-outlined text-on-surface-variant">settings</span>
+</button>
+</div>
+<div class="h-8 w-px bg-outline-variant/30"></div>
+<div class="flex items-center gap-3 cursor-pointer group">
+<div class="text-left hidden md:block">
+<p class="font-label-sm text-label-sm font-bold text-on-surface">أحمد المدير</p>
+<p class="text-xs text-on-surface-variant">مدير النظام</p>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/20">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a Middle Eastern male administrator in a clean office setting, featuring high-end tech equipment in the background. The lighting is soft and cinematic with a high-key modern aesthetic, maintaining a palette of clean whites and corporate reds." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgOATUwJ21XwBoQINARvvbRUvsNpDrOO0GCQgnZtFVcVrjS1OvNkKe5dgg_XQ-SyZojIxqbTCJpTG5nBvCX_57hLUSgKUpFErYyqhUSZ6kJDKF6_e6SUdefyQl_cj_a6gFOJy5fWD5fEqaZlV6OLMqmi_scmiWbjWlw7aptVnxlA9vlUDroNNEii5IukRwNhhF9A3gygRGcGFzx73EiTUiyJw15YQ2pL0jxF9ANBF15EkDU6y1EJgK">
+</div>
+</div>
+</div>
+</div>
+</header>
+<div class="flex pt-20 min-h-screen">
+<!-- Sidebar Navigation -->
+<aside class="w-64 bg-white border-l border-outline-variant/20 hidden lg:block sticky top-20 h-[calc(100vh-80px)]">
+<nav class="p-6 space-y-2">
+<div class="text-on-surface-variant text-[11px] font-bold tracking-wider mb-4 uppercase">لوحة التحكم</div>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary text-white font-medium shadow-md shadow-primary/20" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="text-body-md">الرئيسية</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-primary/10 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="text-body-md">المنتجات</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-primary/10 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="text-body-md">الطلبات</span>
+<span class="mr-auto bg-error text-white text-[10px] px-1.5 py-0.5 rounded-full">12</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-primary/10 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-body-md">العملاء</span>
+</a>
+<div class="pt-8 text-on-surface-variant text-[11px] font-bold tracking-wider mb-4 uppercase">التقارير</div>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-primary/10 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-body-md">المبيعات</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-primary/10 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="text-body-md">الأداء</span>
+</a>
+</nav>
+</aside>
+<!-- Main Canvas -->
+<main class="flex-1 p-margin-desktop overflow-hidden">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+<div>
+<h1 class="font-display-lg text-3xl font-bold text-on-surface">نظرة عامة</h1>
+<p class="text-on-surface-variant text-lg">مرحباً بك مجدداً، إليك ما يحدث في متجرك اليوم.</p>
+</div>
+<button class="bg-primary text-white px-6 py-3 rounded-xl font-bold flex items-center gap-2 hover:shadow-lg hover:shadow-primary/30 transition-all active:scale-95">
+<span class="material-symbols-outlined">download</span>
+                    تحميل التقرير الشهري
+                </button>
+</div>
+<!-- Metrics Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter mb-10">
+<!-- Total Sales -->
+<div class="bg-white p-6 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-outline-variant/30 flex items-start justify-between">
+<div>
+<p class="text-on-surface-variant font-label-sm mb-1">إجمالي المبيعات</p>
+<h3 class="text-xl font-bold text-on-surface">124,500 ر.س</h3>
+<p class="text-xs text-green-600 flex items-center gap-1 mt-2">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+                            +12% من الشهر الماضي
+                        </p>
+</div>
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">payments</span>
+</div>
+</div>
+<!-- New Orders -->
+<div class="bg-white p-6 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-outline-variant/30 flex items-start justify-between">
+<div>
+<p class="text-on-surface-variant font-label-sm mb-1">الطلبات الجديدة</p>
+<h3 class="text-xl font-bold text-on-surface">856</h3>
+<p class="text-xs text-green-600 flex items-center gap-1 mt-2">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+                            +5.4% اليوم
+                        </p>
+</div>
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">shopping_cart</span>
+</div>
+</div>
+<!-- Active Customers -->
+<div class="bg-white p-6 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-outline-variant/30 flex items-start justify-between">
+<div>
+<p class="text-on-surface-variant font-label-sm mb-1">العملاء النشطون</p>
+<h3 class="text-xl font-bold text-on-surface">3,240</h3>
+<p class="text-xs text-error flex items-center gap-1 mt-2">
+<span class="material-symbols-outlined text-sm">trending_down</span>
+                            -2% حالياً
+                        </p>
+</div>
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">person_add</span>
+</div>
+</div>
+<!-- Revenue -->
+<div class="bg-white p-6 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-outline-variant/30 flex items-start justify-between">
+<div>
+<p class="text-on-surface-variant font-label-sm mb-1">صافي الأرباح</p>
+<h3 class="text-xl font-bold text-on-surface">42,800 ر.س</h3>
+<p class="text-xs text-green-600 flex items-center gap-1 mt-2">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+                            +18% هذا الربع
+                        </p>
+</div>
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+</div>
+</div>
+</div>
+<!-- Charts and List Layout -->
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-gutter">
+<!-- Sales Chart -->
+<div class="xl:col-span-2 bg-white p-8 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-outline-variant/30">
+<div class="flex justify-between items-center mb-8">
+<div>
+<h2 class="text-xl font-bold text-on-surface">مخطط المبيعات الشهري</h2>
+<p class="text-on-surface-variant text-sm">تحليل الأداء لعام 2024</p>
+</div>
+<select class="bg-surface-container-low/10 border border-outline-variant/20 rounded-lg text-xs py-2 px-4 focus:ring-primary">
+<option>آخر 6 أشهر</option>
+<option>آخر سنة</option>
+</select>
+</div>
+<div class="relative h-64 w-full bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/10 group">
+<!-- Abstract chart representation with brand red -->
+<div class="absolute bottom-0 inset-x-0 h-full flex items-end justify-between px-8 pb-4">
+<div class="w-8 bg-primary/20 rounded-t-lg transition-all hover:bg-primary/40" style="height: 40%"></div>
+<div class="w-8 bg-primary/20 rounded-t-lg transition-all hover:bg-primary/40" style="height: 65%"></div>
+<div class="w-8 bg-primary/20 rounded-t-lg transition-all hover:bg-primary/40" style="height: 50%"></div>
+<div class="w-8 bg-primary/20 rounded-t-lg transition-all hover:bg-primary/40" style="height: 85%"></div>
+<div class="w-8 bg-primary/20 rounded-t-lg transition-all hover:bg-primary/40" style="height: 70%"></div>
+<div class="w-8 bg-primary rounded-t-lg shadow-lg shadow-primary/20" style="height: 95%"></div>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent"></div>
+</div>
+<div class="grid grid-cols-6 mt-4 text-center text-xs text-on-surface-variant font-medium">
+<span class="">يناير</span>
+<span class="">فبراير</span>
+<span class="">مارس</span>
+<span class="">أبريل</span>
+<span class="">مايو</span>
+<span class="text-primary font-bold">يونيو</span>
+</div>
+</div>
+<!-- Recent Orders -->
+<div class="bg-white p-8 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-outline-variant/30">
+<div class="flex justify-between items-center mb-6">
+<h2 class="text-xl font-bold text-on-surface">آخر الطلبات</h2>
+<button class="text-primary font-bold text-xs hover:underline">عرض الكل</button>
+</div>
+<div class="space-y-6">
+<!-- Order Item -->
+<div class="flex items-center gap-4 group cursor-pointer">
+<div class="w-12 h-12 rounded-xl bg-surface-container-highest overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="NVIDIA RTX 4090" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5qjxgWBVeS9diVI5G5iKVTwf_NVAFBt-guRUVw1aoaIQgobxY3RfuuIkUEHiLBGOyDRZo-ZeH-yGWApILdy-LNcloDnX_IBN1vzqpR4xMbUO6SjwfDHw_QVKOE2fHtLTDbuY376bpDx26i26LtVqitreO0-diTP-vPOMdsj01rMmZP3EALlXZfhBEFY2NanEupdO3Ko88iQCIvhVL_79YSn23UhRRjxcYWKKRnP1ci9yNJ49y6Om5">
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-bold text-on-surface truncate">NVIDIA RTX 4090</p>
+<p class="text-xs text-on-surface-variant">طلب #84920</p>
+</div>
+<div class="text-right">
+<p class="font-bold text-primary">8,400 ر.س</p>
+<span class="inline-block px-2 py-1 bg-green-100 text-green-700 text-[10px] rounded-full font-bold">تم الشحن</span>
+</div>
+</div>
+<!-- Order Item -->
+<div class="flex items-center gap-4 group cursor-pointer">
+<div class="w-12 h-12 rounded-xl bg-surface-container-highest overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="ROG Maximus Z790" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhX39p8kjHKgxQ75nTT37O-5Irfu-6Rmq1JghMc_6P5dynJRDoiYgpSc2E1SwFe8Kcn5KtXRuvAEQp4wFAEbeX3XrV_RosC4zIJpRU4E-ReaUfdaOM7z4W7cZGM4SxeCqmjCsAU77q4ivqbpE27zLhPFvG3Nn2RJBk39OpB2EWBmKIFNyvI13r_3fyUwOu6nzziY0ZwQzxmKV2z5LSqq2mTBh54N4fXseDKZI3Y0ehQ0pbBbsKR7EN">
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-bold text-on-surface truncate">ROG Maximus Z790</p>
+<p class="text-xs text-on-surface-variant">طلب #84919</p>
+</div>
+<div class="text-right">
+<p class="font-bold text-primary">3,200 ر.س</p>
+<span class="inline-block px-2 py-1 bg-yellow-100 text-yellow-700 text-[10px] rounded-full font-bold">قيد المعالجة</span>
+</div>
+</div>
+<!-- Order Item -->
+<div class="flex items-center gap-4 group cursor-pointer">
+<div class="w-12 h-12 rounded-xl bg-surface-container-highest overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="32GB DDR5 RAM" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvRAOSGI17nRwbkCdgAa_v2PU_SG0oiq4PdkHnl2C4_NQkelRjQZaFFbwBqik3jJmV0j8M-JybEjyqBJKoq6EA2zsDB8EuY_X1GSn1B65Fmbq-Q0pDeo9TTWJM54QGQV8QrbPHy_Ak9gVH-ipvHKGmbtvYBkiUxE0H3-oUQQ-OSyUEJFppsApWWPhzKYbCUwbuepzid4RAf5Fc1GrqcGlONKLHfosVP1EFMu0oD-UX-tpUP40ynUjS">
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-bold text-on-surface truncate">32GB DDR5 RAM</p>
+<p class="text-xs text-on-surface-variant">طلب #84918</p>
+</div>
+<div class="text-right">
+<p class="font-bold text-primary">1,150 ر.س</p>
+<span class="inline-block px-2 py-1 bg-primary/10 text-primary text-[10px] rounded-full font-bold">تم الاستلام</span>
+</div>
+</div>
+<!-- Order Item -->
+<div class="flex items-center gap-4 group cursor-pointer">
+<div class="w-12 h-12 rounded-xl bg-surface-container-highest overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="H9 Elite White Case" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIylUY9VrjGjr3RV5oIQsEDzvJOUFEhBzitUOIQJU-CvebwP1PB4D7OG4mUbgVbE9NWtz57WZ4GwJ8OOOj_NZW9dWAOZaluGNx0dZ4snmp9e6GtR27NFTMGvFHwmqFdF9h_r7b4yd_PQxqaTKmjt4YQOdnRaFs02tdylfqFWlG9rDdNRE1CG38L-HRVWwAcqzhXyzB9v2AOInyir6IKBa-5snDMsRNH1pIuEaai2byT6uE3L4nluhm">
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-bold text-on-surface truncate">H9 Elite White Case</p>
+<p class="text-xs text-on-surface-variant">طلب #84917</p>
+</div>
+<div class="text-right">
+<p class="font-bold text-primary">980 ر.س</p>
+<span class="inline-block px-2 py-1 bg-error-container text-error text-[10px] rounded-full font-bold">ملغي</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Actions Bento -->
+<div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="md:col-span-2 bg-gradient-to-r from-primary to-primary-container p-8 rounded-2xl flex items-center justify-between overflow-hidden relative group">
+<div class="z-10 text-white">
+<h2 class="text-xl font-bold mb-2">تحديث المخزون</h2>
+<p class="opacity-80 mb-6">لديك 14 منتجاً في حالة مخزون منخفضة جداً.</p>
+<button class="bg-white text-primary px-6 py-2.5 rounded-xl font-bold transition-transform active:scale-95">مراجعة المنتجات</button>
+</div>
+<span class="material-symbols-outlined text-[140px] absolute -left-10 -bottom-10 opacity-10 rotate-12 group-hover:scale-110 transition-transform duration-500">box_add</span>
+</div>
+<div class="bg-white p-8 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-outline-variant/30 flex flex-col justify-center text-center">
+<div class="mx-auto w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-4">
+<span class="material-symbols-outlined text-3xl">support_agent</span>
+</div>
+<h3 class="font-bold text-on-surface">الدعم المباشر</h3>
+<p class="text-on-surface-variant text-xs mb-4">هناك 3 محادثات جديدة تنتظر الرد.</p>
+<button class="w-full py-2.5 border-2 border-primary text-primary rounded-xl font-bold hover:bg-primary hover:text-white transition-all">فتح المحادثات</button>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="w-full pt-section-gap pb-10 bg-surface-container-highest/30 border-t border-outline-variant/20">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop w-full max-w-container-max mx-auto text-right">
+<div class="md:col-span-1">
+<div class="flex items-center mb-4"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1JzrMsWUvTNSbPKCw0wHM4EfyknjzlAUYiSSjFuISYdSgyxEMedior6T1ssgsulIpDvKA6fRBXDmwXmSrutVuf9lN84F7MhC9n9LNiZ4p_5TPCxB3v3s27GzGiL0HXvKdYI_3Xhgv89emSUawhmQlC-yfT3D_pcVGIwKRB7vdxCRm_M-FBls-sVN7RIFsaeW7SbVUKMf6_0k70qC0qCH5WvkYjkPMPgYgFQNFEvtZEs6_wwTdvJ99Ae6FyXdWoW72PQ" alt="PC-TECH ARABIA" class="h-10 w-auto object-contain"></div>
+<p class="text-on-surface-variant font-body-md leading-relaxed">
+                    النظام الإداري المتكامل لشركة بي سي تيك أرابيا. تحكم كامل في المبيعات، المخزون، وتجربة العملاء.
+                </p>
+</div>
+<div>
+<h4 class="font-bold text-on-surface mb-4">روابط سريعة</h4>
+<ul class="space-y-2 text-on-surface-variant">
+<li class="hover:translate-x-[-4px] transition-transform cursor-pointer">عن الشركة</li>
+<li class="hover:translate-x-[-4px] transition-transform cursor-pointer">اتصل بنا</li>
+<li class="hover:translate-x-[-4px] transition-transform cursor-pointer">الشروط والأحكام</li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-on-surface mb-4">المساعدة</h4>
+<ul class="space-y-2 text-on-surface-variant">
+<li class="hover:translate-x-[-4px] transition-transform cursor-pointer">مركز المساعدة</li>
+<li class="hover:translate-x-[-4px] transition-transform cursor-pointer">الأسئلة الشائعة</li>
+<li class="hover:translate-x-[-4px] transition-transform cursor-pointer">سياسة الخصوصية</li>
+</ul>
+</div>
+<div class="flex flex-col items-start md:items-end">
+<h4 class="font-bold text-on-surface mb-4">حقوق النشر</h4>
+<p class="text-on-surface-variant text-sm mb-4">© 2024 بي سي تيك أرابيا. جميع الحقوق محفوظة.</p>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">language</span>
+
+</div></div></div></footer></body></html>

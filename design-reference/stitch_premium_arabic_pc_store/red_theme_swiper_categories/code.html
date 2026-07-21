@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+
+<html class="light" dir="rtl" lang="ar" style=""><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>PC-TECH ARABIA | عالم الهاردوير الاحترافي</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;800&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "on-background": "#291714",
+                    "on-error": "#ffffff",
+                    "surface-container-high": "#ffe2dd",
+                    "primary": "#bb0010",
+                    "inverse-surface": "#402b28",
+                    "secondary-container": "#ff7164",
+                    "on-primary-fixed-variant": "#93000a",
+                    "tertiary-container": "#007cb3",
+                    "surface-container": "#ffe9e6",
+                    "secondary": "#ab332c",
+                    "error-container": "#ffdad6",
+                    "surface": "#fff8f7",
+                    "on-surface": "#291714",
+                    "surface-container-low": "#fff0ee",
+                    "outline": "#926f6a",
+                    "inverse-primary": "#ffb4ab",
+                    "tertiary": "#00628e",
+                    "on-secondary-fixed-variant": "#8a1b18",
+                    "secondary-fixed-dim": "#ffb4ab",
+                    "on-tertiary-container": "#fcfcff",
+                    "on-primary-fixed": "#410002",
+                    "inverse-on-surface": "#ffedea",
+                    "tertiary-fixed": "#c9e6ff",
+                    "secondary-fixed": "#ffdad6",
+                    "outline-variant": "#e7bdb7",
+                    "on-secondary-fixed": "#410002",
+                    "on-secondary-container": "#700408",
+                    "primary-fixed-dim": "#ffb4ab",
+                    "surface-variant": "#fddbd6",
+                    "on-tertiary-fixed": "#001e2f",
+                    "on-secondary": "#ffffff",
+                    "surface-bright": "#fff8f7",
+                    "on-error-container": "#93000a",
+                    "background": "#fff8f7",
+                    "primary-fixed": "#ffdad6",
+                    "on-surface-variant": "#5d3f3c",
+                    "tertiary-fixed-dim": "#8bceff",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-container": "#e41f22",
+                    "on-tertiary-fixed-variant": "#004b6f",
+                    "error": "#ba1a1a",
+                    "surface-tint": "#c00011",
+                    "surface-dim": "#f4d3ce",
+                    "on-primary-container": "#fffbff",
+                    "surface-container-highest": "#fddbd6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-sm": "8px",
+                    "container-max": "1280px",
+                    "stack-lg": "32px",
+                    "margin-mobile": "16px",
+                    "unit": "8px",
+                    "stack-md": "16px",
+                    "margin-desktop": "40px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "body-md": ["Noto Sans"],
+                    "body-lg": ["Noto Sans"],
+                    "display-lg-mobile": ["Be Vietnam Pro"],
+                    "display-lg": ["Be Vietnam Pro"],
+                    "label-sm": ["Noto Sans"],
+                    "label-bold": ["Noto Sans"],
+                    "headline-sm": ["Be Vietnam Pro"],
+                    "headline-md": ["Be Vietnam Pro"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                    "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "label-sm": ["12px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "label-bold": ["14px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                    "headline-sm": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "headline-md": ["30px", {"lineHeight": "1.3", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(187, 0, 16, 0.05) 0%, rgba(255, 248, 247, 1) 100%);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .category-scroll-mask {
+            mask-image: linear-gradient(to left, transparent, black 5%, black 95%, transparent);
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        .animate-marquee {
+            animation: marquee 20s linear infinite;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-20">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md shadow-sm"><div class="flex items-center justify-between px-4 w-full h-16 relative"><!-- Right: Action Icons Grouped (Far Right in RTL) -->
+<div class="flex items-center gap-0.5">
+<button class="material-symbols-outlined text-primary w-11 h-11 flex items-center justify-center rounded-full active:scale-95 transition-transform duration-200">
+            search
+        </button>
+<div class="relative">
+<button class="material-symbols-outlined text-primary w-11 h-11 flex items-center justify-center rounded-full active:scale-95 transition-transform duration-200">
+                shopping_cart
+            </button>
+<span class="absolute top-2.5 right-2.5 w-2 h-2 bg-primary rounded-full border-2 border-surface"></span>
+</div>
+<div class="relative">
+<button class="material-symbols-outlined text-primary w-11 h-11 flex items-center justify-center rounded-full active:scale-95 transition-transform duration-200">
+                notifications
+            </button>
+<span class="absolute top-2.5 right-2.5 w-2 h-2 bg-primary rounded-full border-2 border-surface"></span>
+</div>
+<button class="material-symbols-outlined text-primary w-11 h-11 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors active:scale-95 duration-200">
+            menu
+        </button>
+</div>
+<!-- Left: Logo (Far Left in RTL) -->
+<div class="flex items-center h-full">
+<img alt="Logo" class="h-12 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOutpUJY0PZFTyyLLy9Dspzgi4LHzaaxwWdx0bFUZyJxo6gz49dm2IwAuruzONlsBM8FVAhlBnUyV3S1sEWDJ03ZHa79qnezPzZeJyY_2ycQRh_dBrtjUd6nhPGxgagWmTAmvnm8z_WYiIpDM0HV3sBgl56nBY-aZbjLBoy-0gYi5QCo56M6-RgGvqcgNgh3CoPhbfUGbxWSyMs4vuiZg5sVuPYBQwyVhe6kz3hBS4cOEXDwluBJPYN5y4ssKiyX3NEA"/>
+</div></div></header>
+<main class="pt-16 px-4 pt-4">
+<!-- Sticky Search Bar (Visual Anchor) -->
+<!-- Hero Banner Carousel -->
+<section class="relative overflow-hidden rounded-3xl h-[420px] mb-8 hero-gradient border border-outline-variant">
+<div class="absolute inset-0 z-0">
+</div>
+<div class="relative z-10 h-full flex flex-col justify-end p-6 bg-gradient-to-t from-surface via-transparent to-transparent">
+<span class="bg-primary text-on-primary px-3 py-1 rounded-full text-label-sm font-label-bold w-fit mb-3">وصل حديثاً</span>
+<h2 class="font-display-lg-mobile text-display-lg-mobile text-on-surface mb-2 leading-tight">GeForce RTX™ 4090</h2>
+<p class="text-on-surface-variant font-body-md mb-6 max-w-[80%]">أقوى أداء في العالم للألعاب وصناعة المحتوى. اختبر قوة الذكاء الاصطناعي اليوم.</p>
+<button class="bg-primary text-on-primary px-8 py-3 rounded-xl font-label-bold flex items-center justify-center gap-2 w-full active:scale-95 transition-transform shadow-lg shadow-primary/20">
+                    تسوق الآن
+                    <span class="material-symbols-outlined">arrow_back</span>
+</button>
+</div>
+<!-- Image overlay (simulated) -->
+<div class="absolute top-10 -left-10 w-64 h-64 rotate-12 opacity-90">
+<img class="w-full h-full object-contain drop-shadow-2xl" data-alt="A high-end NVIDIA GeForce RTX 4090 graphics card with triple-fan cooling system, sleek metallic finish, and subtle RGB lighting. The image is captured in a professional studio setting with sharp focus, clean white lighting, and a modern minimalist aesthetic that highlights the technical precision of the hardware. The background is a soft neutral grey to make the hardware stand out." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpt41OYR2jLTcNUbG6MOGEI5iS0xuE6Hw4ou3rRAvvqtznHBBfV4rNCM38FTP8cxLoxLVNTK3VkpwGh-5Pt1iPq7xlNLRDk48tjJ_j53rCVC7tJiZZtO6oR36RLyq4Sf8JPcp2JTJezLUQmzqEy53wNu9PJs-_Qigx1PQqLPWT0RsL7E-ipyXNXiY_8pf3xlm8_9EIIrC_7QDPhs8YQG-kvztQO9lun-3JOQ3-dQvAtPcNQGdQ1vP4"/>
+</div>
+</section>
+<!-- Product Categories -->
+<section class="mb-10">
+<div class="flex justify-between items-end mb-4">
+<h3 class="font-headline-sm text-on-surface">الفئات</h3>
+<button class="text-primary font-label-bold text-label-sm">عرض الكل</button>
+</div>
+<div class="flex overflow-x-auto gap-4 snap-x snap-mandatory no-scrollbar pb-2 -mx-4 px-4">
+<!-- Category Item -->
+<div class="flex-shrink-0 flex flex-col items-center gap-2 group">
+<div class="w-16 h-16 rounded-2xl bg-surface-container flex items-center justify-center group-hover:bg-primary group-hover:text-on-primary transition-all shadow-sm border border-outline-variant">
+<span class="material-symbols-outlined text-3xl">memory</span>
+</div>
+<span class="text-label-sm font-label-bold text-on-surface-variant">المعالجات</span>
+</div>
+<!-- Category Item -->
+<div class="flex-shrink-0 flex flex-col items-center gap-2 group">
+<div class="w-16 h-16 rounded-2xl bg-surface-container flex items-center justify-center group-hover:bg-primary group-hover:text-on-primary transition-all shadow-sm border border-outline-variant">
+<span class="material-symbols-outlined text-3xl">aspect_ratio</span>
+</div>
+<span class="text-label-sm font-label-bold text-on-surface-variant">كروت الشاشة</span>
+</div>
+<!-- Category Item -->
+<div class="flex-shrink-0 flex flex-col items-center gap-2 group">
+<div class="w-16 h-16 rounded-2xl bg-surface-container flex items-center justify-center group-hover:bg-primary group-hover:text-on-primary transition-all shadow-sm border border-outline-variant">
+<span class="material-symbols-outlined text-3xl">developer_board</span>
+</div>
+<span class="text-label-sm font-label-bold text-on-surface-variant">اللوحات</span>
+</div>
+<!-- Category Item -->
+<div class="flex-shrink-0 flex flex-col items-center gap-2 group">
+<div class="w-16 h-16 rounded-2xl bg-surface-container flex items-center justify-center group-hover:bg-primary group-hover:text-on-primary transition-all shadow-sm border border-outline-variant">
+<span class="material-symbols-outlined text-3xl">save</span>
+</div>
+<span class="text-label-sm font-label-bold text-on-surface-variant">التخزين</span>
+</div>
+<!-- Category Item -->
+<div class="flex-shrink-0 flex flex-col items-center gap-2 group">
+<div class="w-16 h-16 rounded-2xl bg-surface-container flex items-center justify-center group-hover:bg-primary group-hover:text-on-primary transition-all shadow-sm border border-outline-variant">
+<span class="material-symbols-outlined text-3xl">inventory_2</span>
+</div>
+<span class="text-label-sm font-label-bold text-on-surface-variant">الصناديق</span>
+</div>
+</div>
+</section>
+<!-- Featured Deals -->
+<section class="mb-10">
+<div class="bg-secondary-container rounded-3xl p-6 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+</div>
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h3 class="font-headline-md text-on-secondary-container">عروض الساعة</h3>
+<p class="text-on-secondary-container/80 text-label-sm">تنتهي العروض خلال 04:22:15</p>
+</div>
+<span class="bg-on-secondary-container text-secondary-container px-3 py-1 rounded-full text-label-bold">وفر حتى 40%</span>
+</div>
+<div class="flex gap-4 overflow-x-auto no-scrollbar -mx-2 px-2">
+<!-- Deal Card -->
+<div class="flex-shrink-0 w-44 bg-surface-container-lowest rounded-2xl p-3 shadow-md border border-outline-variant">
+<div class="h-32 mb-3 bg-surface-container-low rounded-xl overflow-hidden relative">
+<img class="w-full h-full object-contain" data-alt="A premium mechanical gaming keyboard with vibrant RGB backlighting, textured keycaps, and a sleek brushed aluminum frame. The image is a sharp close-up from a high-angle perspective, emphasizing the build quality and lighting effects. Soft studio lighting on a dark desk surface creates a professional gaming atmosphere with deep blacks and rich red accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC90YDIgN3I4bzewhyIn3eByPBdWs-X5ho9bCJwe-CL9-d6-PWmePrybm1cqj2swDtDwes7WIRutwVJ5P7vmfikDh6AMWEsqRJ-ZsRmNWIfoUaE-PXxjTX_cYSWjU5fXTMKmG67XjIEdwqK749luHgE1CspucGjZ8HxVtvlyOwjFSp2S_x79IyEe2JnMNTaT_qVXkL5th0zv15tAaM3zq4zFAREwNYR6NyWTD1L3DElWE8cBq4i1ybF"/>
+<span class="absolute top-2 right-2 bg-primary text-on-primary text-[10px] px-2 py-0.5 rounded-full font-bold">-25%</span>
+</div>
+<h4 class="text-label-bold text-on-surface line-clamp-1 mb-1">Razer Huntsman V3 Pro</h4>
+<div class="flex justify-between items-center">
+<span class="text-primary font-bold text-body-md">899 ر.س</span>
+<span class="text-outline text-label-sm line-through">1,199</span>
+</div>
+</div>
+<!-- Deal Card 2 -->
+<div class="flex-shrink-0 w-44 bg-surface-container-lowest rounded-2xl p-3 shadow-md border border-outline-variant">
+<div class="h-32 mb-3 bg-surface-container-low rounded-xl overflow-hidden relative">
+<img class="w-full h-full object-contain" data-alt="A professional gaming mouse with a lightweight honeycomb shell design, RGB light strip, and precision sensor. The mouse is positioned on a high-quality textured mousepad. Lighting is cinematic and focused, utilizing a color palette of white, silver, and vibrant red highlights. The style is modern, technical, and high-performance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA81A6mD6kWOm_wurslhp3SpAiIQ2FnRXqtSUvNYOLDPktcEdfmy_eFjRu_sgPC4hjOx5LCDzA42p5Jh4kZwc8tjn_E2j0zkVQJbjsUN_9G9Yk6643a_KkimL-XT6KsKpZkZYpv721A5CzRdWVqkg01D_fNDrivkMxJmcfoWo070-h4YF6F7Fw-g4i9O1JNu0BsnGZ8mnodyegrXcs6vRvVnYUuLjky2NhvhV9Xj0w2brjbiOHpFyS6"/>
+<span class="absolute top-2 right-2 bg-primary text-on-primary text-[10px] px-2 py-0.5 rounded-full font-bold">-15%</span>
+</div>
+<h4 class="text-label-bold text-on-surface line-clamp-1 mb-1">Logitech G Pro X Superlight</h4>
+<div class="flex justify-between items-center">
+<span class="text-primary font-bold text-body-md">549 ر.س</span>
+<span class="text-outline text-label-sm line-through">649</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- New Arrivals Grid -->
+<section class="mb-10">
+<div class="flex justify-between items-end mb-6">
+<h3 class="font-headline-sm text-on-surface">وصل حديثاً</h3>
+<button class="text-primary font-label-bold text-label-sm">تصفح الكل</button>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<!-- Product Card 1 -->
+<div class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm border border-outline-variant transition-transform active:scale-[0.98]">
+<div class="h-40 bg-surface-container-low p-4 flex items-center justify-center relative">
+<img class="w-full h-full object-contain" data-alt="The latest Intel Core i9-14900K processor box and chip displayed elegantly. The lighting is crisp and cool, highlighting the metallic texture of the heat spreader and the premium blue and gold packaging. The composition is professional and clean, fitting a high-end hardware retail environment with a focus on power and precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmbmCrx6FIGTJZCVGL-X63k-UeEOSHEU0q5G-JKHKhSYg5bQIXeQeT5Gwfuff-txtQXWpbMiTUs3nIk2lIkENyYMgdJiEjTkAoI8dPII5X4O3LSb1lXeYgX3VwA6HODM7KvtESuWznruK29nf8kFggdhbHb_m26uXuyCp_wdkShWNKmTNydSZ25qx4iUNSZzSlpqUGYN2NHYWnqlQK-765DcSW4TF4jyBj77iUkq_zxSnBzTP8XRJ4"/>
+<button class="absolute bottom-2 left-2 bg-white/80 backdrop-blur-sm p-1.5 rounded-full shadow-sm text-primary">
+<span class="material-symbols-outlined text-sm" style='font-variation-settings: "FILL" 1;'>favorite</span>
+</button>
+</div>
+<div class="p-3">
+<div class="flex items-center gap-1 mb-1">
+<span class="material-symbols-outlined text-[12px] text-yellow-500" style='font-variation-settings: "FILL" 1;'>star</span>
+<span class="text-[10px] text-on-surface-variant font-bold">4.9 (120 تقييم)</span>
+</div>
+<h4 class="text-label-bold text-on-surface line-clamp-2 min-h-[40px] mb-2 leading-snug">Intel Core i9-14900K Processor 24-Cores</h4>
+<div class="flex justify-between items-center">
+<span class="text-on-surface font-bold text-body-md">2,450 ر.س</span>
+<button class="bg-primary text-on-primary p-1.5 rounded-lg active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm border border-outline-variant transition-transform active:scale-[0.98]">
+<div class="h-40 bg-surface-container-low p-4 flex items-center justify-center relative">
+<img class="w-full h-full object-contain" data-alt="A high-performance Samsung 990 Pro NVMe M.2 SSD with its distinct heatsink design. The image uses a dramatic macro perspective, highlighting the detailed textures of the heatsink and the gold contacts. The lighting is focused and technical, with a premium aesthetic that combines shades of dark grey and deep red accents to convey speed and reliability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzC4NadYgxMLlN0qXlOFoWkXMfDYdYf6wvEZ7CZF2vfZ-TOk5qZtHxfUTYuOfkxZL5WroMBGCLFBMuJGB7MtxqvfPQHDx-4TWzvU78uLfCtWTjNPh1yysnf5_NchsQ4s7izPOjGFt2Yea1ARp8-hFRHwiX-q4gh92tpmG6MQ0m04uJ_m9d-QhCBcNmqcKj_NDbOOjyNRsS-p6qnyo6Jg0uEfgxS4nSqKt_wiS_bip-BO4s0B9SuMDL"/>
+<button class="absolute bottom-2 left-2 bg-white/80 backdrop-blur-sm p-1.5 rounded-full shadow-sm text-outline">
+<span class="material-symbols-outlined text-sm">favorite</span>
+</button>
+</div>
+<div class="p-3">
+<div class="flex items-center gap-1 mb-1">
+<span class="material-symbols-outlined text-[12px] text-yellow-500" style='font-variation-settings: "FILL" 1;'>star</span>
+<span class="text-[10px] text-on-surface-variant font-bold">5.0 (85 تقييم)</span>
+</div>
+<h4 class="text-label-bold text-on-surface line-clamp-2 min-h-[40px] mb-2 leading-snug">Samsung 990 Pro 2TB PCIe 4.0 NVMe SSD</h4>
+<div class="flex justify-between items-center">
+<span class="text-on-surface font-bold text-body-md">799 ر.س</span>
+<button class="bg-primary text-on-primary p-1.5 rounded-lg active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm border border-outline-variant transition-transform active:scale-[0.98]">
+<div class="h-40 bg-surface-container-low p-4 flex items-center justify-center relative">
+<img class="w-full h-full object-contain" data-alt="Corsair Dominator Platinum RGB DDR5 memory modules in a sleek black finish. The image focuses on the top RGB lighting strip and the forged aluminum heatspreader. The aesthetic is extremely premium, with soft light blooming from the LEDs and a clean, high-contrast studio environment. The colors are predominantly black and white with vibrant red lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCi5xE_DQCM0GHwre43LvetY-HLh9o4qohQukmOEwGIzk3sDqjtCY98nScxbQKOOoNCiQ5SDQ2AP_tnPJ2s5E8PJv6f9ODgw-eBFBWhbbMxbE9OrBn7vG0WV3NfqaFBTCt6XrBhJJNTM-WMJIZoOd6CmWMxiLorxkp38GjUi4WLc2dF7Qugsk_toS6Ls-YzAKrcAULo6ZyfKRbjqa5oaFcYyeg5QeJw5bhaE3uQQWAAzy5U97VqY-di"/>
+<button class="absolute bottom-2 left-2 bg-white/80 backdrop-blur-sm p-1.5 rounded-full shadow-sm text-outline">
+<span class="material-symbols-outlined text-sm">favorite</span>
+</button>
+</div>
+<div class="p-3">
+<div class="flex items-center gap-1 mb-1">
+<span class="material-symbols-outlined text-[12px] text-yellow-500" style='font-variation-settings: "FILL" 1;'>star</span>
+<span class="text-[10px] text-on-surface-variant font-bold">4.8 (42 تقييم)</span>
+</div>
+<h4 class="text-label-bold text-on-surface line-clamp-2 min-h-[40px] mb-2 leading-snug">Corsair Dominator Platinum 32GB DDR5 6000MHz</h4>
+<div class="flex justify-between items-center">
+<span class="text-on-surface font-bold text-body-md">920 ر.س</span>
+<button class="bg-primary text-on-primary p-1.5 rounded-lg active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm border border-outline-variant transition-transform active:scale-[0.98]">
+<div class="h-40 bg-surface-container-low p-4 flex items-center justify-center relative">
+<img class="w-full h-full object-contain" data-alt="A high-end ASUS ROG Maximus Z790 Hero motherboard, showcasing its intricate VRM heatsinks, polished metal surfaces, and embedded RGB displays. The lighting is sharp and technical, emphasizing the complex engineering of the board. The shot is a high-quality isometric view in a bright, modern studio setting with a clean professional vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfIMuAA6KkICgsVxgKR4_LeW-IvlcggL3EizscdCGuMtG2gONiLM7WcXqZPxWiTPlcNXKbMbV1IHGDkKkbdTle4PB2t-ca2Q5VqfMTaZhQndaj2rKrB5XcGm7ukXIDpifDcN73ZXiAFC9hE2V-YqASRgO2h8AI9hG2HyPhZPF8NVdRTG2ok6J5m5Bs-CcBE66dN8mlT8KtXu0ajpKJYmSFPGO22WuHPP-hu7jfWMY8s-is7QeNaxTG"/>
+<button class="absolute bottom-2 left-2 bg-white/80 backdrop-blur-sm p-1.5 rounded-full shadow-sm text-outline">
+<span class="material-symbols-outlined text-sm">favorite</span>
+</button>
+</div>
+<div class="p-3">
+<div class="flex items-center gap-1 mb-1">
+<span class="material-symbols-outlined text-[12px] text-yellow-500" style='font-variation-settings: "FILL" 1;'>star</span>
+<span class="text-[10px] text-on-surface-variant font-bold">4.7 (29 تقييم)</span>
+</div>
+<h4 class="text-label-bold text-on-surface line-clamp-2 min-h-[40px] mb-2 leading-snug">ASUS ROG Maximus Z790 Hero Motherboard</h4>
+<div class="flex justify-between items-center">
+<span class="text-on-surface font-bold text-body-md">2,890 ر.س</span>
+<button class="bg-primary text-on-primary p-1.5 rounded-lg active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter / Community Section (Asymmetric Layout) -->
+<section class="mb-12">
+<div class="bg-on-background rounded-[32px] p-8 text-surface relative overflow-hidden">
+<div class="absolute -right-20 -top-20 w-64 h-64 bg-primary/20 rounded-full blur-3xl"></div>
+<div class="relative z-10">
+<h3 class="font-headline-sm mb-2">انضم لمجتمع اللاعبين</h3>
+<p class="text-surface-variant font-body-md mb-6 opacity-80">اشترك للحصول على آخر الأخبار والعروض الحصرية مباشرة في بريدك.</p>
+<div class="flex flex-col gap-3">
+<input class="bg-surface-variant/10 border border-surface-variant/20 rounded-xl px-4 py-3 text-surface placeholder:text-surface-variant/50 focus:ring-1 focus:ring-primary outline-none text-right" placeholder="بريدك الإلكتروني" type="email"/>
+<button class="bg-primary text-on-primary font-label-bold py-3 rounded-xl active:scale-95 transition-transform">اشترك الآن</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl border-t border-outline-variant bg-surface dark:bg-surface-dim shadow-[0_-4px_20px_rgba(0,0,0,0.04)]">
+<div class="flex flex-row-reverse justify-around items-center h-16 px-4 pb-safe">
+<!-- Active Tab: الرئيسية -->
+<a class="flex flex-col items-center justify-center text-primary dark:text-inverse-primary font-bold active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>home</span>
+<span class="font-label-sm text-label-sm">الرئيسية</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low transition-colors active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">category</span>
+<span class="font-label-sm text-label-sm">الفئات</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low transition-colors active:scale-90 transition-transform duration-150 relative" href="#">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="font-label-sm text-label-sm">السلة</span>
+<span class="absolute -top-1 -right-1 bg-primary text-on-primary text-[10px] w-4 h-4 flex items-center justify-center rounded-full border border-surface">2</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low transition-colors active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">حسابي</span>
+</a>
+</div>
+</nav>
+<!-- Floating Action Button: AI Recommendation -->
+<button class="fixed bottom-20 left-6 z-40 bg-primary text-on-primary w-14 h-14 rounded-2xl shadow-xl flex items-center justify-center active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-3xl">smart_toy</span>
+</button>
+<script>
+        // Simple Interaction logic
+        document.addEventListener('DOMContentLoaded', () => {
+            // Header scroll effect
+            const header = document.querySelector('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 10) {
+                    header.classList.add('shadow-md');
+                    header.classList.remove('shadow-sm');
+                } else {
+                    header.classList.remove('shadow-md');
+                    header.classList.add('shadow-sm');
+                }
+            });
+
+            // Smooth horizontal scroll behavior
+            const containers = document.querySelectorAll('.overflow-x-auto');
+            containers.forEach(container => {
+                container.addEventListener('wheel', (evt) => {
+                    evt.preventDefault();
+                    container.scrollLeft += evt.deltaY;
+                });
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html class="light" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>البطاقات الرسومية | PC-TECH ARABIA</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;800&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-primary": "#ffffff",
+                "on-tertiary": "#ffffff",
+                "on-background": "#291714",
+                "on-error": "#ffffff",
+                "surface-container-high": "#ffe2dd",
+                "primary": "#bb0010",
+                "inverse-surface": "#402b28",
+                "secondary-container": "#ff7164",
+                "on-primary-fixed-variant": "#93000a",
+                "tertiary-container": "#007cb3",
+                "surface-container": "#ffe9e6",
+                "secondary": "#ab332c",
+                "error-container": "#ffdad6",
+                "surface": "#fff8f7",
+                "on-surface": "#291714",
+                "surface-container-low": "#fff0ee",
+                "outline": "#926f6a",
+                "inverse-primary": "#ffb4ab",
+                "tertiary": "#00628e",
+                "on-secondary-fixed-variant": "#8a1b18",
+                "secondary-fixed-dim": "#ffb4ab",
+                "on-tertiary-container": "#fcfcff",
+                "on-primary-fixed": "#410002",
+                "inverse-on-surface": "#ffedea",
+                "tertiary-fixed": "#c9e6ff",
+                "secondary-fixed": "#ffdad6",
+                "outline-variant": "#e7bdb7",
+                "on-secondary-fixed": "#410002",
+                "on-secondary-container": "#700408",
+                "primary-fixed-dim": "#ffb4ab",
+                "surface-variant": "#fddbd6",
+                "on-tertiary-fixed": "#001e2f",
+                "on-secondary": "#ffffff",
+                "surface-bright": "#fff8f7",
+                "on-error-container": "#93000a",
+                "background": "#fff8f7",
+                "primary-fixed": "#ffdad6",
+                "on-surface-variant": "#5d3f3c",
+                "tertiary-fixed-dim": "#8bceff",
+                "surface-container-lowest": "#ffffff",
+                "primary-container": "#e41f22",
+                "on-tertiary-fixed-variant": "#004b6f",
+                "error": "#ba1a1a",
+                "surface-tint": "#c00011",
+                "surface-dim": "#f4d3ce",
+                "on-primary-container": "#fffbff",
+                "surface-container-highest": "#fddbd6"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "stack-sm": "8px",
+                "container-max": "1280px",
+                "stack-lg": "32px",
+                "margin-mobile": "16px",
+                "unit": "8px",
+                "stack-md": "16px",
+                "margin-desktop": "40px",
+                "gutter": "24px"
+            },
+            "fontFamily": {
+                "body-md": ["Noto Sans"],
+                "body-lg": ["Noto Sans"],
+                "display-lg-mobile": ["Be Vietnam Pro"],
+                "display-lg": ["Be Vietnam Pro"],
+                "label-sm": ["Noto Sans"],
+                "label-bold": ["Noto Sans"],
+                "headline-sm": ["Be Vietnam Pro"],
+                "headline-md": ["Be Vietnam Pro"]
+            },
+            "fontSize": {
+                "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                "label-sm": ["12px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                "label-bold": ["14px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                "headline-sm": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                "headline-md": ["30px", {"lineHeight": "1.3", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        @keyframes slideInUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .animate-card {
+            animation: slideInUp 0.4s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased overflow-x-hidden pb-20">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md shadow-sm h-16 flex justify-between items-center px-margin-mobile flex-row-reverse"><div class="h-12 flex items-center"><img alt="Logo" class="h-full w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfzSk68XSVvqTp840b6RjNPVfk6dC6moQPm00lPMBv0LQM7BquIKCn2ObMm-1IFsFBlfmHUzejP_2WlY7zGP8seNk93vA6OZ3YgUwX5_tgoRJndjFyOq0tYDJ9VfBhoFC0tt5UsT_N-jMHDESlRbQ6qSkg5U_RATUwJCmWqZ7sQMk6R6Heou9FhO9jbGEZEpAUfB5_MVi0TVeYkp4go1LQI2FHisn2gx4kZ-0CHASgEiOLlCWlcZjLabo9bctNpVuoqA"/></div><div class="flex items-center gap-2 justify-end"><button class="material-symbols-outlined text-primary hover:bg-surface-container-high transition-colors p-2 rounded-full active:scale-95 transition-transform duration-200">search</button><button class="material-symbols-outlined text-primary hover:bg-surface-container-high transition-colors p-2 rounded-full active:scale-95 transition-transform duration-200 relative">shopping_cart<span class="absolute -top-1 -right-1 bg-primary text-on-primary text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">2</span></button><button class="material-symbols-outlined text-primary hover:bg-surface-container-high transition-colors p-2 rounded-full active:scale-95 transition-transform duration-200" onclick="toggleDrawer()">menu</button></div></header>
+<!-- Navigation Drawer (Overlay) -->
+<div class="fixed inset-0 bg-black/40 z-[55] hidden transition-opacity duration-300 opacity-0" id="drawer-overlay" onclick="toggleDrawer()"></div>
+<aside class="h-full w-80 fixed right-0 top-0 z-[60] bg-surface shadow-xl flex flex-col transition-transform duration-300 translate-x-full text-right" id="drawer">
+<div class="p-6 border-b border-outline-variant flex justify-between items-center flex-row-reverse">
+<h2 class="font-headline-md text-headline-md text-primary">القائمة الرئيسية</h2>
+<button class="p-2 rounded-full hover:bg-surface-container-highest" onclick="toggleDrawer()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<nav class="flex flex-col py-4">
+<a class="flex flex-row-reverse items-center justify-between px-6 py-4 bg-primary-fixed-dim text-on-primary-fixed-variant font-bold" href="#">
+<div class="flex flex-row-reverse items-center gap-4">
+<span class="material-symbols-outlined">memory</span>
+<span class="">المعالجات</span>
+</div>
+</a>
+<a class="flex flex-row-reverse items-center justify-between px-6 py-4 text-on-surface-variant hover:bg-surface-container-highest transition-colors" href="#">
+<div class="flex flex-row-reverse items-center gap-4">
+<span class="material-symbols-outlined">aspect_ratio</span>
+<span class="">البطاقات الرسومية</span>
+</div>
+</a>
+<a class="flex flex-row-reverse items-center justify-between px-6 py-4 text-on-surface-variant hover:bg-surface-container-highest transition-colors" href="#">
+<div class="flex flex-row-reverse items-center gap-4">
+<span class="material-symbols-outlined">developer_board</span>
+<span class="">اللوحات الأم</span>
+</div>
+</a>
+<a class="flex flex-row-reverse items-center justify-between px-6 py-4 text-on-surface-variant hover:bg-surface-container-highest transition-colors" href="#">
+<div class="flex flex-row-reverse items-center gap-4">
+<span class="material-symbols-outlined">save</span>
+<span class="">التخزين</span>
+</div>
+</a>
+<a class="flex flex-row-reverse items-center justify-between px-6 py-4 text-on-surface-variant hover:bg-surface-container-highest transition-colors" href="#">
+<div class="flex flex-row-reverse items-center gap-4">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="">صناديق الحاسوب</span>
+</div>
+</a>
+</nav>
+</aside>
+<!-- Main Content Canvas -->
+<main class="pt-20 px-margin-mobile">
+<!-- Hero Title Section -->
+<section class="mb-6">
+<div class="flex items-center gap-2 text-outline text-label-sm mb-2">
+<span class="">الرئيسية</span>
+<span class="material-symbols-outlined text-[14px]">chevron_left</span>
+<span class="text-primary font-bold">البطاقات الرسومية</span>
+</div>
+<h2 class="font-display-lg-mobile text-display-lg-mobile text-on-background">البطاقات الرسومية</h2>
+<p class="text-on-surface-variant mt-2 font-body-md">أقوى معالجات الرسوميات للألعاب وصناع المحتوى بمواصفات تقنية متطورة.</p>
+</section>
+<!-- Sticky Filter/Sort Bar -->
+<section class="sticky top-16 z-40 bg-background/95 backdrop-blur-sm -mx-margin-mobile px-margin-mobile py-4 mb-6 flex items-center justify-between overflow-x-auto hide-scrollbar border-b border-outline-variant/30">
+<div class="flex items-center gap-2">
+<button class="flex items-center gap-2 bg-surface-container border border-outline-variant px-4 py-2 rounded-xl text-label-bold text-on-surface active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+<span class="">تصفية</span>
+</button>
+<button class="flex items-center gap-2 bg-surface-container-low border border-outline-variant/50 px-4 py-2 rounded-xl text-label-bold text-on-surface-variant whitespace-nowrap active:scale-95 transition-transform">
+<span class="">الترتيب: الأحدث</span>
+<span class="material-symbols-outlined text-[18px]">expand_more</span>
+</button>
+</div>
+<div class="flex items-center gap-3 pr-4">
+<span class="text-label-sm text-outline whitespace-nowrap">24 منتج</span>
+</div>
+</section>
+<!-- Product Cards Grid -->
+<section class="grid grid-cols-1 gap-gutter">
+<!-- Card 1: RTX 4090 -->
+<div class="animate-card bg-surface-container-lowest rounded-[24px] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-outline-variant/20 flex flex-col group">
+<div class="relative w-full aspect-square bg-surface-container-low overflow-hidden">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="A professional product shot of a high-end ASUS ROG STRIX RTX 4090 graphics card, showcasing its sleek dark metallic shroud and triple-fan cooling system. The lighting is soft and studio-quality, emphasizing the sharp technical lines and premium build. The background is a clean, minimalist white-to-gray gradient to highlight the product's performance-oriented aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBNkem_c84GL719bAsOaeIoqh9J0QKB7qtUrS6E7mTGtZyV1qqZMZd71fkYIu2D7ivfTpL0IuzMUZWGXGri9FEtzsBuGhGHajGDrWf1PcUn9034Fj0rsKMr3txKvQbTHQ7DoXxIapLEclU6ZaJ_abQ2vhsHxYUNt2RLgBW6I3gT6a5d3RXiN-w4ZL6FRqvSSMMUPWxDnjGcm6b9P5FUvjpOxUglSffHfJgXqHe5JVbuVxh81C3bIokp')"></div>
+<div class="absolute top-4 right-4 bg-primary text-on-primary text-label-bold px-3 py-1 rounded-full shadow-lg">جديد</div>
+</div>
+<div class="p-6 flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<div class="pill-shaped bg-tertiary/10 text-tertiary px-3 py-1 rounded-full text-label-sm font-bold flex items-center gap-1">
+                             متوفر
+                        </div>
+<span class="text-label-sm text-outline">ASUS ROG Strix</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface leading-tight">GeForce RTX 4090 OC Edition 24GB GDDR6X</h3>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="font-display-lg-mobile text-[24px] text-primary">8,999 ر.س</span>
+<span class="text-label-sm text-outline line-through">9,499 ر.س</span>
+</div>
+<div class="mt-4 flex gap-3">
+<button class="flex-1 bg-primary text-on-primary font-label-bold py-4 rounded-xl shadow-[0_8px_16px_rgba(232,35,36,0.2)] active:scale-[0.98] transition-all flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">shopping_cart</span>
+                            أضف للسلة
+                        </button>
+<button class="w-14 h-14 border-2 border-outline-variant rounded-xl flex items-center justify-center text-outline active:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 2: RTX 4070 Ti Super -->
+<div class="animate-card bg-surface-container-lowest rounded-[24px] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-outline-variant/20 flex flex-col group" style="animation-delay: 0.1s;">
+<div class="relative w-full aspect-square bg-surface-container-low overflow-hidden">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="A detailed closeup of an MSI Ventus 3X GeForce RTX 4070 Ti SUPER graphics card. The image captures the industrial design of the silver and black cooling fans and the brushed metal backplate. Professional lighting creates subtle reflections on the technical components, conveying a sense of high performance and reliability in a modern retail setting." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBFYboNgO19KmQo72m4M6WSTcxPP3c7iuI1jjp0lV_2KUEhqflFBHY0AD4-DGRULp3MDroqQS579S26tJ_Nv96_irBZaq-mlP7AKIwNPYqmbvXOEmmRvUuBWYx1H3Fo05gSR2HYFkYLGUMlSafqlV1bPYvEf62JWOQQVWCApG46lOdOZgxxpxLoUgs3prjtPGMDk-aL_pz6-rdttr6bEboT_RVvISJZoxzEEtTsKC_NIcFFRDT8GL2l')"></div>
+<div class="absolute top-4 right-4 bg-secondary text-on-secondary text-label-bold px-3 py-1 rounded-full shadow-lg">الأكثر مبيعاً</div>
+</div>
+<div class="p-6 flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<div class="pill-shaped bg-tertiary/10 text-tertiary px-3 py-1 rounded-full text-label-sm font-bold flex items-center gap-1">
+                             متوفر
+                        </div>
+<span class="text-label-sm text-outline">MSI Ventus</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface leading-tight">GeForce RTX 4070 Ti SUPER 16G Ventus 3X</h3>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="font-display-lg-mobile text-[24px] text-primary">4,250 ر.س</span>
+</div>
+<div class="mt-4 flex gap-3">
+<button class="flex-1 bg-primary text-on-primary font-label-bold py-4 rounded-xl shadow-[0_8px_16px_rgba(232,35,36,0.2)] active:scale-[0.98] transition-all flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">shopping_cart</span>
+                            أضف للسلة
+                        </button>
+<button class="w-14 h-14 border-2 border-outline-variant rounded-xl flex items-center justify-center text-outline active:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 3: RTX 4060 -->
+<div class="animate-card bg-surface-container-lowest rounded-[24px] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-outline-variant/20 flex flex-col group" style="animation-delay: 0.2s;">
+<div class="relative w-full aspect-square bg-surface-container-low overflow-hidden">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="A compact Gigabyte GeForce RTX 4060 Eagle graphics card shown from an isometric angle. The triple windforce cooling system is visible against a soft, premium background with red ambient light accents. The image focus is sharp on the product branding and the sleek plastic shroud, presenting it as an ideal high-value choice for gaming enthusiasts." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAsUtH0-a_YtO3JeIPwJ47ZJuwjeeVfZ0cXs4uWtfvDxhvy_fBtUIJL8uZ88CCPyYLkRDu28QPhmgCQpFKbpy00EMuEGqYPRtsk6JRSJWhkyT2l2-rQBtjDQAE8r-0Aw9VA2KnP6_orvdgBUorahJFxnuRL-nuLUYUU0-fECAt4P1MP77QEeivKkrdViTEtii5Jor7s96jKL6-B1p6ZLf4k89QXmNYbV7MPFovqB9mDFz_PDApAZg32')"></div>
+<div class="absolute top-4 left-4 bg-tertiary text-on-tertiary text-label-bold px-3 py-1 rounded-full shadow-lg">عرض خاص</div>
+</div>
+<div class="p-6 flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<div class="pill-shaped bg-secondary-container/20 text-on-secondary-container px-3 py-1 rounded-full text-label-sm font-bold flex items-center gap-1">
+                             مخزون منخفض
+                        </div>
+<span class="text-label-sm text-outline">Gigabyte Eagle</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface leading-tight">GeForce RTX 4060 Eagle OC 8G</h3>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="font-display-lg-mobile text-[24px] text-primary">1,450 ر.س</span>
+<span class="text-label-sm text-outline line-through">1,699 ر.س</span>
+</div>
+<div class="mt-4 flex gap-3">
+<button class="flex-1 bg-primary text-on-primary font-label-bold py-4 rounded-xl shadow-[0_8px_16px_rgba(232,35,36,0.2)] active:scale-[0.98] transition-all flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">shopping_cart</span>
+                            أضف للسلة
+                        </button>
+<button class="w-14 h-14 border-2 border-outline-variant rounded-xl flex items-center justify-center text-outline active:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Quick Newsletter Section (Mobile Bento) -->
+<div class="bg-primary p-8 rounded-[32px] text-on-primary flex flex-col gap-4 my-4">
+<span class="material-symbols-outlined text-[48px]">mail</span>
+<h4 class="font-headline-sm text-headline-sm">اشترك في عروضنا</h4>
+<p class="font-body-md opacity-90">كن أول من يعرف عن توفر أحدث البطاقات الرسومية وأفضل الأسعار.</p>
+<div class="flex flex-col gap-3 mt-2">
+<input class="bg-white/10 border-white/20 text-white placeholder-white/60 rounded-xl h-14 px-4 focus:ring-2 focus:ring-white/50 focus:border-transparent outline-none" placeholder="البريد الإلكتروني" type="email"/>
+<button class="bg-white text-primary font-bold h-14 rounded-xl active:scale-95 transition-transform">اشتراك الآن</button>
+</div>
+</div>
+<!-- Card 4: RTX 4080 Super -->
+<div class="animate-card bg-surface-container-lowest rounded-[24px] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-outline-variant/20 flex flex-col group" style="animation-delay: 0.3s;">
+<div class="relative w-full aspect-square bg-surface-container-low overflow-hidden">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="A ZOTAC Gaming GeForce RTX 4080 SUPER Trinity graphics card depicted with a dynamic flowing design. The card is presented in a dark, high-contrast environment with vibrant red lighting highlighting the curves of its aerodynamic cooling shroud. The image captures the premium technical feel and the advanced engineering of high-performance gaming hardware." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAW5FST3IIt2qpSnk8DBL1fvyTGfO9jRH8B0eoHw5GWrteb7wxCJI6FgYFbYD1QoBvr-rGAJhzKQvuVV9Yz121VdKVKOpoJ8ViaE1O0TRy2ITqreAq5XqniWWL2xxUE4RxVZIR-KaxOlHbzS-UqqGVaAnpkinob5JnSKN-D1gakmMPHKl3H4do9U-4ciNO_nCsyI6aBg92KDDYrxoJkB70mkpbV11H31Dx5FVLcJd7keAW1SFEVezzt')"></div>
+</div>
+<div class="p-6 flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<div class="pill-shaped bg-tertiary/10 text-tertiary px-3 py-1 rounded-full text-label-sm font-bold flex items-center gap-1">
+                             متوفر
+                        </div>
+<span class="text-label-sm text-outline">ZOTAC Gaming</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface leading-tight">GeForce RTX 4080 SUPER Trinity Black Edition 16GB</h3>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="font-display-lg-mobile text-[24px] text-primary">5,350 ر.س</span>
+</div>
+<div class="mt-4 flex gap-3">
+<button class="flex-1 bg-primary text-on-primary font-label-bold py-4 rounded-xl shadow-[0_8px_16px_rgba(232,35,36,0.2)] active:scale-[0.98] transition-all flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">shopping_cart</span>
+                            أضف للسلة
+                        </button>
+<button class="w-14 h-14 border-2 border-outline-variant rounded-xl flex items-center justify-center text-outline active:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Load More Section -->
+<div class="py-12 flex justify-center">
+<button class="flex items-center gap-2 text-primary font-label-bold border-2 border-primary/20 px-8 py-3 rounded-full hover:bg-primary/5 active:scale-95 transition-all">
+<span class="">عرض المزيد من المنتجات</span>
+<span class="material-symbols-outlined text-[20px]">refresh</span>
+</button>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl border-t border-outline-variant bg-surface shadow-[0_-4px_20px_rgba(0,0,0,0.04)] h-16 px-4 pb-safe flex flex-row-reverse justify-around items-center">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">الرئيسية</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-bold hover:bg-surface-container-low transition-colors active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">category</span>
+<span class="font-label-sm text-label-sm">الفئات</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors active:scale-90 transition-transform duration-150 relative" href="#">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="font-label-sm text-label-sm">السلة</span>
+<span class="absolute -top-1 -right-1 bg-primary text-on-primary text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">2</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">حسابي</span>
+</a>
+</nav>
+<script>
+        function toggleDrawer() {
+            const drawer = document.getElementById('drawer');
+            const overlay = document.getElementById('drawer-overlay');
+            const isOpen = !drawer.classList.contains('translate-x-full');
+
+            if (isOpen) {
+                drawer.classList.add('translate-x-full');
+                overlay.classList.add('hidden');
+                overlay.classList.remove('opacity-100');
+                document.body.style.overflow = 'auto';
+            } else {
+                drawer.classList.remove('translate-x-full');
+                overlay.classList.remove('hidden');
+                setTimeout(() => overlay.classList.add('opacity-100'), 10);
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        // Simple scroll behavior for header
+        let lastScroll = 0;
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll > 50) {
+                header.classList.add('shadow-md');
+                header.classList.remove('shadow-sm');
+            } else {
+                header.classList.add('shadow-sm');
+                header.classList.remove('shadow-md');
+            }
+            lastScroll = currentScroll;
+        });
+    </script>
+</body></html>

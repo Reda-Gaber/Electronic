@@ -1,0 +1,318 @@
+<!DOCTYPE html><html dir="rtl" lang="ar"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>كروت الشاشة - حاسوب تك</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-high": "#e6e8ea",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed-variant": "#38485d",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-highest": "#e0e3e5",
+                    "outline-variant": "#c3c6d7",
+                    "on-secondary-container": "#5c647a",
+                    "on-surface": "#191c1e",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "error-container": "#ffdad6",
+                    "on-primary-container": "#eeefff",
+                    "primary-container": "#2563eb",
+                    "surface-variant": "#e0e3e5",
+                    "on-secondary": "#ffffff",
+                    "inverse-primary": "#b4c5ff",
+                    "secondary-fixed": "#dae2fd",
+                    "surface-bright": "#f7f9fb",
+                    "surface-tint": "#0053db",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-low": "#f2f4f6",
+                    "on-secondary-fixed-variant": "#3f465c",
+                    "on-primary-fixed": "#00174b",
+                    "background": "#f7f9fb",
+                    "on-tertiary-container": "#e9f0ff",
+                    "on-surface-variant": "#434655",
+                    "primary": "#004ac6",
+                    "on-tertiary-fixed": "#0b1c30",
+                    "surface-dim": "#d8dadc",
+                    "surface-container": "#eceef0",
+                    "inverse-surface": "#2d3133",
+                    "secondary-fixed-dim": "#bec6e0",
+                    "surface": "#f7f9fb",
+                    "on-error-container": "#93000a",
+                    "on-background": "#191c1e",
+                    "tertiary-container": "#5e6e85",
+                    "outline": "#737686",
+                    "secondary-container": "#dae2fd",
+                    "tertiary-fixed-dim": "#b7c8e1",
+                    "tertiary": "#46566c",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "primary-fixed": "#dbe1ff",
+                    "tertiary-fixed": "#d3e4fe",
+                    "on-secondary-fixed": "#131b2e",
+                    "on-primary": "#ffffff",
+                    "secondary": "#565e74",
+                    "on-error": "#ffffff",
+                    "inverse-on-surface": "#eff1f3"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "margin-desktop": "40px",
+                    "container-max": "1280px",
+                    "section-gap": "80px",
+                    "unit": "4px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "body-md": ["Be Vietnam Pro"],
+                    "display-lg": ["Be Vietnam Pro"],
+                    "display-lg-mobile": ["Be Vietnam Pro"],
+                    "label-sm": ["Be Vietnam Pro"],
+                    "body-lg": ["Be Vietnam Pro"],
+                    "mono-spec": ["Geist"],
+                    "headline-md": ["Be Vietnam Pro"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "label-sm": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "mono-spec": ["13px", {"lineHeight": "1.0", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f7f9fb;
+            font-family: 'Be Vietnam Pro', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .product-card-shadow {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+        }
+        .glass-blur {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- Top AppBar -->
+<header class="bg-surface/70 dark:bg-surface-dim/70 backdrop-blur-xl fixed top-0 w-full z-50 border-b border-outline-variant/30 dark:border-outline-variant/10 shadow-sm flex flex-row-reverse justify-between items-center h-20 px-4">
+<div class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed">حاسوب تك</div>
+<div class="flex items-center gap-2">
+<button class="p-2 active:scale-95 transition-transform hover:bg-surface-container-high/50 rounded-full">
+<span class="material-symbols-outlined text-primary">search</span>
+</button>
+<button class="p-2 active:scale-95 transition-transform hover:bg-surface-container-high/50 rounded-full">
+<span class="material-symbols-outlined text-primary">menu</span>
+</button>
+</div>
+</header>
+<main class="pt-24 pb-20 px-4">
+<!-- Page Title -->
+<div class="mb-6">
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-on-surface mb-2">كروت الشاشة</h1>
+<p class="text-on-surface-variant font-body-md text-body-md">أحدث وأقوى المعالجات الرسومية للألعاب والتصميم المحترف.</p>
+</div>
+<!-- Sticky Filter/Sort Bar -->
+<div class="sticky top-20 z-40 bg-surface/80 glass-blur -mx-4 px-4 py-3 mb-6 border-b border-outline-variant/10 flex items-center justify-between">
+<button class="flex items-center gap-2 bg-surface-container-low px-4 py-2 rounded-xl border border-outline-variant/20 active:scale-95 transition-transform" onclick="toggleFilter()">
+<span class="material-symbols-outlined text-on-surface-variant">tune</span>
+<span class="font-label-sm text-label-sm">تصفية</span>
+</button>
+<div class="flex gap-2">
+<div class="bg-surface-container-low px-3 py-2 rounded-xl flex items-center gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">الفرز:</span>
+<select class="bg-transparent border-none focus:ring-0 font-label-sm text-label-sm text-primary p-0">
+<option>الأحدث</option>
+<option>السعر: من الأقل</option>
+<option>السعر: من الأعلى</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Product List (Vertical Layout) -->
+<div class="space-y-6">
+<!-- Product 1 -->
+<div class="bg-surface rounded-[20px] product-card-shadow overflow-hidden border border-outline-variant/30 group">
+<div class="relative aspect-video bg-surface-container-low overflow-hidden">
+<img class="w-full h-full object-contain p-6 transform group-hover:scale-105 transition-transform duration-500" data-alt="A professional product photography of a high-end ASUS ROG Strix GeForce RTX 4090 graphics card. The card features triple fans, vibrant RGB lighting accents in blue and magenta, and a sleek metallic finish. It is placed on a reflective white surface with a clean, high-key studio lighting setup that emphasizes its technological complexity and premium quality. The background is a soft, out-of-focus tech lab environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCELjEOJwCMTyl7IbYyCanlg7fpjWg9xirQ02TfyULABV8wbQo0O0tqnrhOZw5c2jciLkCRdrJuBUFo4-hwUPUZUhVV8DvREzPdOKLJ4Z0WIb6UuLxuw76ODwikJARPC2TsK10AkthLTEe7iuu4o7iAXZrm5vDphYWovp8Sp8eHNrN6yxIFUmP1omeLYhfF9ZwrLUL6KsHpR4yiMfVQBMEAc6m5CLpcBW7DDkd4JZGKlFRSJdN0tw8I">
+<div class="absolute top-4 right-4 bg-primary text-on-primary px-3 py-1 rounded-full text-label-sm font-label-sm">جديد</div>
+</div>
+<div class="p-5">
+<div class="flex gap-2 mb-2">
+<span class="bg-surface-container-high text-on-surface-variant px-2 py-0.5 rounded-[8px] font-mono-spec text-mono-spec">NVIDIA</span>
+<span class="bg-surface-container-high text-on-surface-variant px-2 py-0.5 rounded-[8px] font-mono-spec text-mono-spec">RTX 4090</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2 leading-tight">ASUS ROG Strix GeForce RTX 4090 OC Edition</h3>
+<div class="flex items-end justify-between mt-4">
+<div>
+<span class="block text-on-surface-variant font-label-sm text-label-sm line-through">8,500 ر.س</span>
+<span class="text-primary font-bold text-headline-md">7,999 ر.س</span>
+</div>
+<button class="bg-primary-container text-on-primary-container px-4 py-3 rounded-xl flex items-center gap-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+<span class="font-label-sm text-label-sm">إضافة</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product 2 -->
+<div class="bg-surface rounded-[20px] product-card-shadow overflow-hidden border border-outline-variant/30 group">
+<div class="relative aspect-video bg-surface-container-low overflow-hidden">
+<img class="w-full h-full object-contain p-6 transform group-hover:scale-105 transition-transform duration-500" data-alt="Close-up shot of an MSI Gaming GeForce RTX 4080 Super graphics card. The design is bold with dual-tone black and grey shrouds, intricate fan blade details, and subtle white LED lighting. It rests on a clean slate-colored surface under soft cinematic lighting that highlights the brushed metal textures and futuristic aesthetic. Premium corporate modern style with high-performance hardware focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrA8VwzH5OmV-KFu-xcvjBTLtELjAHvWPXN2TbXYvWrIhpNRicFQJB5xQbifk3V-svsjLsyhco8SOOy10iZbKClCV53WY_gQ3Ar4-SZBzEe0pSM6-O3PVHSzfpV5zY-4kol_S9b937mPJTJfTbPkNVdPPMoB4iHzjxPRUQzaSUe2GkrVTYnoEt4Y4f0B8NnWjX7Eivfy59gS0-NZs-jbRm-ym9D0sNW4KxYqBc7pxxEeDRp6T33mik">
+<div class="absolute top-4 right-4 bg-error text-on-error px-3 py-1 rounded-full text-label-sm font-label-sm">خصم 15%</div>
+</div>
+<div class="p-5">
+<div class="flex gap-2 mb-2">
+<span class="bg-surface-container-high text-on-surface-variant px-2 py-0.5 rounded-[8px] font-mono-spec text-mono-spec">MSI</span>
+<span class="bg-surface-container-high text-on-surface-variant px-2 py-0.5 rounded-[8px] font-mono-spec text-mono-spec">RTX 4080 Super</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2 leading-tight">MSI Gaming X Slim GeForce RTX 4080 Super</h3>
+<div class="flex items-end justify-between mt-4">
+<div>
+<span class="text-primary font-bold text-headline-md">5,450 ر.س</span>
+</div>
+<button class="bg-primary-container text-on-primary-container px-4 py-3 rounded-xl flex items-center gap-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+<span class="font-label-sm text-label-sm">إضافة</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product 3 -->
+<div class="bg-surface rounded-[20px] product-card-shadow overflow-hidden border border-outline-variant/30 group">
+<div class="relative aspect-video bg-surface-container-low overflow-hidden">
+<img class="w-full h-full object-contain p-6 transform group-hover:scale-105 transition-transform duration-500" data-alt="A side-profile view of a Gigabyte AORUS Master Radeon RX 7900 XTX graphics card. This high-end component features a massive heatsink, specialized cooling fins, and an integrated LCD edge screen displaying temperature data. The lighting is cold blue and crisp white, suggesting extreme cooling performance. Set against a minimalist architectural background that reflects high-end tech engineering and performance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7q7OKxs0N5i87wFPEg8GwSZK7_lnIpZk_6ZFwuUXP2MBCwWDi8yBxNzAndahCyV9qYPzhS7Wqb1TWjGWS-_dfpAuHAkaJ-Ke5xcLF706ChyowUaWChw1P8YpJNWTCbDLhJiRqE1PnBkfe6wokAHVgpyqgFWNM3GtTr2e1eYxLNnyTPUhnydC50cF0jRdATKkJlpQsvUEcT6hr_yRz_Qt9cpni3xhjrQLGsv3lEwaF-ypgyFmBU_YO">
+</div>
+<div class="p-5">
+<div class="flex gap-2 mb-2">
+<span class="bg-surface-container-high text-on-surface-variant px-2 py-0.5 rounded-[8px] font-mono-spec text-mono-spec">AMD</span>
+<span class="bg-surface-container-high text-on-surface-variant px-2 py-0.5 rounded-[8px] font-mono-spec text-mono-spec">RX 7900 XTX</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2 leading-tight">Gigabyte AORUS Master Radeon RX 7900 XTX</h3>
+<div class="flex items-end justify-between mt-4">
+<div>
+<span class="text-primary font-bold text-headline-md">4,890 ر.س</span>
+</div>
+<button class="bg-primary-container text-on-primary-container px-4 py-3 rounded-xl flex items-center gap-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+<span class="font-label-sm text-label-sm">إضافة</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-2xl fixed bottom-0 w-full z-50 rounded-t-xl border-t border-outline-variant/20 shadow-[0_-4px_20px_rgba(0,0,0,0.03)] flex flex-row-reverse justify-around items-center h-16 px-2">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-secondary-container hover:bg-surface-container-highest transition-all active:scale-90 px-4 py-1" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">الرئيسية</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed font-bold bg-primary-container/20 rounded-xl px-4 py-1 transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+<span class="font-label-sm text-label-sm">الفئات</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-secondary-container hover:bg-surface-container-highest transition-all active:scale-90 px-4 py-1" href="#">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="font-label-sm text-label-sm">السلة</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-secondary-container hover:bg-surface-container-highest transition-all active:scale-90 px-4 py-1" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">حسابي</span>
+</a>
+</nav>
+<!-- Filter Bottom Sheet (Hidden by default) -->
+<div class="fixed inset-0 z-[60] invisible pointer-events-none transition-all duration-300" id="filterSheet">
+<div class="absolute inset-0 bg-black/30 backdrop-blur-sm" onclick="toggleFilter()"></div>
+<div class="absolute bottom-0 left-0 right-0 bg-surface rounded-t-[32px] p-6 transform translate-y-full transition-transform duration-300 ease-out" id="sheetContent">
+<div class="w-12 h-1.5 bg-outline-variant/30 rounded-full mx-auto mb-6"></div>
+<h2 class="font-headline-md text-headline-md mb-6">تصفية النتائج</h2>
+<div class="space-y-6 max-h-[60vh] overflow-y-auto pb-6">
+<div>
+<h3 class="font-label-sm text-label-sm text-on-surface-variant mb-3 uppercase tracking-wider">الماركة</h3>
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-2 rounded-full border border-primary bg-primary-container/10 text-primary font-label-sm text-label-sm">NVIDIA</button>
+<button class="px-4 py-2 rounded-full border border-outline-variant text-on-surface-variant font-label-sm text-label-sm">AMD</button>
+<button class="px-4 py-2 rounded-full border border-outline-variant text-on-surface-variant font-label-sm text-label-sm">Intel Arc</button>
+</div>
+</div>
+<div>
+<h3 class="font-label-sm text-label-sm text-on-surface-variant mb-3 uppercase tracking-wider">نطاق السعر</h3>
+<input class="w-full accent-primary" max="10000" min="1000" step="500" type="range">
+<div class="flex justify-between mt-2 font-mono-spec text-mono-spec text-on-surface-variant">
+<span>1,000 ر.س</span>
+<span>10,000 ر.س</span>
+</div>
+</div>
+<div>
+<h3 class="font-label-sm text-label-sm text-on-surface-variant mb-3 uppercase tracking-wider">الشركة المصنعة</h3>
+<div class="grid grid-cols-2 gap-3">
+<label class="flex items-center gap-3 p-3 rounded-xl border border-outline-variant/20 active:bg-surface-container-low">
+<input class="rounded text-primary focus:ring-primary h-5 w-5" type="checkbox">
+<span class="font-body-md text-body-md">ASUS</span>
+</label>
+<label class="flex items-center gap-3 p-3 rounded-xl border border-outline-variant/20 active:bg-surface-container-low">
+<input class="rounded text-primary focus:ring-primary h-5 w-5" type="checkbox">
+<span class="font-body-md text-body-md">MSI</span>
+</label>
+<label class="flex items-center gap-3 p-3 rounded-xl border border-outline-variant/20 active:bg-surface-container-low">
+<input class="rounded text-primary focus:ring-primary h-5 w-5" type="checkbox">
+<span class="font-body-md text-body-md">Gigabyte</span>
+</label>
+<label class="flex items-center gap-3 p-3 rounded-xl border border-outline-variant/20 active:bg-surface-container-low">
+<input class="rounded text-primary focus:ring-primary h-5 w-5" type="checkbox">
+<span class="font-body-md text-body-md">Zotac</span>
+</label>
+</div>
+</div>
+</div>
+<div class="pt-6 border-t border-outline-variant/20 flex gap-4">
+<button class="flex-1 bg-primary text-on-primary py-4 rounded-xl font-headline-md text-label-sm shadow-lg shadow-primary/20 active:scale-95 transition-transform" onclick="toggleFilter()">تطبيق</button>
+<button class="flex-1 bg-surface-container-high text-on-surface-variant py-4 rounded-xl font-headline-md text-label-sm active:scale-95 transition-transform" onclick="toggleFilter()">مسح</button>
+</div>
+</div>
+</div>
+<script>
+        function toggleFilter() {
+            const sheet = document.getElementById('filterSheet');
+            const content = document.getElementById('sheetContent');
+            
+            if (sheet.classList.contains('invisible')) {
+                sheet.classList.remove('invisible');
+                sheet.classList.add('visible');
+                sheet.classList.add('pointer-events-auto');
+                content.classList.remove('translate-y-full');
+                content.classList.add('translate-y-0');
+            } else {
+                content.classList.remove('translate-y-0');
+                content.classList.add('translate-y-full');
+                setTimeout(() => {
+                    sheet.classList.add('invisible');
+                    sheet.classList.remove('visible');
+                    sheet.classList.remove('pointer-events-auto');
+                }, 300);
+            }
+        }
+    </script>
+</body></html>
