@@ -4,6 +4,7 @@ import HeroBanner from '@/components/home/HeroBanner'
 import CategorySwiper from '@/components/home/CategorySwiper'
 import FeaturedProducts from '@/components/home/FeaturedProducts'
 import FeaturedCategoryBoxes from '@/components/home/FeaturedCategoryBoxes'
+import FeaturedDeals from '@/components/home/FeaturedDeals'
 import PartnerLogos from '@/components/home/PartnerLogos'
 
 export default function HomePage() {
@@ -15,16 +16,19 @@ export default function HomePage() {
       {/* تسوق حسب الفئة — Bento Grid */}
       <CategorySwiper />
 
-      {/* وصل حديثاً */}
+      {/* بوكسات التصنيفات المميزة (صور كبيرة) — يتحكم فيها الأدمن من إدارة التصنيفات */}
+      <FeaturedCategoryBoxes />
+
+      {/* وصل حديثاً — 6 منتجات + زر عرض المزيد */}
       <FeaturedProducts
         title="وصل حديثاً"
-        viewAllLink="/category/graphics-cards"
+        viewAllLink="/new-arrivals"
         filter="new"
-        limit={4}
+        limit={6}
       />
 
-      {/* بوكسات التصنيفات المميزة — يتحكم فيها الأدمن من إدارة التصنيفات */}
-      <FeaturedCategoryBoxes />
+      {/* العروض — 6 منتجات + زر عرض المزيد */}
+      <FeaturedDeals />
 
       {/* شركاء النجاح */}
       <PartnerLogos />

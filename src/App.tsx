@@ -2,6 +2,7 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
 import StoreLayout from '@/components/layouts/StoreLayout'
 import AdminLayout from '@/admin/components/AdminLayout'
+import ScrollToTop from '@/components/ScrollToTop'
 
 // صفحات المتجر
 import HomePage from '@/pages/HomePage'
@@ -29,7 +30,9 @@ import AdminSettingsPage from '@/admin/pages/AdminSettingsPage'
 
 export default function App() {
   return (
-    <Routes>
+    <>
+      <ScrollToTop />
+      <Routes>
       {/* مسارات المتجر — تستخدم StoreLayout (Header + Footer + CartDrawer) */}
       <Route element={<StoreLayout />}>
         <Route path="/" element={<HomePage />} />
@@ -64,6 +67,7 @@ export default function App() {
 
       {/* أي مسار غير معروف — إعادة توجيه للرئيسية */}
       <Route path="*" element={<Navigate to="/" replace />} />
-    </Routes>
+      </Routes>
+    </>
   )
 }

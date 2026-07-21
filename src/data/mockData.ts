@@ -164,7 +164,7 @@ export const mockProducts: Product[] = [
     rating: 4.7,
     reviewCount: 64,
     isFeatured: false,
-    isNew: false,
+    isNew: true,
   },
   {
     id: 'prod-004',
@@ -174,6 +174,7 @@ export const mockProducts: Product[] = [
     categoryName: 'التخزين',
     brand: 'Samsung',
     price: 8900,
+    originalPrice: 10200,
     image: 'https://images.unsplash.com/photo-1597872200963-2b35d8ebde39?w=600',
     images: ['https://images.unsplash.com/photo-1597872200963-2b35d8ebde39?w=600'],
     description: 'SSD NVMe Gen4 بسرعة قراءة 7450 MB/s',
@@ -187,7 +188,7 @@ export const mockProducts: Product[] = [
     rating: 4.9,
     reviewCount: 210,
     isFeatured: true,
-    isNew: false,
+    isNew: true,
   },
   {
     id: 'prod-005',
@@ -254,7 +255,7 @@ export const mockProducts: Product[] = [
     rating: 4.8,
     reviewCount: 72,
     isFeatured: true,
-    isNew: false,
+    isNew: true,
   },
   {
     id: 'prod-008',
@@ -286,6 +287,7 @@ export const mockProducts: Product[] = [
     categoryName: 'كروت الشاشة',
     brand: 'AMD',
     price: 42000,
+    originalPrice: 46500,
     image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=600',
     images: ['https://images.unsplash.com/photo-1591488320449-011701bb6704?w=600'],
     description: 'كرت AMD الأقوى مع 24GB GDDR6',
@@ -348,7 +350,7 @@ export const mockProducts: Product[] = [
 /** إعدادات المتجر الوهمية */
 export const mockStoreSettings: StoreSettings = {
   instapayNumber: '01012345678',
-  storeName: 'PC-TECH ARABIA',
+  storeName: 'عبدالنبي بي سي تيك',
   storePhone: '01098765432',
   shippingZones: [
     { id: 'zone-cairo', name: 'القاهرة والجيزة', fee: 50, estimatedDays: '1-2 يوم' },

@@ -211,18 +211,18 @@ export default function ProductCard({
         {/* شارات: جديد / خصم / نفاد المخزون */}
         <div className="absolute top-2 right-2 flex flex-col gap-1">
           {product.isNew && (
-            <span className="rounded-full bg-primary px-2 py-0.5 text-[10px] font-bold text-on-primary">
+            <span className="rounded-full bg-primary px-1.5 py-0.5 text-[9px] font-bold text-on-primary md:px-2 md:text-[10px]">
               جديد
             </span>
           )}
           {discountPercent && (
-            <span className="rounded-full bg-error px-2 py-0.5 text-[10px] font-bold text-on-error">
+            <span className="rounded-full bg-error px-1.5 py-0.5 text-[9px] font-bold text-on-error md:px-2 md:text-[10px]">
               خصم {discountPercent}%
             </span>
           )}
         </div>
         {!product.inStock && (
-          <span className="absolute inset-0 flex items-center justify-center bg-on-surface/40 text-sm font-bold text-on-primary">
+          <span className="absolute inset-0 flex items-center justify-center bg-on-surface/40 text-xs font-bold text-on-primary md:text-sm">
             غير متوفر
           </span>
         )}
@@ -245,23 +245,23 @@ export default function ProductCard({
         {/* التقييم */}
         <div className="mb-1 flex items-center gap-1">
           <span
-            className="material-symbols-outlined text-xs text-yellow-500"
+            className="material-symbols-outlined text-[11px] text-yellow-500 md:text-xs"
             style={{ fontVariationSettings: '"FILL" 1' }}
           >
             star
           </span>
-          <span className="text-[10px] font-bold text-on-surface-variant md:text-xs">
+          <span className="text-[9px] font-bold text-on-surface-variant md:text-xs">
             {product.rating} ({product.reviewCount} تقييم)
           </span>
         </div>
 
         {/* اسم المنتج */}
-        <h4 className="mb-2 line-clamp-2 min-h-[40px] text-sm font-bold leading-snug text-on-surface md:text-base">
+        <h4 className="mb-2 line-clamp-2 min-h-[34px] text-xs font-bold leading-snug text-on-surface md:min-h-[40px] md:text-base">
           {product.name}
         </h4>
 
         {/* الماركة */}
-        <span className="mb-2 w-fit rounded-lg bg-surface-container-high px-2 py-0.5 text-[10px] text-on-surface-variant">
+        <span className="mb-2 w-fit rounded-lg bg-surface-container-high px-1.5 py-0.5 text-[9px] text-on-surface-variant md:px-2 md:text-[10px]">
           {product.brand}
         </span>
 
@@ -269,11 +269,11 @@ export default function ProductCard({
         <div className="mt-auto flex items-end justify-between">
           <div>
             {product.originalPrice && (
-              <span className="block text-xs text-outline line-through">
+              <span className="block text-[10px] text-outline line-through md:text-xs">
                 {formatPrice(product.originalPrice)}
               </span>
             )}
-            <span className="font-bold text-on-surface md:text-lg">
+            <span className="text-sm font-bold text-on-surface md:text-lg">
               {formatPrice(product.price)}
             </span>
           </div>

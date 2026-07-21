@@ -42,6 +42,8 @@ export default function FeaturedProducts({
   // TODO: ربط هذا بالـ API عند توفر الباك إند — جلب المنتجات المميزة من endpoint
   const products = filterProducts(getPublishedProducts(), filter).slice(0, limit)
 
+  if (products.length === 0) return null
+
   return (
     <section className="mb-10">
       {/* عنوان القسم */}
@@ -49,12 +51,6 @@ export default function FeaturedProducts({
         <h3 className="font-display text-xl font-bold text-on-surface md:text-2xl">
           {title}
         </h3>
-        <Link
-          to={viewAllLink}
-          className="text-sm font-bold text-primary transition-colors hover:text-primary-container"
-        >
-          تصفح الكل
-        </Link>
       </div>
 
       {/* شبكة المنتجات — عمودين على الموبايل، 3-4 على الديسكتوب */}
@@ -62,6 +58,16 @@ export default function FeaturedProducts({
         {products.map((product) => (
           <ProductCard key={product.id} product={product} variant="grid" />
         ))}
+      </div>
+
+      {/* زر عرض المزيد */}
+      <div className="mt-8 flex justify-center">
+        <Link
+          to={viewAllLink}
+          className="rounded-full border-2 border-outline-variant bg-surface-container-lowest px-10 py-3 text-sm font-bold text-on-surface transition-all hover:border-primary hover:text-primary active:scale-95"
+        >
+          عرض المزيد
+        </Link>
       </div>
     </section>
   )

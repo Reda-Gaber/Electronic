@@ -7,6 +7,7 @@
  */
 import { Link } from 'react-router-dom'
 import { getSettings } from '@/utils/settingsStorage'
+import Logo from '@/components/Logo'
 
 export default function Footer() {
   const settings = getSettings()
@@ -18,7 +19,7 @@ export default function Footer() {
           {/* معلومات المتجر */}
           <div>
             <div className="mb-4">
-              <img src="/logo.jpg" alt={settings.storeName} className="h-12 w-auto object-contain" />
+              <Logo />
             </div>
             <p className="text-sm leading-relaxed text-on-surface-variant">
               متجرك الأول لمكونات الحاسوب عالية الأداء. كروت شاشة، معالجات،

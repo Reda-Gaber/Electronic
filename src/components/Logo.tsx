@@ -15,18 +15,17 @@ export default function Logo({ size = 'md' }: LogoProps) {
 
   return (
     <div className="flex items-center gap-2.5">
-      {/* أيقونة الشعار — دائرة حمراء بأيقونة معالج/شريحة */}
+      {/* أيقونة الشعار — الشعار الفعلي (العلامة المميزة) المأخوذ من صورة اللوجو الأصلية */}
       <div
-        className={`flex shrink-0 items-center justify-center rounded-xl bg-primary text-on-primary shadow-[0_4px_12px_rgba(187,0,16,0.25)] ${
+        className={`flex shrink-0 items-center justify-center overflow-hidden rounded-xl bg-surface-container-lowest ${
           isSmall ? 'h-8 w-8' : 'h-10 w-10'
         }`}
       >
-        <span
-          className={`material-symbols-outlined ${isSmall ? 'text-lg' : 'text-2xl'}`}
-          style={{ fontVariationSettings: '"FILL" 1' }}
-        >
-          memory
-        </span>
+        <img
+          src="/logo-icon.png"
+          alt="شعار عبدالنبي بي سي تيك"
+          className="h-full w-full object-contain"
+        />
       </div>
 
       {/* النص — اسم المتجر بسطرين */}
@@ -36,14 +35,14 @@ export default function Logo({ size = 'md' }: LogoProps) {
             isSmall ? 'text-sm' : 'text-base md:text-lg'
           }`}
         >
-          بي سي-تك
+          عبدالنبي
         </span>
         <span
           className={`font-display font-bold tracking-wide text-primary ${
             isSmall ? 'text-[9px]' : 'text-[10px] md:text-xs'
           }`}
         >
-          ARABIA
+          بي سي تيك
         </span>
       </div>
     </div>

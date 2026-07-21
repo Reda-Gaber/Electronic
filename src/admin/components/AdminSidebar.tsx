@@ -21,7 +21,7 @@ export default function AdminSidebar() {
           </span>
           <div>
             <p className="font-display text-sm font-bold text-on-surface">لوحة التحكم</p>
-            <p className="text-xs text-on-surface-variant">PC-TECH ARABIA</p>
+            <p className="text-xs text-on-surface-variant">عبدالنبي بي سي تيك</p>
           </div>
         </Link>
       </div>

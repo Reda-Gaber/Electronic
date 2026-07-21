@@ -12,17 +12,17 @@ export default function HeroBanner() {
   return (
     <section className="mb-10 md:mb-14">
       <div className="hero-gradient relative overflow-hidden rounded-3xl border border-outline-variant">
-        {/* صورة خلفية خافتة للمنتج */}
+        {/* صورة خلفية المنتج */}
         <div className="absolute inset-0">
           <img
             src={mockHeroBanner.image}
             alt={mockHeroBanner.title}
-            className="h-full w-full object-cover opacity-20"
+            className="h-full w-full object-cover"
           />
         </div>
 
         {/* تدرج للقراءة فوق الصورة */}
-        <div className="absolute inset-0 bg-gradient-to-l from-surface via-surface/85 to-surface/95" />
+        <div className="absolute inset-0 bg-gradient-to-l from-surface via-surface/70 to-surface/30 md:via-surface/60 md:to-transparent" />
 
         {/* المحتوى النصي */}
         <div className="relative z-10 flex min-h-[340px] flex-col justify-center px-6 py-12 md:min-h-[420px] md:px-14">

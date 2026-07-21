@@ -5,6 +5,7 @@
  * Props: لا يوجد — يفلتر المنتجات المنشورة ذات originalPrice من productStorage
  * الاستخدام: HomePage — قسم "عروض الساعة"
  */
+import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import ProductCard from '@/components/ProductCard'
 import { mockDealCountdown } from '@/data/mockData'
@@ -12,7 +13,9 @@ import { getPublishedProducts } from '@/utils/productStorage'
 
 export default function FeaturedDeals() {
   // TODO: ربط هذا بالـ API عند توفر الباك إند — جلب العروض النشطة من السيرفر
-  const dealProducts = getPublishedProducts().filter((p) => p.originalPrice)
+  const dealProducts = getPublishedProducts()
+    .filter((p) => p.originalPrice)
+    .slice(0, 6)
 
   // عدّاد تنازلي وهمي — يُحدَّث كل ثانية
   const [countdown, setCountdown] = useState(mockDealCountdown)
@@ -62,11 +65,21 @@ export default function FeaturedDeals() {
           </span>
         </div>
 
-        {/* شريط المنتجات المخفضة */}
-        <div className="hide-scrollbar -mx-2 flex gap-4 overflow-x-auto px-2">
+        {/* شبكة المنتجات المخفضة */}
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6 lg:grid-cols-4">
           {dealProducts.map((product) => (
-            <ProductCard key={product.id} product={product} variant="deal" />
+            <ProductCard key={product.id} product={product} variant="grid" />
           ))}
+        </div>
+
+        {/* زر عرض المزيد */}
+        <div className="relative z-10 mt-8 flex justify-center">
+          <Link
+            to="/offers"
+            className="rounded-full bg-on-secondary-container px-10 py-3 text-sm font-bold text-secondary-container transition-all hover:opacity-90 active:scale-95"
+          >
+            عرض المزيد
+          </Link>
         </div>
       </div>
     </section>

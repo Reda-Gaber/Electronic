@@ -10,6 +10,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { useCart } from '@/context/CartContext'
 import { mainNavLinks } from '@/data/mockData'
 import SearchOverlay from '@/components/SearchOverlay'
+import Logo from '@/components/Logo'
 
 interface HeaderProps {
   onOpenCategories: () => void
@@ -20,15 +21,37 @@ export default function Header({ onOpenCategories }: HeaderProps) {
   const location = useLocation()
   const [isSearchOpen, setIsSearchOpen] = useState(false)
 
+  // بناء روابط البحث بالمسار — لتحديد موضع كل رابط بدقة في الترتيب المطلوب
+  const findLink = (path: string) => mainNavLinks.find((link) => link.path === path)
+  const homeLink = findLink('/')
+  const offersLink = findLink('/offers')
+  const newArrivalsLink = findLink('/new-arrivals')
+  const aboutLink = findLink('/about')
+  const contactLink = findLink('/contact')
+
+  const linkClass = (path: string) =>
+    `rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+      location.pathname === path
+        ? 'bg-primary text-on-primary'
+        : 'text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface'
+    }`
+
   return (
     <header className="glass-header fixed top-0 z-50 flex h-16 w-full items-center justify-between px-4 md:px-10">
       {/* الشعار — يربط بالصفحة الرئيسية */}
       <Link to="/" className="flex shrink-0 items-center">
-        <img src="/logo.jpg" alt="PC-TECH ARABIA" className="h-11 w-auto object-contain md:h-12" />
+        <Logo />
       </Link>
 
       {/* روابط التنقل — تظهر على الشاشات المتوسطة فما فوق */}
       <nav className="hidden items-center gap-1 lg:flex">
+        {/* الرئيسية */}
+        {homeLink && (
+          <Link to={homeLink.path} className={linkClass(homeLink.path)}>
+            {homeLink.label}
+          </Link>
+        )}
+
         {/* الفئات — تفتح نافذة بوكسات التصنيفات بدل التنقل المباشر لتصنيف واحد */}
         <button
           type="button"
@@ -37,22 +60,39 @@ export default function Header({ onOpenCategories }: HeaderProps) {
         >
           الفئات
         </button>
-        {mainNavLinks.map((link) => {
-          const isActive = location.pathname === link.path
-          return (
-            <Link
-              key={link.path}
-              to={link.path}
-              className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-                isActive
-                  ? 'bg-primary text-on-primary'
-                  : 'text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface'
-              }`}
-            >
-              {link.label}
-            </Link>
-          )
-        })}
+
+        {/* العروض */}
+        {offersLink && (
+          <Link to={offersLink.path} className={linkClass(offersLink.path)}>
+            {offersLink.label}
+          </Link>
+        )}
+
+        {/* المضاف حديثاً */}
+        {newArrivalsLink && (
+          <Link to={newArrivalsLink.path} className={linkClass(newArrivalsLink.path)}>
+            {newArrivalsLink.label}
+          </Link>
+        )}
+
+        {/* اتمام الشراء */}
+        <Link to="/checkout" className={linkClass('/checkout')}>
+          اتمام الشراء
+        </Link>
+
+        {/* من نحن */}
+        {aboutLink && (
+          <Link to={aboutLink.path} className={linkClass(aboutLink.path)}>
+            {aboutLink.label}
+          </Link>
+        )}
+
+        {/* تواصل معنا */}
+        {contactLink && (
+          <Link to={contactLink.path} className={linkClass(contactLink.path)}>
+            {contactLink.label}
+          </Link>
+        )}
       </nav>
 
       {/* أزرار الإجراءات — بحث، سلة، قائمة */}
