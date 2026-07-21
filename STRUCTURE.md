@@ -150,7 +150,7 @@ Electronic/
 - **مصدر البيانات:** `getAllOrders()` و `mockProducts` — كل الحسابات (الإيرادات، المخزون المنخفض) تُشتق منها مباشرة، وليست أرقاماً ثابتة
 
 ### روابط الهيدر (`mainNavLinks` في `mockData.ts`)
-- **تحديث:** 5 روابط عامة في الهيدر: الرئيسية، العروض، المضاف حديثاً، من نحن، تواصل معنا — رابط "الأسئلة الشائعة" اتشال من الهيدر بناءً على طلب صريح، وأُضيف بدلاً من ذلك في قسم "روابط سريعة" بالفوتر (`Footer.tsx`)
+- **تحديث:** 5 روابط عامة في الهيدر: الرئيسية، العروض، المضاف حديثاً، من نحن، تواصل معنا — بالإضافة لزر "الفئات" (غير مبني على `mainNavLinks`، بل زر منفصل يفتح `CategoriesOverlay`) — رابط "الأسئلة الشائعة" اتشال من الهيدر بناءً على طلب صريح، وأُضيف بدلاً من ذلك في قسم "روابط سريعة" بالفوتر (`Footer.tsx`)
 - **صفحات جديدة مرتبطة:**
   - `OffersPage.tsx` (`/offers`) — كل المنتجات التي عليها خصم (`originalPrice > price`)
   - `NewArrivalsPage.tsx` (`/new-arrivals`) — كل المنتجات المعلَّمة `isNew`
@@ -211,8 +211,18 @@ Electronic/
 - **مستخدَمة في `HomePage` حالياً:** `HeroBanner`, `CategorySwiper`, `FeaturedProducts`, `PromoCards`, `PartnerLogos`
 - **موجودة لكن غير مستخدَمة حالياً** (أُزيلت من الصفحة الرئيسية لمطابقة تصميم Stitch النهائي بدقة، ويمكن استخدامها لاحقاً في صفحات أخرى أو حملات ترويجية): `FeaturedDeals` (عروض بعدّاد تنازلي), `TrustBadges` (شارات الثقة), `NewsletterSection` (بانر الاشتراك)
 
-### MobileBottomNav
-- **الوظيفة:** تنقل سفلي للموبايل — السلة تفتح CartDrawer
+### MobileBottomNav (`src/components/MobileBottomNav.tsx`)
+- **الوظيفة:** شريط تنقل سفلي للموبايل بـ 5 عناصر: الرئيسية، الفئات (تفتح `CategoriesOverlay` بدل التنقل المباشر)، العروض (`/offers`)، الدفع/تتبع الطلب (رابط ديناميكي: لو السلة فيها منتجات يوديك لـ `/checkout`، وإلا لـ `/track-order`)، السلة (تفتح `CartDrawer`)
+- **Props:** `onOpenCategories` — تُمرَّر من `StoreLayout` لمشاركة نفس حالة النافذة مع الهيدر
+
+### CategoriesOverlay (`src/components/CategoriesOverlay.tsx`)
+- **الوظيفة:** نافذة منبثقة (خلفية `backdrop-blur-md`) تعرض شبكة بوكسات كل التصنيفات فقط بدون أي محتوى آخر — بنفس نمط `SearchOverlay.tsx`. الضغط على أي بوكس يغلق النافذة وينقل مباشرة لصفحة ذلك التصنيف
+- **مصدر البيانات:** `categoryStorage.getCategories()`
+- **الاستخدام:** يُفتح من زر "الفئات" في كل من `Header.tsx` (ديسكتوب) و`MobileBottomNav.tsx` (موبايل)، وتُدار حالة الفتح/الإغلاق مركزياً في `StoreLayout.tsx`
+
+### OrderTrackingPage (`src/pages/OrderTrackingPage.tsx`)
+- **الوظيفة:** صفحة `/track-order` — يدخل العميل الرقم المرجعي + رقم الهاتف (كوسيلة تحقق بسيطة) ليطّلع على حالة طلبه وتفاصيله
+- **مصدر البيانات:** `orderStorage.findOrderByReference(referenceNumber, phone)` — دالة جديدة تبحث بمطابقة الحقلين معاً
 
 ---
 

@@ -9,6 +9,7 @@ import CategoryPage from '@/pages/CategoryPage'
 import ProductDetailPage from '@/pages/ProductDetailPage'
 import CheckoutPage from '@/pages/CheckoutPage'
 import OrderConfirmationPage from '@/pages/OrderConfirmationPage'
+import OrderTrackingPage from '@/pages/OrderTrackingPage'
 import SearchResultsPage from '@/pages/SearchResultsPage'
 import OffersPage from '@/pages/OffersPage'
 import NewArrivalsPage from '@/pages/NewArrivalsPage'
@@ -36,6 +37,7 @@ export default function App() {
         <Route path="/product/:slug" element={<ProductDetailPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/order-confirmation/:orderId" element={<OrderConfirmationPage />} />
+        <Route path="/track-order" element={<OrderTrackingPage />} />
         <Route path="/search" element={<SearchResultsPage />} />
         <Route path="/offers" element={<OffersPage />} />
         <Route path="/new-arrivals" element={<NewArrivalsPage />} />

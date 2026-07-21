@@ -61,3 +61,21 @@ export function getAllOrders(): Order[] {
   const realOrders = loadOrdersFromStorage()
   return realOrders.length > 0 ? realOrders : mockOrders
 }
+
+/**
+ * البحث عن طلب واحد عبر رقم الهاتف + الرقم المرجعي معاً (وسيلة تحقق بسيطة
+ * تمنع أي شخص من الاطلاع على طلب غيره بمجرد تخمين الرقم المرجعي)
+ * تُستخدم في صفحة "تتبع الطلب" للعميل
+ */
+export function findOrderByReference(
+  referenceNumber: string,
+  phone: string,
+): Order | undefined {
+  const normalizedRef = referenceNumber.trim().toLowerCase()
+  const normalizedPhone = phone.trim()
+  return getAllOrders().find(
+    (order) =>
+      order.referenceNumber.trim().toLowerCase() === normalizedRef &&
+      order.phone.trim() === normalizedPhone,
+  )
+}

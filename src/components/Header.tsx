@@ -11,7 +11,11 @@ import { useCart } from '@/context/CartContext'
 import { mainNavLinks } from '@/data/mockData'
 import SearchOverlay from '@/components/SearchOverlay'
 
-export default function Header() {
+interface HeaderProps {
+  onOpenCategories: () => void
+}
+
+export default function Header({ onOpenCategories }: HeaderProps) {
   const { itemCount, openCart } = useCart()
   const location = useLocation()
   const [isSearchOpen, setIsSearchOpen] = useState(false)
@@ -25,6 +29,14 @@ export default function Header() {
 
       {/* روابط التنقل — تظهر على الشاشات المتوسطة فما فوق */}
       <nav className="hidden items-center gap-1 lg:flex">
+        {/* الفئات — تفتح نافذة بوكسات التصنيفات بدل التنقل المباشر لتصنيف واحد */}
+        <button
+          type="button"
+          onClick={onOpenCategories}
+          className="rounded-lg px-3 py-2 text-sm font-medium text-on-surface-variant transition-colors hover:bg-surface-container-high hover:text-on-surface"
+        >
+          الفئات
+        </button>
         {mainNavLinks.map((link) => {
           const isActive = location.pathname === link.path
           return (
