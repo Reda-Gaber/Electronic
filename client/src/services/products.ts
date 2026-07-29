@@ -104,3 +104,35 @@ export async function updateProduct(id: string, input: ProductInput): Promise<Pr
 export async function deleteProduct(id: string): Promise<void> {
   await apiFetch(`/admin/products/${id}`, { method: 'DELETE' })
 }
+
+export interface UploadedImage {
+  url: string
+  thumbnailUrl: string
+}
+
+/**
+ * رفع صورة أو أكتر لصور المنتج — بيرجع مسارات الصور بعد معالجتها في السيرفر
+ * (تحويل WebP + تصغير + Thumbnail). الصور دي بترفع كملفات حقيقية (multipart)
+ * مش Base64 جوه الـ JSON، عشان تتفادى مشاكل حجم الطلب مع صور كتير أو كبيرة
+ */
+export async function uploadProductImages(files: File[]): Promise<UploadedImage[]> {
+  const formData = new FormData()
+  files.forEach((file) => formData.append('images', file))
+
+  const res = await apiFetch<{ success: true; data: UploadedImage[] }>(
+    '/admin/uploads/product-images',
+    {
+      method: 'POST',
+      body: formData,
+    },
+  )
+  return res.data
+}
+
+/** حذف صورة منتج من على السيرفر فعليًا (مش بس من الفورم) — محمي (أدمن) */
+export async function deleteProductImage(url: string): Promise<void> {
+  await apiFetch('/admin/uploads/product-images', {
+    method: 'DELETE',
+    body: JSON.stringify({ url }),
+  })
+}

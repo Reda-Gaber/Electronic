@@ -15,6 +15,7 @@ const adminProductRoutes = require('./routes/admin/product.routes')
 const adminOrderRoutes = require('./routes/admin/order.routes')
 const adminSettingsRoutes = require('./routes/admin/settings.routes')
 const adminDashboardRoutes = require('./routes/admin/dashboard.routes')
+const adminUploadRoutes = require('./routes/admin/upload.routes')
 const { notFoundHandler, errorHandler } = require('./middleware/error.middleware')
 
 const app = express()
@@ -40,6 +41,11 @@ app.get('/api/health', (req, res) => {
   res.json({ success: true, message: 'السيرفر شغال 👍' })
 })
 
+// ملفات صور المنتجات المرفوعة (uploads/products/...) — مجلد منفصل تمامًا عن
+// public/ (اللي هو ناتج بناء الفرونت وبيتمسح ويتجدد كل build)، عشان الصور
+// المرفوعة تفضل موجودة دايمًا مهما اتعمل build جديد للفرونت
+app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')))
+
 app.use('/api/auth', authRoutes)
 app.use('/api/categories', categoryRoutes)
 app.use('/api/products', productRoutes)
@@ -50,6 +56,7 @@ app.use('/api/admin/products', adminProductRoutes)
 app.use('/api/admin/orders', adminOrderRoutes)
 app.use('/api/admin/settings', adminSettingsRoutes)
 app.use('/api/admin/dashboard', adminDashboardRoutes)
+app.use('/api/admin/uploads', adminUploadRoutes)
 
 // أي مسار غير معروف يبدأ بـ /api يرجع 404 JSON (مش صفحة HTML)
 app.use('/api', notFoundHandler)

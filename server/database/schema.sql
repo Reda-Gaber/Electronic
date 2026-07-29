@@ -91,13 +91,16 @@ CREATE TABLE IF NOT EXISTS `products` (
 -- 4) product_images — صور المنتج (Product.images[])
 -- ============================================================================
 CREATE TABLE IF NOT EXISTS `product_images` (
-  `id`         INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  `product_id` INT UNSIGNED NOT NULL,
-  -- رابط صورة عادي، أو Data URL لصورة مرفوعة من جهاز الأدمن مباشرة (بعد
-  -- توحيد مقاسها في المتصفح) — MEDIUMTEXT لاحتمال طول الـ Data URL (حتى 16MB)
-  `image_url`  MEDIUMTEXT NOT NULL,
+  `id`             INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  `product_id`     INT UNSIGNED NOT NULL,
+  -- مسار الصورة (بعد معالجتها بـ Sharp وتحويلها WebP، مثلاً /uploads/products/xxx.webp)
+  -- سايبينه MEDIUMTEXT (مش VARCHAR) عشان لو فيه منتجات قديمة لسه فيها Data URL
+  -- (Base64) تفضل شغالة زي ما هي بدون أي تعديل أو فقدان بيانات
+  `image_url`      MEDIUMTEXT NOT NULL,
+  -- نسخة مصغّرة (400px) من نفس الصورة — NULL للصور القديمة قبل التحديث ده
+  `thumbnail_url`  VARCHAR(500) NULL,
   -- أول صورة بالترتيب (sort_order=0) هي الصورة الرئيسية = product.image في الفرونت
-  `sort_order` INT NOT NULL DEFAULT 0,
+  `sort_order`     INT NOT NULL DEFAULT 0,
   CONSTRAINT `fk_product_images_product`
     FOREIGN KEY (`product_id`) REFERENCES `products` (`id`)
     ON DELETE CASCADE ON UPDATE CASCADE,

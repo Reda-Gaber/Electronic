@@ -40,8 +40,12 @@ export class ApiClientError extends Error {
 export async function apiFetch<T>(path: string, options: ApiFetchOptions = {}): Promise<T> {
   const { withAuth = true, headers, ...rest } = options
 
+  const isFormData = rest.body instanceof FormData
+
   const finalHeaders: Record<string, string> = {
-    'Content-Type': 'application/json',
+    // مع FormData لازم نسيب المتصفح يحط الـ Content-Type لوحده (فيه boundary
+    // مطلوب للملفات)، فحطه يدوي هنا هيكسر الرفع
+    ...(isFormData ? {} : { 'Content-Type': 'application/json' }),
     ...(headers as Record<string, string>),
   }
 

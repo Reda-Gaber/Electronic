@@ -1,12 +1,14 @@
 // إضافة/تعديل منتج — فورم كامل مربوط بالباك اند الحقيقي
-import { useEffect, useState, type FormEvent } from 'react'
+import { useEffect, useRef, useState, type ChangeEvent, type FormEvent } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import type { Category } from '@/types'
 import { fetchCategories } from '@/services/categories'
 import {
   adminFetchProductById,
   createProduct,
+  deleteProductImage,
   updateProduct,
+  uploadProductImages,
   type ProductInput,
 } from '@/services/products'
 import { ApiClientError } from '@/lib/apiClient'
@@ -52,6 +54,10 @@ export default function AdminProductFormPage() {
   const [specs, setSpecs] = useState<SpecRow[]>([{ id: 'spec-0', label: '', value: '' }])
   const [images, setImages] = useState<string[]>([])
   const [newImageUrl, setNewImageUrl] = useState('')
+  const [isUploadingImages, setIsUploadingImages] = useState(false)
+  const [imageUploadError, setImageUploadError] = useState<string | null>(null)
+  const mainImageInputRef = useRef<HTMLInputElement>(null)
+  const extraImageInputRef = useRef<HTMLInputElement>(null)
 
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [saveMessage, setSaveMessage] = useState<string | null>(null)
@@ -128,8 +134,55 @@ export default function AdminProductFormPage() {
       setNewImageUrl('')
     }
   }
-  const removeImage = (index: number) =>
+
+  /** رفع الصورة الرئيسية من الجهاز — بتحل محل أول صورة في القائمة (أو تُضاف لو القائمة فاضية) */
+  const handleMainImageUpload = async (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+    setImageUploadError(null)
+    setIsUploadingImages(true)
+    try {
+      const [uploaded] = await uploadProductImages([file])
+      setImages((prev) => (prev.length > 0 ? [uploaded.url, ...prev.slice(1)] : [uploaded.url]))
+    } catch (err) {
+      setImageUploadError(
+        err instanceof ApiClientError ? err.message : 'تعذر رفع الصورة، جرب تاني',
+      )
+    } finally {
+      setIsUploadingImages(false)
+      e.target.value = ''
+    }
+  }
+
+  /** رفع صورة/صور إضافية من الجهاز — بتتضاف في آخر القائمة، ومعالجتها بتتم على السيرفر */
+  const handleExtraImagesUpload = async (e: ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files
+    if (!files || files.length === 0) return
+    setImageUploadError(null)
+    setIsUploadingImages(true)
+    try {
+      const uploaded = await uploadProductImages(Array.from(files))
+      setImages((prev) => [...prev, ...uploaded.map((img) => img.url)])
+    } catch (err) {
+      setImageUploadError(
+        err instanceof ApiClientError ? err.message : 'تعذر رفع بعض الصور، جرب تاني',
+      )
+    } finally {
+      setIsUploadingImages(false)
+      e.target.value = ''
+    }
+  }
+
+  /** حذف صورة من الفورم — وبتتمسح فعليًا من السيرفر لو كانت مرفوعة من الجهاز (مش رابط خارجي) */
+  const removeImage = (index: number) => {
+    const url = images[index]
     setImages((prev) => prev.filter((_, i) => i !== index))
+    if (url.startsWith('/uploads/')) {
+      deleteProductImage(url).catch(() => {
+        /* حذف الملف من السيرفر فشل — مش هيوقف تعديل الفورم، الصورة اتشالت من القائمة برضو */
+      })
+    }
+  }
   const moveImage = (index: number, direction: -1 | 1) => {
     setImages((prev) => {
       const newIndex = index + direction
@@ -386,7 +439,16 @@ export default function AdminProductFormPage() {
                     key={img + index}
                     className="group relative overflow-hidden rounded-xl border border-outline-variant bg-surface-container-low"
                   >
-                    <img src={img} alt={`صورة ${index + 1}`} className="aspect-square w-full object-contain p-2" />
+                    {index === 0 && (
+                      <span className="absolute right-1.5 top-1.5 z-10 rounded-full bg-primary px-2 py-0.5 text-[10px] font-bold text-on-primary">
+                        الرئيسية
+                      </span>
+                    )}
+                    <img
+                      src={img}
+                      alt={`صورة ${index + 1}`}
+                      className="aspect-square w-full object-cover"
+                    />
                     <div className="absolute inset-x-0 bottom-0 flex justify-center gap-1 bg-on-surface/50 p-1 opacity-0 transition-opacity group-hover:opacity-100">
                       <button
                         type="button"
@@ -418,13 +480,66 @@ export default function AdminProductFormPage() {
               </div>
             )}
 
-            {/* إضافة صورة برابط — بديل مؤقت لرفع ملفات حقيقي */}
+            {imageUploadError && (
+              <p className="mb-3 rounded-lg bg-error-container/50 px-3 py-2 text-xs font-bold text-error">
+                {imageUploadError}
+              </p>
+            )}
+
+            {/* رفع من الجهاز — الصورة الرئيسية + صور إضافية، بتترفع فعليًا للسيرفر ويتم معالجتها هناك (WebP + تصغير + Thumbnail) */}
+            <div className="mb-3 flex flex-wrap gap-2">
+              <input
+                ref={mainImageInputRef}
+                type="file"
+                accept="image/*"
+                className="hidden"
+                onChange={handleMainImageUpload}
+              />
+              <button
+                type="button"
+                disabled={isUploadingImages}
+                onClick={() => mainImageInputRef.current?.click()}
+                className="flex items-center gap-1.5 rounded-xl bg-primary px-4 py-2.5 text-sm font-bold text-on-primary hover:bg-primary-container disabled:opacity-60"
+              >
+                <span className="material-symbols-outlined text-lg">upload</span>
+                {images.length > 0 ? 'تغيير الصورة الرئيسية' : 'اختيار الصورة الرئيسية'} من الجهاز
+              </button>
+
+              <input
+                ref={extraImageInputRef}
+                type="file"
+                accept="image/*"
+                multiple
+                className="hidden"
+                onChange={handleExtraImagesUpload}
+              />
+              <button
+                type="button"
+                disabled={isUploadingImages}
+                onClick={() => extraImageInputRef.current?.click()}
+                className="flex items-center gap-1.5 rounded-xl border-2 border-outline-variant px-4 py-2.5 text-sm font-bold text-on-surface hover:border-outline disabled:opacity-60"
+              >
+                <span className="material-symbols-outlined text-lg">add_photo_alternate</span>
+                إضافة صورة أخرى من الجهاز
+              </button>
+
+              {isUploadingImages && (
+                <span className="flex items-center gap-1.5 text-sm text-on-surface-variant">
+                  <span className="material-symbols-outlined animate-spin text-lg">
+                    progress_activity
+                  </span>
+                  جاري المعالجة...
+                </span>
+              )}
+            </div>
+
+            {/* إضافة صورة برابط — بديل اختياري لو الصورة أونلاين بالفعل */}
             <div className="flex gap-2">
               <input
                 type="text"
                 value={newImageUrl}
                 onChange={(e) => setNewImageUrl(e.target.value)}
-                placeholder="الصق رابط صورة هنا..."
+                placeholder="أو الصق رابط صورة هنا..."
                 className="flex-1 rounded-xl border border-outline-variant bg-surface-container-lowest px-4 py-2.5 text-sm outline-none focus:border-primary"
               />
               <button
@@ -436,7 +551,9 @@ export default function AdminProductFormPage() {
               </button>
             </div>
             <p className="mt-2 text-xs text-on-surface-variant">
-              حالياً يتم إضافة الصور عبر روابط مباشرة (رفع ملفات حقيقي غير مدعوم بعد)
+              أول صورة في القائمة هي الصورة الرئيسية للمنتج — استخدم أزرار التحريك لتغيير
+              ترتيبها. الصور المرفوعة من الجهاز بيتم ضغطها وتحويلها تلقائياً لصيغة WebP
+              بأعلى جودة ممكنة.
             </p>
           </div>
         </div>
