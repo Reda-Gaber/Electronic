@@ -37,6 +37,7 @@ export interface Product {
   description: string
   specs: ProductSpec[]
   inStock: boolean
+  /** رقم قديم من قاعدة البيانات (افتراضي 0) — غير مستخدَم كحد للشراء؛ التوفر يتحكم فيه الأدمن يدوياً عبر inStock فقط */
   stockCount: number
   rating: number
   reviewCount: number
@@ -103,4 +104,8 @@ export interface StoreSettings {
   instapayNumber: string
   storeName: string
   storePhone: string
+  storeEmail: string
+  storeAddress: string
+  /** أرقام تليفونات متعددة للتواصل — منفصلة عن رقم إنستاباي الوحيد */
+  contactPhones: string[]
 }

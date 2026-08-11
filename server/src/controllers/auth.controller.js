@@ -95,4 +95,49 @@ const changePassword = asyncHandler(async (req, res) => {
   res.json({ success: true, message: 'تم تغيير كلمة المرور بنجاح' })
 })
 
-module.exports = { login, getMe, changePassword }
+/**
+ * PATCH /api/auth/change-email
+ * محمي — body: { currentPassword, newEmail }
+ * نطلب كلمة المرور الحالية كتأكيد أمني قبل تغيير بيانات الدخول
+ */
+const changeEmail = asyncHandler(async (req, res) => {
+  const { currentPassword, newEmail } = req.body
+
+  if (!currentPassword || !newEmail || !newEmail.trim()) {
+    throw new ApiError(400, 'لازم تدخل كلمة المرور الحالية والإيميل الجديد')
+  }
+
+  const normalizedEmail = newEmail.trim().toLowerCase()
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  if (!emailPattern.test(normalizedEmail)) {
+    throw new ApiError(400, 'صيغة الإيميل غير صحيحة')
+  }
+
+  const [rows] = await pool.query(
+    'SELECT password_hash FROM admin_users WHERE id = ? LIMIT 1',
+    [req.admin.id],
+  )
+
+  const isCurrentValid = await bcrypt.compare(currentPassword, rows[0].password_hash)
+  if (!isCurrentValid) {
+    throw new ApiError(401, 'كلمة المرور الحالية غير صحيحة')
+  }
+
+  // نتأكد إن الإيميل الجديد مش مستخدَم من حساب أدمن تاني
+  const [existing] = await pool.query(
+    'SELECT id FROM admin_users WHERE email = ? AND id != ? LIMIT 1',
+    [normalizedEmail, req.admin.id],
+  )
+  if (existing.length > 0) {
+    throw new ApiError(409, 'هذا الإيميل مستخدَم بالفعل')
+  }
+
+  await pool.query('UPDATE admin_users SET email = ? WHERE id = ?', [
+    normalizedEmail,
+    req.admin.id,
+  ])
+
+  res.json({ success: true, data: { email: normalizedEmail } })
+})
+
+module.exports = { login, getMe, changePassword, changeEmail }

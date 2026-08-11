@@ -28,22 +28,23 @@ const getDashboardStats = asyncHandler(async (req, res) => {
     `SELECT COALESCE(SUM(total), 0) AS totalRevenue FROM orders WHERE status != 'cancelled'`,
   )
 
-  // === تنبيهات المخزون المنخفض (متوفر لكن 5 قطع أو أقل) ===
-  const [lowStockRows] = await pool.query(
+  // === المنتجات غير المتوفرة حالياً (الأدمن عطّلها يدوياً بعد نفاد الكمية) ===
+  const [outOfStockRows] = await pool.query(
     `SELECT p.*, c.name AS category_name
      FROM products p
      JOIN categories c ON c.id = p.category_id
-     WHERE p.in_stock = 1 AND p.stock_count <= 5
-     ORDER BY p.stock_count ASC`,
+     WHERE p.in_stock = 0 AND p.status = 'published'
+     ORDER BY p.updated_at DESC
+     LIMIT 10`,
   )
-  let lowStockProducts = []
-  if (lowStockRows.length > 0) {
-    const ids = lowStockRows.map((r) => r.id)
+  let outOfStockProducts = []
+  if (outOfStockRows.length > 0) {
+    const ids = outOfStockRows.map((r) => r.id)
     const [images] = await pool.query(
       'SELECT * FROM product_images WHERE product_id IN (?) ORDER BY sort_order ASC',
       [ids],
     )
-    lowStockProducts = lowStockRows.map((row) =>
+    outOfStockProducts = outOfStockRows.map((row) =>
       toProductDTO(
         row,
         images.filter((img) => img.product_id === row.id),
@@ -95,7 +96,7 @@ const getDashboardStats = asyncHandler(async (req, res) => {
       totalOrders,
       pendingOrders,
       totalRevenue: Number(totalRevenue),
-      lowStockProducts,
+      outOfStockProducts,
       salesByDay,
       recentOrders,
     },

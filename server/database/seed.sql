@@ -8,8 +8,16 @@ USE `abdelnabi_pctech`;
 -- ----------------------------------------------------------------------------
 -- إعدادات المتجر (صف واحد بس)
 -- ----------------------------------------------------------------------------
-INSERT INTO `settings` (`id`, `store_name`, `store_phone`, `instapay_number`)
-VALUES (1, 'عبدالنبي بي سي تيك', '01098765432', '01012345678')
+INSERT INTO `settings` (`id`, `store_name`, `store_phone`, `store_email`, `store_address`, `contact_phones`, `instapay_number`)
+VALUES (
+  1,
+  'عبدالنبي للإلكترونيات',
+  '01098765432',
+  'info@abdelnabi-pctech.com',
+  'القاهرة، مصر',
+  JSON_ARRAY('01098765432'),
+  '01012345678'
+)
 ON DUPLICATE KEY UPDATE
   `store_name` = VALUES(`store_name`),
   `store_phone` = VALUES(`store_phone`),

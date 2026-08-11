@@ -6,7 +6,7 @@ export interface DashboardStats {
   totalOrders: number
   pendingOrders: number
   totalRevenue: number
-  lowStockProducts: Product[]
+  outOfStockProducts: Product[]
   salesByDay: { date: string; total: number }[]
   recentOrders: (Order & { shortCode: string })[]
 }

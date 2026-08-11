@@ -46,7 +46,7 @@ export default function AdminLoginPage() {
             تسجيل دخول الأدمن
           </h1>
           <p className="mt-2 text-sm text-on-surface-variant">
-            لوحة تحكم متجر عبدالنبي بي سي تيك
+            لوحة تحكم متجر عبدالنبي للإلكترونيات
           </p>
         </div>
 

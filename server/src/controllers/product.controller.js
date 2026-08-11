@@ -171,8 +171,6 @@ function validateProductInput(body) {
   if (!body.categoryId) errors.categoryId = 'اختر التصنيف'
   if (!body.brand || !body.brand.trim()) errors.brand = 'الماركة مطلوبة'
   if (!body.price || Number(body.price) <= 0) errors.price = 'أدخل سعراً صحيحاً'
-  if (body.stockCount === undefined || Number(body.stockCount) < 0)
-    errors.stockCount = 'أدخل كمية مخزون صحيحة'
   return errors
 }
 
@@ -196,7 +194,6 @@ const createProduct = asyncHandler(async (req, res) => {
     images,
     specs,
     inStock,
-    stockCount,
     isFeatured,
     isNew,
     status,
@@ -214,8 +211,8 @@ const createProduct = asyncHandler(async (req, res) => {
     const [result] = await connection.query(
       `INSERT INTO products
         (name, slug, category_id, brand, price, original_price, description,
-         in_stock, stock_count, is_featured, is_new, status)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+         in_stock, is_featured, is_new, status)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         name.trim(),
         slug,
@@ -225,7 +222,6 @@ const createProduct = asyncHandler(async (req, res) => {
         originalPrice ? Number(originalPrice) : null,
         description?.trim() || null,
         Boolean(inStock),
-        Number(stockCount),
         Boolean(isFeatured),
         Boolean(isNew),
         status === 'draft' ? 'draft' : 'published',
@@ -290,7 +286,6 @@ const updateProduct = asyncHandler(async (req, res) => {
     images,
     specs,
     inStock,
-    stockCount,
     isFeatured,
     isNew,
     status,
@@ -303,7 +298,7 @@ const updateProduct = asyncHandler(async (req, res) => {
     await connection.query(
       `UPDATE products SET
         name = ?, category_id = ?, brand = ?, price = ?, original_price = ?,
-        description = ?, in_stock = ?, stock_count = ?, is_featured = ?, is_new = ?, status = ?
+        description = ?, in_stock = ?, is_featured = ?, is_new = ?, status = ?
        WHERE id = ?`,
       [
         name.trim(),
@@ -313,7 +308,6 @@ const updateProduct = asyncHandler(async (req, res) => {
         originalPrice ? Number(originalPrice) : null,
         description?.trim() || null,
         Boolean(inStock),
-        Number(stockCount),
         Boolean(isFeatured),
         Boolean(isNew),
         status === 'draft' ? 'draft' : 'published',

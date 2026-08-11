@@ -121,7 +121,7 @@ export default function AdminOrderDetailPage() {
   }
 
   return (
-    <div>
+    <div className="pb-24 lg:pb-0">
       {/* رأس الصفحة: زر الرجوع + رقم الطلب + شارة الحالة */}
       <div className="mb-6 flex flex-wrap items-center gap-3">
         <button
@@ -320,12 +320,12 @@ export default function AdminOrderDetailPage() {
             </p>
           </div>
 
-          {/* حفظ التغييرات */}
+          {/* حفظ التغييرات — ديسكتوب فقط، الموبايل له شريط ثابت أسفل الشاشة */}
           <button
             type="button"
             onClick={handleSave}
             disabled={isSaving}
-            className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-3.5 text-sm font-bold text-on-primary shadow-[0_8px_20px_rgba(187,0,16,0.2)] transition-all hover:bg-primary-container active:scale-[0.98] disabled:opacity-60"
+            className="hidden w-full items-center justify-center gap-2 rounded-xl bg-primary py-3.5 text-sm font-bold text-on-primary shadow-[0_8px_20px_rgba(187,0,16,0.2)] transition-all hover:bg-primary-container active:scale-[0.98] disabled:opacity-60 lg:flex"
           >
             <span className="material-symbols-outlined">save</span>
             {isSaving ? 'جاري الحفظ...' : 'حفظ التغييرات'}
@@ -336,6 +336,19 @@ export default function AdminOrderDetailPage() {
             </p>
           )}
         </div>
+      </div>
+
+      {/* === شريط حفظ ثابت أسفل الشاشة — موبايل وتابلت فقط، فوق شريط التنقل السفلي === */}
+      <div className="fixed bottom-16 left-0 right-0 z-30 border-t border-outline-variant bg-surface-container-lowest p-3 shadow-[0_-4px_16px_rgba(0,0,0,0.06)] lg:hidden">
+        <button
+          type="button"
+          onClick={handleSave}
+          disabled={isSaving}
+          className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-3.5 text-sm font-bold text-on-primary shadow-[0_8px_20px_rgba(187,0,16,0.2)] transition-all active:scale-[0.98] disabled:opacity-60"
+        >
+          <span className="material-symbols-outlined">save</span>
+          {isSaving ? 'جاري الحفظ...' : 'حفظ التغييرات'}
+        </button>
       </div>
     </div>
   )

@@ -20,6 +20,15 @@ const statusStyles: Record<OrderStatus, string> = {
   cancelled: 'bg-surface-container-high text-on-surface-variant',
 }
 
+/** لون الحدّ الجانبي وخلفية كارت الطلب بالموبايل — يعكس حالة الطلب من أول نظرة */
+const statusBorderStyles: Record<OrderStatus, string> = {
+  pending: 'border-amber-400 bg-amber-50',
+  confirmed: 'border-tertiary bg-tertiary/5',
+  shipped: 'border-primary bg-primary/5',
+  delivered: 'border-green-500 bg-green-50',
+  cancelled: 'border-outline-variant bg-surface-container-low',
+}
+
 /** تكوين نص عنوان مختصر من بيانات عنوان الشحن — لعرضه في عمود العميل */
 function formatShortAddress(order: Order): string {
   return `${order.address.governorate} — ${order.address.city}، ${order.address.district}، شارع ${order.address.street}`
@@ -105,7 +114,7 @@ export default function AdminOrdersPage() {
   }
 
   return (
-    <div>
+    <div className="overflow-x-hidden">
       {/* عنوان الصفحة + زر الطباعة */}
       <div className="mb-6 flex flex-wrap items-center justify-between gap-4 print:hidden">
         <div>
@@ -120,7 +129,7 @@ export default function AdminOrdersPage() {
           type="button"
           onClick={handlePrint}
           disabled={confirmedOrders.length === 0}
-          className="flex items-center gap-2 rounded-xl border-2 border-outline-variant px-5 py-2.5 text-sm font-bold text-on-surface transition-colors hover:border-primary hover:text-primary disabled:cursor-not-allowed disabled:opacity-50"
+          className="flex w-full items-center justify-center gap-2 rounded-xl border-2 border-outline-variant px-5 py-2.5 text-sm font-bold text-on-surface transition-colors hover:border-primary hover:text-primary disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
           title={
             confirmedOrders.length === 0
               ? 'لا توجد طلبات مؤكدة لطباعتها'
@@ -128,12 +137,13 @@ export default function AdminOrdersPage() {
           }
         >
           <span className="material-symbols-outlined text-lg">print</span>
-          طباعة الطلبات المؤكدة ({confirmedOrders.length})
+          <span className="sm:hidden">طباعة ({confirmedOrders.length})</span>
+          <span className="hidden sm:inline">طباعة الطلبات المؤكدة ({confirmedOrders.length})</span>
         </button>
       </div>
 
-      {/* شريط البحث والفلاتر */}
-      <div className="mb-4 flex flex-col gap-3 print:hidden md:flex-row md:items-center">
+      {/* شريط البحث والفلاتر — نفس نمط باقي صفحات الأدمن (بحث + مربع فلتر بجانبه) */}
+      <div className="mb-4 flex flex-col gap-3 print:hidden md:flex-row md:flex-wrap md:items-center">
         <div className="flex flex-1 items-center gap-2 rounded-xl border border-outline-variant bg-surface-container-lowest px-4 py-2.5 md:max-w-sm">
           <span className="material-symbols-outlined text-lg text-on-surface-variant">
             search
@@ -147,26 +157,38 @@ export default function AdminOrdersPage() {
           />
         </div>
 
-        {/* فلتر المدى الزمني */}
-        <div className="flex items-center gap-2">
-          <span className="material-symbols-outlined shrink-0 text-lg text-on-surface-variant">
+        {/* فلتر المدى الزمني — عمودي بالكامل بالموبايل (كل حقل في صف مستقل) لتفادي مشكلة الحد الأدنى لعرض حقول التاريخ، وأفقي مضغوط بالديسكتوب */}
+        <div className="flex w-full flex-col gap-2 rounded-xl border border-outline-variant bg-surface-container-lowest p-3 sm:w-auto sm:flex-row sm:items-center sm:gap-2 sm:py-2">
+          <span className="flex shrink-0 items-center gap-1.5 text-xs font-bold text-on-surface-variant sm:hidden">
+            <span className="material-symbols-outlined text-lg">date_range</span>
+            المدى الزمني
+          </span>
+          <span className="material-symbols-outlined hidden shrink-0 text-lg text-on-surface-variant sm:inline">
             date_range
           </span>
-          <input
-            type="date"
-            value={dateFrom}
-            onChange={(e) => setDateFrom(e.target.value)}
-            className="rounded-xl border border-outline-variant bg-surface-container-lowest px-3 py-2 text-sm text-on-surface outline-none focus:border-primary"
-            aria-label="من تاريخ"
-          />
-          <span className="text-xs text-on-surface-variant">إلى</span>
-          <input
-            type="date"
-            value={dateTo}
-            onChange={(e) => setDateTo(e.target.value)}
-            className="rounded-xl border border-outline-variant bg-surface-container-lowest px-3 py-2 text-sm text-on-surface outline-none focus:border-primary"
-            aria-label="إلى تاريخ"
-          />
+
+          <div className="flex w-full items-center gap-2 sm:w-auto">
+            <span className="w-8 shrink-0 text-xs text-on-surface-variant sm:hidden">من</span>
+            <input
+              type="date"
+              value={dateFrom}
+              onChange={(e) => setDateFrom(e.target.value)}
+              className="w-full min-w-0 flex-1 bg-transparent text-sm text-on-surface outline-none sm:w-auto"
+              aria-label="من تاريخ"
+            />
+          </div>
+
+          <div className="flex w-full items-center gap-2 sm:w-auto">
+            <span className="w-8 shrink-0 text-xs text-on-surface-variant sm:w-auto">إلى</span>
+            <input
+              type="date"
+              value={dateTo}
+              onChange={(e) => setDateTo(e.target.value)}
+              className="w-full min-w-0 flex-1 bg-transparent text-sm text-on-surface outline-none sm:w-auto"
+              aria-label="إلى تاريخ"
+            />
+          </div>
+
           {(dateFrom || dateTo) && (
             <button
               type="button"
@@ -174,7 +196,7 @@ export default function AdminOrdersPage() {
                 setDateFrom('')
                 setDateTo('')
               }}
-              className="text-xs font-bold text-primary hover:text-primary-container"
+              className="shrink-0 self-start text-xs font-bold text-primary hover:text-primary-container sm:self-auto"
             >
               مسح
             </button>
@@ -225,10 +247,10 @@ export default function AdminOrdersPage() {
         ))}
       </div>
 
-      {/* جدول الطلبات — يظهر على الشاشة فقط */}
-      <div className="rounded-2xl border border-outline-variant bg-surface-container-lowest print:hidden">
+      {/* جدول/كروت الطلبات — يظهر على الشاشة فقط */}
+      <div className="print:hidden">
         {filteredOrders.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-16 text-center">
+          <div className="flex flex-col items-center justify-center rounded-2xl border border-outline-variant bg-surface-container-lowest py-16 text-center">
             <span className="material-symbols-outlined mb-3 text-4xl text-outline">
               search_off
             </span>
@@ -236,7 +258,47 @@ export default function AdminOrdersPage() {
             <p className="text-sm text-on-surface-variant">جرّب تعديل البحث أو الفلتر</p>
           </div>
         ) : (
-          <div className="overflow-x-auto">
+          <>
+            {/* === كروت الموبايل — تحت md — كل كارت مستقل بمسافة عن اللي تحته === */}
+            <ul className="flex flex-col gap-3 md:hidden">
+              {filteredOrders.map((order) => (
+                <li key={order.id}>
+                  <Link
+                    to={`/admin/orders/${order.id}`}
+                    className={`flex flex-col gap-2 rounded-2xl border border-outline-variant/60 border-r-4 bg-surface-container-lowest p-4 shadow-sm transition-all active:brightness-95 ${statusBorderStyles[order.status]}`}
+                  >
+                    <div className="flex items-center justify-between gap-2">
+                      <span dir="ltr" className="min-w-0 truncate font-bold text-on-surface">
+                        {getShortOrderCode(order.id, allOrders)}
+                      </span>
+                      <span className="shrink-0 text-xs text-on-surface-variant">
+                        {formatDate(order.createdAt)}
+                      </span>
+                    </div>
+
+                    {/* حالة الطلب الفعلية من قاعدة البيانات — شريط واحد واضح بالقيمة فقط */}
+                    <div
+                      className={`rounded-lg px-3 py-2 text-center text-sm font-extrabold ${statusStyles[order.status]}`}
+                    >
+                      {getOrderStatusLabel(order.status)}
+                    </div>
+
+                    <p className="font-bold text-on-surface">{order.customerName}</p>
+                    <p className="text-xs text-on-surface-variant">{formatShortAddress(order)}</p>
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-on-surface-variant">
+                        {order.items.reduce((sum, i) => sum + i.quantity, 0)} قطعة —{' '}
+                        {order.paymentMethod === 'instapay' ? 'إنستاباي' : 'كاش'}
+                      </span>
+                      <span className="font-bold text-on-surface">{formatPrice(order.total)}</span>
+                    </div>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            {/* === جدول الديسكتوب — من md فما فوق === */}
+            <div className="hidden overflow-x-auto rounded-2xl border border-outline-variant bg-surface-container-lowest md:block">
             <table className="w-full min-w-[820px] text-sm">
               <thead>
                 <tr className="border-b border-outline-variant text-right text-on-surface-variant">
@@ -293,7 +355,8 @@ export default function AdminOrdersPage() {
                 ))}
               </tbody>
             </table>
-          </div>
+            </div>
+          </>
         )}
       </div>
 

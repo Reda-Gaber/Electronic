@@ -42,7 +42,7 @@ export default function AdminDashboardPage() {
     )
   }
 
-  const { totalOrders, pendingOrders, totalRevenue, lowStockProducts, salesByDay, recentOrders } =
+  const { totalOrders, pendingOrders, totalRevenue, outOfStockProducts, salesByDay, recentOrders } =
     stats
 
   const statCards = [
@@ -65,8 +65,8 @@ export default function AdminDashboardPage() {
       color: 'text-tertiary bg-tertiary/10',
     },
     {
-      label: 'تنبيهات مخزون منخفض',
-      value: lowStockProducts.length.toLocaleString('ar-EG'),
+      label: 'منتجات غير متوفرة',
+      value: outOfStockProducts.length.toLocaleString('ar-EG'),
       icon: 'inventory_2',
       color: 'text-error bg-error-container',
     },
@@ -134,13 +134,13 @@ export default function AdminDashboardPage() {
         <div className="rounded-2xl border border-outline-variant bg-surface-container-lowest p-5">
           <h2 className="mb-4 flex items-center gap-2 font-display text-lg font-bold text-on-surface">
             <span className="material-symbols-outlined text-error">warning</span>
-            مخزون منخفض
+            منتجات غير متوفرة
           </h2>
-          {lowStockProducts.length === 0 ? (
-            <p className="text-sm text-on-surface-variant">لا توجد منتجات بمخزون منخفض حالياً</p>
+          {outOfStockProducts.length === 0 ? (
+            <p className="text-sm text-on-surface-variant">كل المنتجات متوفرة حالياً</p>
           ) : (
             <ul className="space-y-3">
-              {lowStockProducts.map((product) => (
+              {outOfStockProducts.map((product) => (
                 <li key={product.id} className="flex items-center gap-3">
                   <img
                     src={product.image}
@@ -151,7 +151,7 @@ export default function AdminDashboardPage() {
                     <p className="truncate text-sm font-medium text-on-surface">{product.name}</p>
                   </div>
                   <span className="shrink-0 rounded-full bg-error-container px-2 py-0.5 text-xs font-bold text-on-error-container">
-                    {product.stockCount} فقط
+                    غير متوفر
                   </span>
                 </li>
               ))}
@@ -172,7 +172,38 @@ export default function AdminDashboardPage() {
           </Link>
         </div>
 
-        <div className="overflow-x-auto">
+        {/* === كروت الموبايل — تحت md === */}
+        <ul className="divide-y divide-outline-variant/60 md:hidden">
+          {recentOrders.map((order) => (
+            <li key={order.id}>
+              <Link
+                to={`/admin/orders/${order.id}`}
+                className="flex flex-col gap-1.5 py-3 first:pt-0 last:pb-0"
+              >
+                <div className="flex items-center justify-between">
+                  <span dir="ltr" className="font-bold text-on-surface">
+                    {order.shortCode}
+                  </span>
+                  <span
+                    className={`rounded-full px-2.5 py-1 text-xs font-bold ${statusStyles[order.status]}`}
+                  >
+                    {getOrderStatusLabel(order.status)}
+                  </span>
+                </div>
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-on-surface">{order.customerName}</span>
+                  <span className="font-bold text-on-surface">{formatPrice(order.total)}</span>
+                </div>
+                <span className="text-xs text-on-surface-variant">
+                  {formatDate(order.createdAt)}
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+        {/* === جدول الديسكتوب — من md فما فوق === */}
+        <div className="hidden overflow-x-auto md:block">
           <table className="w-full min-w-[600px] text-sm">
             <thead>
               <tr className="border-b border-outline-variant text-right text-on-surface-variant">

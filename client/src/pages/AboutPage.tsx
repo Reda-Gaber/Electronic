@@ -37,8 +37,11 @@ const whyUs = [
 ]
 
 const FALLBACK_SETTINGS: StoreSettings = {
-  storeName: 'عبدالنبي بي سي تيك',
+  storeName: 'عبدالنبي للإلكترونيات',
   storePhone: '',
+  storeEmail: '',
+  storeAddress: '',
+  contactPhones: [],
   instapayNumber: '',
 }
 

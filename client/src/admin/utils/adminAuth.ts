@@ -65,3 +65,33 @@ export async function verifySession(): Promise<AdminUser | null> {
     return null
   }
 }
+
+/** تغيير كلمة مرور الأدمن — لازم كلمة المرور الحالية كتأكيد أمني */
+export async function changeAdminPassword(
+  currentPassword: string,
+  newPassword: string,
+): Promise<void> {
+  await apiFetch('/auth/change-password', {
+    method: 'PATCH',
+    body: JSON.stringify({ currentPassword, newPassword }),
+  })
+}
+
+/**
+ * تغيير إيميل تسجيل دخول الأدمن — لازم كلمة المرور الحالية كتأكيد أمني
+ * بيحدّث الإيميل المحفوظ محلياً فوراً عشان يظهر صح في الهيدر والسايد بار
+ */
+export async function changeAdminEmail(
+  currentPassword: string,
+  newEmail: string,
+): Promise<void> {
+  const res = await apiFetch<{ success: true; data: { email: string } }>('/auth/change-email', {
+    method: 'PATCH',
+    body: JSON.stringify({ currentPassword, newEmail }),
+  })
+
+  const stored = getStoredAdmin()
+  if (stored) {
+    localStorage.setItem(ADMIN_STORAGE_KEY, JSON.stringify({ ...stored, email: res.data.email }))
+  }
+}

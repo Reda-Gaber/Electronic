@@ -5,8 +5,11 @@ import { fetchSettings } from '@/services/settings'
 import type { StoreSettings } from '@/types'
 
 const FALLBACK_SETTINGS: StoreSettings = {
-  storeName: 'عبدالنبي بي سي تيك',
+  storeName: 'عبدالنبي للإلكترونيات',
   storePhone: '',
+  storeEmail: '',
+  storeAddress: '',
+  contactPhones: [],
   instapayNumber: '',
 }
 
@@ -21,22 +24,54 @@ export default function ContactPage() {
       })
   }, [])
 
-  /** طرق التواصل المعروضة كبطاقات أعلى الصفحة — تُقرأ من إعدادات المتجر */
+  /** طرق التواصل المعروضة كبطاقات أعلى الصفحة — تُقرأ من إعدادات المتجر بالكامل */
+  const primaryPhone = settings.contactPhones[0] || settings.storePhone
+
   const contactMethods = [
-    {
+    // بطاقة لكل رقم تواصل مضاف من لوحة الأدمن
+    ...settings.contactPhones.map((phone) => ({
       icon: 'call',
       title: 'اتصل بنا',
-      value: settings.storePhone,
-      href: `tel:${settings.storePhone}`,
+      value: phone,
+      href: `tel:${phone}`,
       dir: 'ltr' as const,
-    },
-    {
-      icon: 'chat',
-      title: 'واتساب',
-      value: settings.storePhone,
-      href: `https://wa.me/2${settings.storePhone}`,
-      dir: 'ltr' as const,
-    },
+    })),
+    // واتساب — على الرقم الأساسي
+    ...(primaryPhone
+      ? [
+          {
+            icon: 'chat',
+            title: 'واتساب',
+            value: primaryPhone,
+            href: `https://wa.me/2${primaryPhone}`,
+            dir: 'ltr' as const,
+          },
+        ]
+      : []),
+    // الإيميل — لو متسجّل
+    ...(settings.storeEmail
+      ? [
+          {
+            icon: 'mail',
+            title: 'الإيميل',
+            value: settings.storeEmail,
+            href: `mailto:${settings.storeEmail}`,
+            dir: 'ltr' as const,
+          },
+        ]
+      : []),
+    // العنوان — لو متسجّل
+    ...(settings.storeAddress
+      ? [
+          {
+            icon: 'location_on',
+            title: 'العنوان',
+            value: settings.storeAddress,
+            href: undefined,
+            dir: 'rtl' as const,
+          },
+        ]
+      : []),
     {
       icon: 'schedule',
       title: 'مواعيد العمل',
@@ -93,7 +128,7 @@ export default function ContactPage() {
             )
             return method.href ? (
               <a
-                key={method.title}
+                key={`${method.title}-${method.value}`}
                 href={method.href}
                 target={method.href.startsWith('http') ? '_blank' : undefined}
                 rel="noreferrer"
@@ -103,7 +138,7 @@ export default function ContactPage() {
               </a>
             ) : (
               <div
-                key={method.title}
+                key={`${method.title}-${method.value}`}
                 className="rounded-2xl border border-outline-variant bg-surface-container-lowest p-6"
               >
                 {content}
@@ -209,7 +244,7 @@ export default function ContactPage() {
                   للاستفسارات العاجلة، كلمنا مباشرة على واتساب
                 </p>
                 <a
-                  href={`https://wa.me/2${settings.storePhone}`}
+                  href={`https://wa.me/2${primaryPhone}`}
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center justify-center gap-2 rounded-xl bg-primary py-3 text-sm font-bold text-on-primary hover:bg-primary-container"

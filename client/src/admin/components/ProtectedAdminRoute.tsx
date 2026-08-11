@@ -4,7 +4,7 @@
  * الوظيفة: عند فتح أي صفحة أدمن، يتأكد فعلياً من السيرفر إن التوكن المحفوظ
  * لسه صالح (مش بس موجود محلياً). لو مش صالح أو مش موجود، يحوّل لصفحة تسجيل
  * الدخول تلقائياً. أثناء التحقق، يعرض شاشة تحميل بسيطة بدل ما يومض المحتوى.
- * الاستخدام: يلف مسارات /admin/* في App.tsx (ما عدا /admin/login نفسها)
+ * الاستخدام: يلف مسارات /admin/* في App.tsx (ما عدا /login نفسها)
  */
 import { useEffect, useState } from 'react'
 import { Navigate, Outlet } from 'react-router-dom'
@@ -39,7 +39,7 @@ export default function ProtectedAdminRoute() {
   }
 
   if (status === 'unauthenticated') {
-    return <Navigate to="/admin/login" replace />
+    return <Navigate to="/login" replace />
   }
 
   return <Outlet />

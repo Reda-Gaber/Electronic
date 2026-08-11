@@ -113,7 +113,7 @@ export default function AdminProductsPage() {
         </select>
       </div>
 
-      {/* جدول المنتجات */}
+      {/* جدول/كروت المنتجات */}
       <div className="rounded-2xl border border-outline-variant bg-surface-container-lowest">
         {filteredProducts.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 text-center">
@@ -124,14 +124,70 @@ export default function AdminProductsPage() {
             <p className="text-sm text-on-surface-variant">جرّب تعديل البحث أو الفلتر</p>
           </div>
         ) : (
-          <div className="overflow-x-auto">
+          <>
+            {/* === كروت الموبايل — تحت md === */}
+            <ul className="divide-y divide-outline-variant/60 md:hidden">
+              {filteredProducts.map((product) => (
+                <li key={product.id} className="flex items-center gap-3 p-4">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="h-14 w-14 shrink-0 rounded-lg bg-surface-container-low object-contain p-1"
+                  />
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate font-bold text-on-surface">{product.name}</p>
+                    <p className="text-xs text-on-surface-variant">
+                      {product.brand} — {product.categoryName}
+                    </p>
+                    <div className="mt-1 flex flex-wrap items-center gap-1.5">
+                      <span className="font-bold text-on-surface">
+                        {formatPrice(product.price)}
+                      </span>
+                      <span
+                        className={`rounded-full px-2 py-0.5 text-[10px] font-bold ${
+                          product.inStock
+                            ? 'bg-tertiary/10 text-tertiary'
+                            : 'bg-surface-container-high text-on-surface-variant'
+                        }`}
+                      >
+                        {product.inStock ? 'متوفر' : 'غير متوفر'}
+                      </span>
+                      {product.status === 'draft' && (
+                        <span className="rounded-full bg-surface-container-high px-2 py-0.5 text-[10px] font-bold text-on-surface-variant">
+                          مسودة
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                  <div className="flex shrink-0 flex-col gap-1">
+                    <Link
+                      to={`/admin/products/${product.id}/edit`}
+                      className="flex h-8 w-8 items-center justify-center rounded-lg text-on-surface-variant transition-colors active:bg-surface-container-high"
+                      aria-label={`تعديل ${product.name}`}
+                    >
+                      <span className="material-symbols-outlined text-lg">edit</span>
+                    </Link>
+                    <button
+                      type="button"
+                      onClick={() => setProductToDelete(product.id)}
+                      className="flex h-8 w-8 items-center justify-center rounded-lg text-on-surface-variant transition-colors active:bg-error-container active:text-on-error-container"
+                      aria-label={`حذف ${product.name}`}
+                    >
+                      <span className="material-symbols-outlined text-lg">delete</span>
+                    </button>
+                  </div>
+                </li>
+              ))}
+            </ul>
+
+            {/* === جدول الديسكتوب — من md فما فوق === */}
+            <div className="hidden overflow-x-auto md:block">
             <table className="w-full min-w-[720px] text-sm">
               <thead>
                 <tr className="border-b border-outline-variant text-right text-on-surface-variant">
                   <th className="p-4 font-bold">المنتج</th>
                   <th className="p-4 font-bold">التصنيف</th>
                   <th className="p-4 font-bold">السعر</th>
-                  <th className="p-4 font-bold">المخزون</th>
                   <th className="p-4 font-bold">الحالة</th>
                   <th className="p-4 font-bold">إجراءات</th>
                 </tr>
@@ -157,12 +213,6 @@ export default function AdminProductsPage() {
                     </td>
                     <td className="p-4 text-on-surface-variant">{product.categoryName}</td>
                     <td className="p-4 font-bold text-on-surface">{formatPrice(product.price)}</td>
-                    <td className="p-4 text-on-surface-variant">
-                      {product.stockCount}
-                      {product.stockCount <= 5 && product.inStock && (
-                        <span className="mr-1.5 text-xs font-bold text-error">(منخفض)</span>
-                      )}
-                    </td>
                     <td className="p-4">
                       <div className="flex flex-wrap items-center gap-1.5">
                         <span
@@ -204,7 +254,8 @@ export default function AdminProductsPage() {
                 ))}
               </tbody>
             </table>
-          </div>
+            </div>
+          </>
         )}
       </div>
 

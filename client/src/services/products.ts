@@ -76,7 +76,6 @@ export interface ProductInput {
   images: string[]
   specs: ProductSpec[]
   inStock: boolean
-  stockCount: number
   isFeatured: boolean
   isNew: boolean
   status: 'published' | 'draft'

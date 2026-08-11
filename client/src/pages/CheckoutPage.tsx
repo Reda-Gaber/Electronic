@@ -7,11 +7,15 @@ import { createOrder } from '@/services/orders'
 import { ApiClientError } from '@/lib/apiClient'
 import { EGYPT_GOVERNORATES } from '@/data/governorates'
 import { copyToClipboard, formatPrice } from '@/utils/helpers'
+import { saveLastOrderId } from '@/utils/lastOrder'
 import type { PaymentMethod, StoreSettings } from '@/types'
 
 const FALLBACK_SETTINGS: StoreSettings = {
-  storeName: 'عبدالنبي بي سي تيك',
+  storeName: 'عبدالنبي للإلكترونيات',
   storePhone: '',
+  storeEmail: '',
+  storeAddress: '',
+  contactPhones: [],
   instapayNumber: '',
 }
 
@@ -132,6 +136,7 @@ export default function CheckoutPage() {
       })
 
       clearCart()
+      saveLastOrderId(order.id)
       navigate(`/order-confirmation/${order.id}`)
     } catch (err) {
       setSubmitError(

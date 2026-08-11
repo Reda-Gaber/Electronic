@@ -48,7 +48,6 @@ export default function AdminProductFormPage() {
   const [brand, setBrand] = useState('')
   const [price, setPrice] = useState('')
   const [originalPrice, setOriginalPrice] = useState('')
-  const [stockCount, setStockCount] = useState('')
   const [inStock, setInStock] = useState(true)
   const [description, setDescription] = useState('')
   const [specs, setSpecs] = useState<SpecRow[]>([{ id: 'spec-0', label: '', value: '' }])
@@ -87,7 +86,6 @@ export default function AdminProductFormPage() {
           setBrand(product.brand)
           setPrice(String(product.price))
           setOriginalPrice(product.originalPrice ? String(product.originalPrice) : '')
-          setStockCount(String(product.stockCount))
           setInStock(product.inStock)
           setDescription(product.description)
           setSpecs(
@@ -200,7 +198,6 @@ export default function AdminProductFormPage() {
     if (!categoryId) newErrors.categoryId = 'اختر التصنيف'
     if (!brand.trim()) newErrors.brand = 'الماركة مطلوبة'
     if (!price || Number(price) <= 0) newErrors.price = 'أدخل سعراً صحيحاً'
-    if (!stockCount || Number(stockCount) < 0) newErrors.stockCount = 'أدخل كمية مخزون صحيحة'
     return newErrors
   }
 
@@ -231,7 +228,6 @@ export default function AdminProductFormPage() {
         .filter((row) => row.label.trim() && row.value.trim())
         .map((row) => ({ label: row.label.trim(), value: row.value.trim() })),
       inStock,
-      stockCount: Number(stockCount),
       isFeatured: preservedFields.isFeatured,
       isNew: preservedFields.isNew,
       status: publish ? 'published' : 'draft',
@@ -288,7 +284,7 @@ export default function AdminProductFormPage() {
   }
 
   return (
-    <div>
+    <div className="pb-24 lg:pb-0">
       {/* رأس الصفحة */}
       <div className="mb-6 flex items-center gap-3">
         <button
@@ -558,10 +554,10 @@ export default function AdminProductFormPage() {
           </div>
         </div>
 
-        {/* === العمود الجانبي: السعر والمخزون والنشر === */}
+        {/* === العمود الجانبي: السعر والتوفر والنشر === */}
         <div className="space-y-6">
           <div className="rounded-2xl border border-outline-variant bg-surface-container-lowest p-5">
-            <h2 className="mb-4 font-display text-lg font-bold text-on-surface">السعر والمخزون</h2>
+            <h2 className="mb-4 font-display text-lg font-bold text-on-surface">السعر والتوفر</h2>
             <div className="space-y-4">
               <div>
                 <label className="mb-1.5 block text-sm font-bold text-on-surface-variant">
@@ -588,38 +584,27 @@ export default function AdminProductFormPage() {
                   className="w-full rounded-xl border border-outline-variant bg-surface-container-lowest px-4 py-3 text-sm outline-none focus:border-primary"
                 />
               </div>
-              <div>
-                <label className="mb-1.5 block text-sm font-bold text-on-surface-variant">
-                  كمية المخزون
+              {/* مفتاح حالة التوفر — الطريقة الوحيدة للتحكم في ظهور المنتج للعميل، بدون كمية مرتبطة */}
+              <div className="rounded-xl bg-surface-container-high px-4 py-3">
+                <label className="flex cursor-pointer items-center justify-between">
+                  <span className="text-sm font-bold text-on-surface">متوفر للبيع</span>
+                  <input
+                    type="checkbox"
+                    checked={inStock}
+                    onChange={(e) => setInStock(e.target.checked)}
+                    className="h-5 w-5 accent-primary"
+                  />
                 </label>
-                <input
-                  type="number"
-                  value={stockCount}
-                  onChange={(e) => setStockCount(e.target.value)}
-                  className={`w-full rounded-xl border bg-surface-container-lowest px-4 py-3 text-sm outline-none focus:border-primary ${
-                    errors.stockCount ? 'border-error' : 'border-outline-variant'
-                  }`}
-                />
-                {errors.stockCount && (
-                  <p className="mt-1 text-xs font-bold text-error">{errors.stockCount}</p>
-                )}
+                <p className="mt-1.5 text-xs text-on-surface-variant">
+                  العميل يقدر يطلب أي كمية يحتاجها من غير حد أقصى. لما تخلص الكمية عندك،
+                  ارجع هنا وشيّل علامة "متوفر للبيع" عشان يظهر للعميل كـ"غير متوفر".
+                </p>
               </div>
-
-              {/* مفتاح حالة التوفر */}
-              <label className="flex cursor-pointer items-center justify-between rounded-xl bg-surface-container-high px-4 py-3">
-                <span className="text-sm font-bold text-on-surface">متوفر للبيع</span>
-                <input
-                  type="checkbox"
-                  checked={inStock}
-                  onChange={(e) => setInStock(e.target.checked)}
-                  className="h-5 w-5 accent-primary"
-                />
-              </label>
             </div>
           </div>
 
-          {/* أزرار الحفظ */}
-          <div className="space-y-2.5">
+          {/* أزرار الحفظ — ديسكتوب فقط، الموبايل له شريط ثابت أسفل الشاشة */}
+          <div className="hidden space-y-2.5 lg:block">
             <button
               type="button"
               disabled={isSaving}
@@ -646,6 +631,28 @@ export default function AdminProductFormPage() {
           </div>
         </div>
       </form>
+
+      {/* === شريط أزرار ثابت أسفل الشاشة — موبايل وتابلت فقط، فوق شريط التنقل السفلي === */}
+      <div className="fixed bottom-16 left-0 right-0 z-30 flex gap-2 border-t border-outline-variant bg-surface-container-lowest p-3 shadow-[0_-4px_16px_rgba(0,0,0,0.06)] lg:hidden">
+        <button
+          type="button"
+          disabled={isSaving}
+          onClick={(e) => handleSubmit(e, false)}
+          className="flex flex-1 items-center justify-center gap-2 rounded-xl border-2 border-outline-variant py-3 text-sm font-bold text-on-surface disabled:opacity-60"
+        >
+          <span className="material-symbols-outlined text-lg">save</span>
+          مسودة
+        </button>
+        <button
+          type="button"
+          disabled={isSaving}
+          onClick={(e) => handleSubmit(e, true)}
+          className="flex flex-[2] items-center justify-center gap-2 rounded-xl bg-primary py-3 text-sm font-bold text-on-primary shadow-[0_8px_20px_rgba(187,0,16,0.2)] active:scale-[0.98] disabled:opacity-60"
+        >
+          <span className="material-symbols-outlined text-lg">publish</span>
+          نشر المنتج
+        </button>
+      </div>
     </div>
   )
 }

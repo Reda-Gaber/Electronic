@@ -1,5 +1,5 @@
 -- ============================================================================
--- قاعدة بيانات متجر "عبدالنبي بي سي تيك" — MySQL
+-- قاعدة بيانات متجر "عبدالنبي للإلكترونيات" — MySQL
 -- ============================================================================
 -- مصمّمة لتطابق بالضبط الـ types الموجودة في الفرونت (src/types/index.ts)
 -- ومتوافقة مع استضافة Hostinger (MySQL فقط على الخطط المشتركة/المُدارة).
@@ -129,6 +129,9 @@ CREATE TABLE IF NOT EXISTS `settings` (
   `id`               TINYINT UNSIGNED NOT NULL PRIMARY KEY DEFAULT 1,
   `store_name`       VARCHAR(150) NOT NULL,
   `store_phone`      VARCHAR(20) NOT NULL,
+  `store_email`      VARCHAR(150) NULL,
+  `store_address`    VARCHAR(255) NULL,
+  `contact_phones`   JSON NULL,
   `instapay_number`  VARCHAR(20) NOT NULL,
   `updated_at`       TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   CONSTRAINT `chk_settings_single_row` CHECK (`id` = 1)

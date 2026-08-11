@@ -8,6 +8,7 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useCart } from '@/context/CartContext'
+import { getLastOrderId } from '@/utils/lastOrder'
 import { mainNavLinks } from '@/data/mockData'
 import SearchOverlay from '@/components/SearchOverlay'
 import Logo from '@/components/Logo'
@@ -20,6 +21,16 @@ export default function Header({ onOpenCategories }: HeaderProps) {
   const { itemCount, openCart } = useCart()
   const location = useLocation()
   const [isSearchOpen, setIsSearchOpen] = useState(false)
+  const lastOrderId = getLastOrderId()
+
+  // نفس منطق الشريط السفلي بالموبايل: دفع لو في سلة، متابعة طلب سابق لو موجود، وإلا تتبع الطلب
+  const checkoutOrTrackPath =
+    itemCount > 0
+      ? '/checkout'
+      : lastOrderId
+        ? `/order-confirmation/${lastOrderId}`
+        : '/track-order'
+  const checkoutOrTrackLabel = itemCount > 0 ? 'اتمام الشراء' : lastOrderId ? 'متابعة الطلب' : 'تتبع الطلب'
 
   // بناء روابط البحث بالمسار — لتحديد موضع كل رابط بدقة في الترتيب المطلوب
   const findLink = (path: string) => mainNavLinks.find((link) => link.path === path)
@@ -75,9 +86,9 @@ export default function Header({ onOpenCategories }: HeaderProps) {
           </Link>
         )}
 
-        {/* اتمام الشراء */}
-        <Link to="/checkout" className={linkClass('/checkout')}>
-          اتمام الشراء
+        {/* اتمام الشراء / متابعة الطلب / تتبع الطلب — حسب حالة السلة والطلبات السابقة */}
+        <Link to={checkoutOrTrackPath} className={linkClass(checkoutOrTrackPath)}>
+          {checkoutOrTrackLabel}
         </Link>
 
         {/* من نحن */}
@@ -120,15 +131,6 @@ export default function Header({ onOpenCategories }: HeaderProps) {
             </span>
           )}
         </button>
-
-        {/* رابط لوحة الأدmin — للوصول السريع */}
-        <Link
-          to="/admin/login"
-          className="hidden rounded-full p-2 transition-colors hover:bg-surface-container-high sm:flex"
-          aria-label="لوحة التحكم"
-        >
-          <span className="material-symbols-outlined text-on-surface-variant">admin_panel_settings</span>
-        </Link>
       </div>
 
       {/* نافذة البحث المنبثقة */}

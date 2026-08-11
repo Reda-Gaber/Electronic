@@ -45,12 +45,10 @@ export default function ProductCard({
     }
   }
 
-  // شارة حالة المخزون — للعرض في variant category
+  // شارة حالة التوفر — للعرض في variant category — بتعتمد على مفتاح "متوفر" اللي بيتحكم فيه الأدمن يدوياً فقط
   const stockBadge = !product.inStock
     ? { label: 'غير متوفر', className: 'bg-on-surface/80 text-on-primary' }
-    : product.stockCount <= 5
-      ? { label: 'كمية محدودة', className: 'bg-error-container text-on-error-container' }
-      : { label: 'متوفر', className: 'bg-tertiary/10 text-tertiary' }
+    : { label: 'متوفر', className: 'bg-tertiary/10 text-tertiary' }
 
   // بطاقة العروض المضغوطة — للتمرير الأفقي في قسم "عروض الساعة"
   if (variant === 'deal') {

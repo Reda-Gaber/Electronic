@@ -50,8 +50,8 @@ export default function App() {
         <Route path="/contact" element={<ContactPage />} />
       </Route>
 
-      {/* تسجيل دخول الأدمن — بدون Layout (صفحة مستقلة) */}
-      <Route path="/admin/login" element={<AdminLoginPage />} />
+      {/* تسجيل دخول الأدمن — بدون Layout (صفحة مستقلة) — الوصول من /login */}
+      <Route path="/login" element={<AdminLoginPage />} />
 
       {/* مسارات الأدمن — محمية: لازم تسجيل دخول صحيح قبل الوصول لأي صفحة هنا */}
       <Route element={<ProtectedAdminRoute />}>

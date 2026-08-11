@@ -8,17 +8,32 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { fetchSettings } from '@/services/settings'
+import { useCart } from '@/context/CartContext'
+import { getLastOrderId } from '@/utils/lastOrder'
 import type { StoreSettings } from '@/types'
 import Logo from '@/components/Logo'
 
 const FALLBACK_SETTINGS: StoreSettings = {
-  storeName: 'عبدالنبي بي سي تيك',
+  storeName: 'عبدالنبي للإلكترونيات',
   storePhone: '',
+  storeEmail: '',
+  storeAddress: '',
+  contactPhones: [],
   instapayNumber: '',
 }
 
 export default function Footer() {
   const [settings, setSettings] = useState<StoreSettings>(FALLBACK_SETTINGS)
+  const { itemCount } = useCart()
+  const lastOrderId = getLastOrderId()
+
+  const checkoutOrTrackPath =
+    itemCount > 0
+      ? '/checkout'
+      : lastOrderId
+        ? `/order-confirmation/${lastOrderId}`
+        : '/track-order'
+  const checkoutOrTrackLabel = itemCount > 0 ? 'اتمام الشراء' : lastOrderId ? 'متابعة الطلب' : 'تتبع الطلب'
 
   useEffect(() => {
     let isMounted = true
@@ -76,8 +91,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/checkout" className="transition-colors hover:text-primary">
-                  إتمام الشراء
+                <Link to={checkoutOrTrackPath} className="transition-colors hover:text-primary">
+                  {checkoutOrTrackLabel}
                 </Link>
               </li>
             </ul>
@@ -89,18 +104,26 @@ export default function Footer() {
               تواصل معنا
             </h3>
             <ul className="space-y-2 text-sm text-on-surface-variant">
-              <li className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-primary text-lg">call</span>
-                {settings.storePhone}
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-primary text-lg">mail</span>
-                info@pc-tech-arabia.com
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-primary text-lg">location_on</span>
-                القاهرة، مصر
-              </li>
+              {settings.contactPhones.map((phone) => (
+                <li key={phone} className="flex items-center gap-2">
+                  <span className="material-symbols-outlined text-primary text-lg">call</span>
+                  <span>{phone}</span>
+                </li>
+              ))}
+              {settings.storeEmail && (
+                <li className="flex items-center gap-2">
+                  <span className="material-symbols-outlined text-primary text-lg">mail</span>
+                  <span dir="ltr">{settings.storeEmail}</span>
+                </li>
+              )}
+              {settings.storeAddress && (
+                <li className="flex items-center gap-2">
+                  <span className="material-symbols-outlined text-primary text-lg">
+                    location_on
+                  </span>
+                  {settings.storeAddress}
+                </li>
+              )}
             </ul>
           </div>
         </div>

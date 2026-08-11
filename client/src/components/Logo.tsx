@@ -18,12 +18,12 @@ export default function Logo({ size = 'md' }: LogoProps) {
       {/* أيقونة الشعار — الشعار الفعلي (العلامة المميزة) المأخوذ من صورة اللوجو الأصلية */}
       <div
         className={`flex shrink-0 items-center justify-center overflow-hidden rounded-xl bg-surface-container-lowest ${
-          isSmall ? 'h-8 w-8' : 'h-10 w-10'
+          isSmall ? 'h-10 w-10' : 'h-12 w-12'
         }`}
       >
         <img
-          src="/logo-icon.png"
-          alt="شعار عبدالنبي بي سي تيك"
+          src="/logo.jpg"
+          alt="شعار عبدالنبي للإلكترونيات"
           className="h-full w-full object-contain"
         />
       </div>
@@ -32,17 +32,17 @@ export default function Logo({ size = 'md' }: LogoProps) {
       <div className="flex flex-col leading-none">
         <span
           className={`font-display font-black tracking-tight text-on-surface ${
-            isSmall ? 'text-sm' : 'text-base md:text-lg'
+            isSmall ? 'text-lg' : 'text-xl md:text-2xl'
           }`}
         >
           عبدالنبي
         </span>
         <span
           className={`font-display font-bold tracking-wide text-primary ${
-            isSmall ? 'text-[9px]' : 'text-[10px] md:text-xs'
+            isSmall ? 'text-[11px]' : 'text-sm md:text-base'
           }`}
         >
-          بي سي تيك
+          للإلكترونيات
         </span>
       </div>
     </div>

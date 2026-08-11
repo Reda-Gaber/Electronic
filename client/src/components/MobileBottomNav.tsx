@@ -8,6 +8,7 @@
  */
 import { Link, useLocation } from 'react-router-dom'
 import { useCart } from '@/context/CartContext'
+import { getLastOrderId } from '@/utils/lastOrder'
 
 interface MobileBottomNavProps {
   onOpenCategories: () => void
@@ -16,13 +17,22 @@ interface MobileBottomNavProps {
 export default function MobileBottomNav({ onOpenCategories }: MobileBottomNavProps) {
   const location = useLocation()
   const { itemCount, openCart } = useCart()
+  const lastOrderId = getLastOrderId()
 
-  // زر "الدفع" يوديك لإتمام الشراء لو في منتجات بالسلة، وإلا لصفحة تتبع الطلب
-  const checkoutOrTrackPath = itemCount > 0 ? '/checkout' : '/track-order'
-  const checkoutOrTrackLabel = itemCount > 0 ? 'الدفع' : 'تتبع الطلب'
+  // منطق زر "الدفع": في السلة → إتمام الشراء، مفيش بالسلة بس عنده طلب سابق →
+  // متابعة الطلب (تفاصيله مباشرة)، مفيش سلة ولا طلب سابق → تتبع الطلب (بحث يدوي)
+  const checkoutOrTrackPath =
+    itemCount > 0
+      ? '/checkout'
+      : lastOrderId
+        ? `/order-confirmation/${lastOrderId}`
+        : '/track-order'
+  const checkoutOrTrackLabel = itemCount > 0 ? 'الدفع' : lastOrderId ? 'متابعة الطلب' : 'تتبع الطلب'
   const checkoutOrTrackIcon = itemCount > 0 ? 'payments' : 'local_shipping'
   const isCheckoutOrTrackActive =
-    location.pathname === '/checkout' || location.pathname === '/track-order'
+    location.pathname === '/checkout' ||
+    location.pathname === '/track-order' ||
+    (lastOrderId !== null && location.pathname === `/order-confirmation/${lastOrderId}`)
 
   const isHomeActive = location.pathname === '/'
   const isOffersActive = location.pathname === '/offers'

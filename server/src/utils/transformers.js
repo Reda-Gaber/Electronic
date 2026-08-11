@@ -101,9 +101,20 @@ function toOrderDTO(row, itemRows = []) {
 
 /** تحويل صف الإعدادات لشكل StoreSettings في الفرونت */
 function toSettingsDTO(settingsRow) {
+  let contactPhones = []
+  try {
+    contactPhones = settingsRow.contact_phones ? JSON.parse(settingsRow.contact_phones) : []
+  } catch {
+    // contact_phones ممكن يرجع Array جاهز من الـ driver مش نص JSON — نتعامل معاه زي ما هو
+    contactPhones = Array.isArray(settingsRow.contact_phones) ? settingsRow.contact_phones : []
+  }
+
   return {
     storeName: settingsRow.store_name,
     storePhone: settingsRow.store_phone,
+    storeEmail: settingsRow.store_email || '',
+    storeAddress: settingsRow.store_address || '',
+    contactPhones: contactPhones.length > 0 ? contactPhones : [settingsRow.store_phone],
     instapayNumber: settingsRow.instapay_number,
   }
 }

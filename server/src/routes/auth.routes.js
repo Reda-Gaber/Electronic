@@ -1,5 +1,5 @@
 const express = require('express')
-const { login, getMe, changePassword } = require('../controllers/auth.controller')
+const { login, getMe, changePassword, changeEmail } = require('../controllers/auth.controller')
 const { protect } = require('../middleware/auth.middleware')
 const { loginLimiter } = require('../middleware/rateLimit.middleware')
 
@@ -11,5 +11,6 @@ router.post('/login', loginLimiter, login)
 // محمي — لازم توكن صحيح
 router.get('/me', protect, getMe)
 router.patch('/change-password', protect, changePassword)
+router.patch('/change-email', protect, changeEmail)
 
 module.exports = router

@@ -69,7 +69,7 @@ export function getOrderStatusLabel(status: string): string {
   const labels: Record<string, string> = {
     pending: 'قيد الانتظار',
     confirmed: 'مؤكد',
-    shipped: 'تم الشحن',
+    shipped: 'جاري التسليم',
     delivered: 'تم التسليم',
     cancelled: 'ملغي',
   }

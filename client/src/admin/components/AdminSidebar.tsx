@@ -1,19 +1,25 @@
 /**
  * AdminSidebar — شريط التنقل الجانبي للوحة الأدمن
  *
- * الوظيفة: روابط التنقل بين صفحات الأدمن + رابط العودة للمتجر
- * (زر تسجيل الخروج موجود في الشريط العلوي بـ AdminLayout)
+ * الوظيفة: روابط التنقل بين صفحات الأدمن + رابط العودة للمتجر + تسجيل الخروج
  * Props: لا يوجد
  * الاستخدام: داخل AdminLayout على الجانب الأيمن (RTL)
  */
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { adminNavLinks } from '@/data/mockData'
+import { logoutAdmin } from '@/admin/utils/adminAuth'
 
 export default function AdminSidebar() {
   const location = useLocation()
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    logoutAdmin()
+    navigate('/login', { replace: true })
+  }
 
   return (
-    <aside className="flex w-64 shrink-0 flex-col border-l border-outline-variant bg-surface-container-lowest print:hidden">
+    <aside className="hidden w-64 shrink-0 flex-col border-l border-outline-variant bg-surface-container-lowest print:hidden lg:flex">
       {/* شعار لوحة التحكم */}
       <div className="border-b border-outline-variant p-4">
         <Link to="/admin/dashboard" className="flex items-center gap-2">
@@ -22,7 +28,7 @@ export default function AdminSidebar() {
           </span>
           <div>
             <p className="font-display text-sm font-bold text-on-surface">لوحة التحكم</p>
-            <p className="text-xs text-on-surface-variant">عبدالنبي بي سي تيك</p>
+            <p className="text-xs text-on-surface-variant">عبدالنبي للإلكترونيات</p>
           </div>
         </Link>
       </div>
@@ -48,8 +54,8 @@ export default function AdminSidebar() {
         })}
       </nav>
 
-      {/* زر العودة للمتجر */}
-      <div className="border-t border-outline-variant p-3">
+      {/* زر العودة للمتجر + تسجيل الخروج */}
+      <div className="space-y-1 border-t border-outline-variant p-3">
         <Link
           to="/"
           className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-on-surface-variant transition-colors hover:bg-surface-container-high hover:text-on-surface"
@@ -57,6 +63,14 @@ export default function AdminSidebar() {
           <span className="material-symbols-outlined text-xl">storefront</span>
           العودة للمتجر
         </Link>
+        <button
+          type="button"
+          onClick={handleLogout}
+          className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-on-surface-variant transition-colors hover:bg-error-container hover:text-error"
+        >
+          <span className="material-symbols-outlined text-xl">logout</span>
+          تسجيل الخروج
+        </button>
       </div>
     </aside>
   )

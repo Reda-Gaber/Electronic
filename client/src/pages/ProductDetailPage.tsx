@@ -101,9 +101,8 @@ export default function ProductDetailPage() {
     }
   }
 
-  // زيادة/إنقاص الكمية مع الالتزام بحد المخزون المتاح
-  const incrementQuantity = () =>
-    setQuantity((q) => Math.min(q + 1, product.stockCount))
+  // زيادة/إنقاص الكمية — بدون حد أقصى، العميل يطلب العدد اللي يحتاجه
+  const incrementQuantity = () => setQuantity((q) => q + 1)
   const decrementQuantity = () => setQuantity((q) => Math.max(1, q - 1))
 
   return (
@@ -214,10 +213,7 @@ export default function ProductDetailPage() {
             {product.inStock ? (
               <>
                 <span className="h-2.5 w-2.5 rounded-full bg-tertiary" />
-                <span className="text-sm font-bold text-tertiary">
-                  متوفر في المخزون
-                  {product.stockCount <= 5 && ` — كمية محدودة (${product.stockCount} فقط)`}
-                </span>
+                <span className="text-sm font-bold text-tertiary">متوفر في المخزون</span>
               </>
             ) : (
               <>
@@ -246,8 +242,7 @@ export default function ProductDetailPage() {
                 <button
                   type="button"
                   onClick={incrementQuantity}
-                  className="flex h-12 w-12 items-center justify-center text-on-surface-variant transition-colors hover:bg-surface-container-high disabled:opacity-30"
-                  disabled={quantity >= product.stockCount}
+                  className="flex h-12 w-12 items-center justify-center text-on-surface-variant transition-colors hover:bg-surface-container-high"
                   aria-label="زيادة الكمية"
                 >
                   <span className="material-symbols-outlined">add</span>
@@ -400,8 +395,7 @@ export default function ProductDetailPage() {
             <button
               type="button"
               onClick={incrementQuantity}
-              className="flex h-11 w-10 items-center justify-center text-on-surface-variant disabled:opacity-30"
-              disabled={quantity >= product.stockCount}
+              className="flex h-11 w-10 items-center justify-center text-on-surface-variant"
               aria-label="زيادة الكمية"
             >
               <span className="material-symbols-outlined text-lg">add</span>
