@@ -106,4 +106,6 @@ export interface StoreSettings {
   storeAddress: string
   /** أرقام تليفونات متعددة للتواصل — منفصلة عن رقم إنستاباي الوحيد */
   contactPhones: string[]
+  /** قالب رسالة واتساب المخصّص للطلبات — غير موجود أو null يعني استخدام القالب الافتراضي */
+  whatsappMessageTemplate?: string | null
 }

@@ -116,6 +116,7 @@ function toSettingsDTO(settingsRow) {
     storeAddress: settingsRow.store_address || '',
     contactPhones: contactPhones.length > 0 ? contactPhones : [settingsRow.store_phone],
     instapayNumber: settingsRow.instapay_number,
+    whatsappMessageTemplate: settingsRow.whatsapp_message_template ?? null,
   }
 }
 

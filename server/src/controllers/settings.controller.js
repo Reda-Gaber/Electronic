@@ -20,12 +20,19 @@ const getSettings = asyncHandler(async (req, res) => {
 
 /**
  * PUT /api/admin/settings
- * محمي — تحديث بيانات المتجر (الاسم/الهاتف/الإيميل/العنوان/أرقام التواصل/رقم إنستاباي)
- * body: { storeName, storePhone, storeEmail?, storeAddress?, contactPhones?, instapayNumber }
+ * محمي — تحديث بيانات المتجر (الاسم/الهاتف/الإيميل/العنوان/أرقام التواصل/رقم إنستاباي/قالب واتساب)
+ * body: { storeName, storePhone, storeEmail?, storeAddress?, contactPhones?, instapayNumber, whatsappMessageTemplate? }
  */
 const updateSettings = asyncHandler(async (req, res) => {
-  const { storeName, storePhone, storeEmail, storeAddress, contactPhones, instapayNumber } =
-    req.body
+  const {
+    storeName,
+    storePhone,
+    storeEmail,
+    storeAddress,
+    contactPhones,
+    instapayNumber,
+    whatsappMessageTemplate,
+  } = req.body
 
   if (!storeName || !storeName.trim()) throw new ApiError(400, 'اسم المتجر مطلوب')
   if (!storePhone || !storePhone.trim()) throw new ApiError(400, 'رقم تليفون المتجر مطلوب')
@@ -53,6 +60,14 @@ const updateSettings = asyncHandler(async (req, res) => {
     contactPhonesJson = JSON.stringify(contactPhonesJson)
   }
 
+  // قالب رسالة واتساب — نص طويل اختياري، بيحافظ على القيمة القديمة لو الحقل مش مرسل في الطلب
+  const whatsappTemplateValue =
+    whatsappMessageTemplate !== undefined
+      ? whatsappMessageTemplate
+        ? String(whatsappMessageTemplate).trim() || null
+        : null
+      : current.whatsapp_message_template
+
   await pool.query(
     `UPDATE settings SET
        store_name = ?,
@@ -60,7 +75,8 @@ const updateSettings = asyncHandler(async (req, res) => {
        store_email = ?,
        store_address = ?,
        contact_phones = ?,
-       instapay_number = ?
+       instapay_number = ?,
+       whatsapp_message_template = ?
      WHERE id = 1`,
     [
       storeName.trim(),
@@ -73,6 +89,7 @@ const updateSettings = asyncHandler(async (req, res) => {
         : current.store_address,
       contactPhonesJson,
       instapayNumber.trim(),
+      whatsappTemplateValue,
     ],
   )
 

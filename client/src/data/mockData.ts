@@ -31,5 +31,6 @@ export const adminNavLinks = [
   { label: 'الطلبات', path: '/admin/orders', icon: 'receipt_long' },
   { label: 'المنتجات', path: '/admin/products', icon: 'inventory_2' },
   { label: 'التصنيفات', path: '/admin/categories', icon: 'category' },
+  { label: 'واتساب', path: '/admin/whatsapp', icon: 'chat' },
   { label: 'الإعدادات', path: '/admin/settings', icon: 'settings' },
 ]

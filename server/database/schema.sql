@@ -133,6 +133,8 @@ CREATE TABLE IF NOT EXISTS `settings` (
   `store_address`    VARCHAR(255) NULL,
   `contact_phones`   JSON NULL,
   `instapay_number`  VARCHAR(20) NOT NULL,
+  -- قالب رسالة واتساب المخصّص للطلبات — NULL يعني استخدام القالب الافتراضي
+  `whatsapp_message_template` TEXT NULL,
   `updated_at`       TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   CONSTRAINT `chk_settings_single_row` CHECK (`id` = 1)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

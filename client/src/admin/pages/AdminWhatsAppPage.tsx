@@ -41,8 +41,6 @@ const SAMPLE_ORDER: Order = {
         specs: [],
         inStock: true,
         stockCount: 5,
-        rating: 5,
-        reviewCount: 10,
       },
       quantity: 1,
     },
@@ -57,6 +55,9 @@ const SAMPLE_ORDER: Order = {
 const FALLBACK_SETTINGS: StoreSettings = {
   storeName: 'عبدالنبي بي سي تيك',
   storePhone: '',
+  storeEmail: '',
+  storeAddress: '',
+  contactPhones: [],
   instapayNumber: '',
   whatsappMessageTemplate: null,
 }
@@ -86,9 +87,7 @@ export default function AdminWhatsAppPage() {
     setIsSaving(true)
     try {
       await updateSettings({
-        storeName: settings.storeName,
-        storePhone: settings.storePhone,
-        instapayNumber: settings.instapayNumber,
+        ...settings,
         whatsappMessageTemplate: template.trim(),
       })
       flashMessage('تم حفظ صيغة الرسالة بنجاح')

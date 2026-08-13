@@ -1,1 +1,38 @@
-node_modules
+# === Dependencies ===
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# === Build output ===
+dist/
+build/
+client/dist/
+client/build/
+
+# === Environment variables (فيها بيانات حساسة زي كلمات سر الداتابيز) ===
+.env
+.env.local
+.env.development
+.env.production
+client/.env
+server/.env
+
+# === Logs ===
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# === Uploads (ملفات رفعها المستخدمين — مش لازم تتحفظ في الريبو) ===
+server/uploads/*
+!server/uploads/.gitkeep
+
+# === Editor / OS ===
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# === Misc ===
+*.local
+.cache/

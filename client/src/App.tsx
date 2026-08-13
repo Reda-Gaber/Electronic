@@ -28,6 +28,7 @@ import AdminProductsPage from '@/admin/pages/AdminProductsPage'
 import AdminProductFormPage from '@/admin/pages/AdminProductFormPage'
 import AdminCategoriesPage from '@/admin/pages/AdminCategoriesPage'
 import AdminSettingsPage from '@/admin/pages/AdminSettingsPage'
+import AdminWhatsAppPage from '@/admin/pages/AdminWhatsAppPage'
 
 export default function App() {
   return (
@@ -65,6 +66,7 @@ export default function App() {
           <Route path="products/:id/edit" element={<AdminProductFormPage />} />
           <Route path="categories" element={<AdminCategoriesPage />} />
           <Route path="settings" element={<AdminSettingsPage />} />
+          <Route path="whatsapp" element={<AdminWhatsAppPage />} />
         </Route>
       </Route>
 
