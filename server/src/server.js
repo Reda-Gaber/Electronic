@@ -1,5 +1,7 @@
 // نقطة تشغيل السيرفر — بيتأكد إن قاعدة البيانات متاحة الأول، وبعدين يبدأ يستقبل طلبات
-require('dotenv').config()
+// المسار هنا محدد صراحةً (../.env) عشان يشتغل صح مهما كان الـ cwd اللي الاستضافة بتشغّل منه السيرفر
+// (لو سيبناها فاضية زي الأول، dotenv بيدور على .env في process.cwd() بس، ولو ده مش مجلد server هيفشل يلاقيه)
+require('dotenv').config({ path: require('path').join(__dirname, '../.env') })
 const app = require('./app')
 const { testConnection } = require('./config/db')
 

@@ -1,7 +1,7 @@
 // إعداد الاتصال بقاعدة البيانات — Pool بدل اتصال واحد عشان يتحمّل أكتر من طلب
 // في نفس الوقت من غير ما يبطئ (كل Request بياخد اتصال من الـ Pool ويرجّعه بعد ما يخلص)
 const mysql = require('mysql2/promise')
-require('dotenv').config()
+require('dotenv').config({ path: require('path').join(__dirname, '../../.env') })
 
 const pool = mysql.createPool({
   host: process.env.DB_HOST,
