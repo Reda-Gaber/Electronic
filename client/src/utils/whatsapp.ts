@@ -4,7 +4,7 @@
 // نصي فيه متغيّرات زي {{customerName}} — لو الأدمن مغيّرش حاجة، بيتستخدم
 // القالب الافتراضي تحت
 import type { Order } from '@/types'
-import { formatPrice, getPaymentMethodLabel } from '@/utils/helpers'
+import { formatAddress, formatPrice, getPaymentMethodLabel } from '@/utils/helpers'
 
 /** كل المتغيّرات المتاحة للاستخدام جوه قالب الرسالة، مع وصف كل واحد */
 export const WHATSAPP_TEMPLATE_PLACEHOLDERS = [
@@ -58,8 +58,7 @@ function fillTemplate(template: string, order: Order): string {
       ? formatPrice(order.shippingFee)
       : 'هنأكدها معاك تليفونيًا حسب منطقتك'
 
-  const address = order.address
-  const addressText = `${address.governorate}، ${address.city}، ${address.district}\n${address.street}، عمارة ${address.buildingNumber}، الدور ${address.floor}، شقة ${address.apartment}`
+  const addressText = formatAddress(order.address)
 
   const values: Record<string, string> = {
     customerName: order.customerName,

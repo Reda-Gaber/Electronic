@@ -161,11 +161,10 @@ export default function AdminWhatsAppPage() {
                   key={p.token}
                   type="button"
                   onClick={() => insertPlaceholder(p.token)}
-                  title={p.label}
-                  dir="ltr"
-                  className="rounded-lg bg-surface-container-high px-2.5 py-1.5 font-mono text-xs font-bold text-primary hover:bg-surface-container-highest"
+                  title={p.token}
+                  className="rounded-lg bg-surface-container-high px-2.5 py-1.5 text-xs font-bold text-primary hover:bg-surface-container-highest"
                 >
-                  {p.token}
+                  {p.label}
                 </button>
               ))}
             </div>

@@ -152,11 +152,13 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `phone`            VARCHAR(20) NOT NULL,
   -- عنوان الشحن التفصيلي (ShippingAddress) — أعمدة منفصلة عشان سهل البحث والفلترة
   -- governorate: اسم محافظة من قائمة الـ 27 محافظة الثابتة (مش مرتبطة بجدول رسوم)
-  `governorate`      VARCHAR(100) NOT NULL,
-  `city`             VARCHAR(100) NOT NULL,
-  `district`         VARCHAR(100) NOT NULL,
-  `street`           VARCHAR(200) NOT NULL,
-  `building_number`  VARCHAR(20)  NOT NULL,
+  -- كل حقول العنوان بقت اختيارية (NULL) — العميل ممكن يأكد الطلب من غير عنوان كامل
+  -- ويتفق مع المتجر على تفاصيل التوصيل تليفونيًا بعدين
+  `governorate`      VARCHAR(100) NULL,
+  `city`             VARCHAR(100) NULL,
+  `district`         VARCHAR(100) NULL,
+  `street`           VARCHAR(200) NULL,
+  `building_number`  VARCHAR(20)  NULL,
   `floor`            VARCHAR(20)  NULL,
   `apartment`        VARCHAR(20)  NULL,
   `payment_method`   ENUM('cash','instapay') NOT NULL,

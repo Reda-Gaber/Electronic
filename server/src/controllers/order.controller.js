@@ -61,15 +61,11 @@ const createOrder = asyncHandler(async (req, res) => {
   if (!phone || !EGYPT_PHONE_REGEX.test(phone.trim())) {
     throw new ApiError(400, 'رقم هاتف مصري غير صحيح (مثال: 01012345678)')
   }
-  if (!governorate || !EGYPT_GOVERNORATES.includes(governorate)) {
+  // عنوان التوصيل بقى اختياري بالكامل — لو المحافظة متبعتة، لازم تكون من القائمة الصحيحة،
+  // لكن مفيش أي حقل من حقول العنوان إجباري عشان يتأكد الطلب
+  if (governorate && !EGYPT_GOVERNORATES.includes(governorate)) {
     throw new ApiError(400, 'اختر محافظة صحيحة')
   }
-  if (!city || !city.trim()) throw new ApiError(400, 'المدينة مطلوبة')
-  if (!district || !district.trim()) throw new ApiError(400, 'الحي/المنطقة مطلوب')
-  if (!street || !street.trim()) throw new ApiError(400, 'الشارع مطلوب')
-  if (!buildingNumber || !buildingNumber.trim()) throw new ApiError(400, 'رقم العمارة مطلوب')
-  if (!floor || !floor.trim()) throw new ApiError(400, 'الدور مطلوب')
-  if (!apartment || !apartment.trim()) throw new ApiError(400, 'رقم الشقة مطلوب')
   if (!['cash', 'instapay'].includes(paymentMethod)) {
     throw new ApiError(400, 'طريقة دفع غير صحيحة')
   }
@@ -145,13 +141,13 @@ const createOrder = asyncHandler(async (req, res) => {
         referenceNumber,
         customerName.trim(),
         phone.trim(),
-        governorate,
-        city.trim(),
-        district.trim(),
-        street.trim(),
-        buildingNumber.trim(),
-        floor.trim(),
-        apartment.trim(),
+        governorate || null,
+        (city || '').trim() || null,
+        (district || '').trim() || null,
+        (street || '').trim() || null,
+        (buildingNumber || '').trim() || null,
+        (floor || '').trim() || null,
+        (apartment || '').trim() || null,
         paymentMethod,
         subtotal,
         total,

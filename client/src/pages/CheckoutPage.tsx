@@ -95,13 +95,8 @@ export default function CheckoutPage() {
     if (!/^01[0125][0-9]{8}$/.test(form.phone.trim())) {
       newErrors.phone = 'رقم هاتف مصري غير صحيح (مثال: 01012345678)'
     }
-    if (!form.governorate) newErrors.governorate = 'اختر المحافظة'
-    if (!form.city.trim()) newErrors.city = 'المدينة مطلوبة'
-    if (!form.district.trim()) newErrors.district = 'الحي/المنطقة مطلوب'
-    if (!form.street.trim()) newErrors.street = 'الشارع مطلوب'
-    if (!form.buildingNumber.trim()) newErrors.buildingNumber = 'رقم العمارة مطلوب'
-    if (!form.floor.trim()) newErrors.floor = 'الدور مطلوب'
-    if (!form.apartment.trim()) newErrors.apartment = 'رقم الشقة مطلوب'
+    // حقول العنوان كلها اختيارية دلوقتي — العميل ممكن يأكد الطلب من غيرها
+    // ويتفق مع المتجر على تفاصيل التوصيل تليفونيًا بعدين
     return newErrors
   }
 
@@ -229,10 +224,14 @@ export default function CheckoutPage() {
 
           {/* --- عنوان التوصيل --- */}
           <fieldset className="rounded-2xl border border-outline-variant bg-surface-container-lowest p-5 md:p-6">
-            <legend className="mb-4 flex items-center gap-2 px-1 font-display text-lg font-bold text-on-surface">
+            <legend className="mb-1 flex items-center gap-2 px-1 font-display text-lg font-bold text-on-surface">
               <span className="material-symbols-outlined text-primary">location_on</span>
-              عنوان التوصيل
+              عنوان التوصيل (اختياري)
             </legend>
+            <p className="mb-4 px-1 text-xs text-on-surface-variant">
+              لو مش متأكد من التفاصيل دلوقتي، تقدر تأكّد الطلب من غيرها وهنتواصل معاك تليفونيًا
+              لتحديدها
+            </p>
 
             <div className="space-y-4">
               <div>

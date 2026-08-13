@@ -2,8 +2,11 @@
 import { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { adminFetchOrderById, adminFetchOrders, adminUpdateOrder } from '@/services/orders'
+import { fetchSettings } from '@/services/settings'
+import { buildOrderWhatsAppLink } from '@/utils/whatsapp'
 import { ApiClientError } from '@/lib/apiClient'
 import {
+  formatAddress,
   formatDate,
   formatPrice,
   getOrderStatusLabel,
@@ -37,6 +40,8 @@ export default function AdminOrderDetailPage() {
   const [shippingFeeInput, setShippingFeeInput] = useState('')
   const [saveMessage, setSaveMessage] = useState<string | null>(null)
   const [isSaving, setIsSaving] = useState(false)
+  // قالب رسالة الواتساب المخصّص من صفحة الإعدادات — بيتحمّل مرة واحدة عشان زر التواصل
+  const [whatsappTemplate, setWhatsappTemplate] = useState<string | null>(null)
 
   useEffect(() => {
     if (!id) return
@@ -59,6 +64,14 @@ export default function AdminOrderDetailPage() {
       })
       .finally(() => {
         if (isMounted) setIsLoading(false)
+      })
+
+    fetchSettings()
+      .then((data) => {
+        if (isMounted) setWhatsappTemplate(data.whatsappMessageTemplate ?? null)
+      })
+      .catch(() => {
+        /* لو تعذر تحميل القالب، الزر هيستخدم القالب الافتراضي عادي */
       })
 
     return () => {
@@ -139,10 +152,20 @@ export default function AdminOrderDetailPage() {
           </p>
         </div>
         <span
-          className={`mr-auto rounded-full px-3 py-1.5 text-sm font-bold ${statusStyles[order.status]}`}
+          className={`rounded-full px-3 py-1.5 text-sm font-bold ${statusStyles[order.status]}`}
         >
           {getOrderStatusLabel(order.status)}
         </span>
+        {/* زر التواصل عبر واتساب — بيفتح محادثة مع العميل ورسالة تفاصيل الطلب معبّاة جاهزة */}
+        <a
+          href={buildOrderWhatsAppLink(order, whatsappTemplate)}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mr-auto flex items-center gap-2 rounded-xl bg-[#25D366] px-4 py-2 text-sm font-bold text-white transition-transform hover:brightness-95 active:scale-95"
+        >
+          <span className="material-symbols-outlined text-lg">chat</span>
+          <span className="hidden sm:inline">تواصل عبر واتساب</span>
+        </a>
       </div>
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
@@ -173,11 +196,8 @@ export default function AdminOrderDetailPage() {
                 <span className="mb-1 block font-bold text-on-surface-variant">
                   عنوان التوصيل
                 </span>
-                <span className="text-on-surface">
-                  {order.address.governorate} — {order.address.city}، {order.address.district}
-                  <br />
-                  {order.address.street}، عمارة {order.address.buildingNumber}، الدور{' '}
-                  {order.address.floor}، شقة {order.address.apartment}
+                <span className="whitespace-pre-line text-on-surface">
+                  {formatAddress(order.address)}
                 </span>
               </div>
               {order.notes && (

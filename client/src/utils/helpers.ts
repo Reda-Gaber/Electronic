@@ -1,6 +1,6 @@
 // دوال مساعدة مشتركة — تنسيق الأسعار والأرقام ونسخ النص
 // TODO: ربط هذا بالـ API عند توفر الباك إند — بعض الدوال قد تُستبدل ببيانات من السيرفر
-import type { Order } from '@/types'
+import type { Order, ShippingAddress } from '@/types'
 
 /** تنسيق السعر بالجنيه المصري مع فواصل الآلاف */
 export function formatPrice(amount: number): string {
@@ -77,6 +77,28 @@ export function getOrderStatusLabel(status: string): string {
 }
 
 /** ترجمة طريقة الدفع للعربية */
+/**
+ * تكوين نص عنوان مقروء من بيانات العنوان — كل حقل بقى اختياري وممكن يوصل فاضي،
+ * فبنستبعد أي جزء فاضي بدل ما نطبع فواصل ومسافات زيادة من غير قيمة
+ */
+export function formatAddress(address: ShippingAddress): string {
+  const line1 = [address.governorate, address.city, address.district]
+    .filter((part) => part && part.trim())
+    .join('، ')
+
+  const buildingParts: string[] = []
+  if (address.street && address.street.trim()) buildingParts.push(address.street.trim())
+  if (address.buildingNumber && address.buildingNumber.trim())
+    buildingParts.push(`عمارة ${address.buildingNumber.trim()}`)
+  if (address.floor && address.floor.trim()) buildingParts.push(`الدور ${address.floor.trim()}`)
+  if (address.apartment && address.apartment.trim())
+    buildingParts.push(`شقة ${address.apartment.trim()}`)
+  const line2 = buildingParts.join('، ')
+
+  const full = [line1, line2].filter(Boolean).join('\n')
+  return full || 'العميل لم يحدد عنوانًا'
+}
+
 export function getPaymentMethodLabel(method: string): string {
   return method === 'instapay' ? 'إنستاباي' : 'كاش عند الاستلام'
 }

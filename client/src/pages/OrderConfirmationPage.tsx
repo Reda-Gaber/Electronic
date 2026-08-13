@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom'
 import { fetchOrderConfirmation } from '@/services/orders'
 import type { Order } from '@/types'
 import {
+  formatAddress,
   formatPrice,
   getOrderStatusLabel,
   getPaymentMethodLabel,
@@ -155,12 +156,7 @@ export default function OrderConfirmationPage() {
                 <span className="material-symbols-outlined text-[18px]">location_on</span>
                 عنوان التوصيل
               </span>
-              <p className="text-on-surface">
-                {order.address.governorate} — {order.address.city}، {order.address.district}
-                <br />
-                {order.address.street}، عمارة {order.address.buildingNumber}، الدور{' '}
-                {order.address.floor}، شقة {order.address.apartment}
-              </p>
+              <p className="whitespace-pre-line text-on-surface">{formatAddress(order.address)}</p>
             </div>
             <div>
               <span className="mb-1 flex items-center gap-1.5 font-bold text-on-surface-variant">

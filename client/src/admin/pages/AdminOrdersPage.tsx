@@ -2,7 +2,10 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { adminFetchOrders } from '@/services/orders'
+import { fetchSettings } from '@/services/settings'
+import { buildOrderWhatsAppLink } from '@/utils/whatsapp'
 import {
+  formatAddress,
   formatDate,
   formatPrice,
   getOrderStatusLabel,
@@ -31,7 +34,7 @@ const statusBorderStyles: Record<OrderStatus, string> = {
 
 /** تكوين نص عنوان مختصر من بيانات عنوان الشحن — لعرضه في عمود العميل */
 function formatShortAddress(order: Order): string {
-  return `${order.address.governorate} — ${order.address.city}، ${order.address.district}، شارع ${order.address.street}`
+  return formatAddress(order.address).replace('\n', '، ')
 }
 
 export default function AdminOrdersPage() {
@@ -45,6 +48,8 @@ export default function AdminOrdersPage() {
 
   const [allOrders, setAllOrders] = useState<Order[]>([])
   const [isLoading, setIsLoading] = useState(true)
+  // قالب رسالة الواتساب المخصّص — بيتحمّل مرة واحدة عشان زر التواصل في كل صف
+  const [whatsappTemplate, setWhatsappTemplate] = useState<string | null>(null)
 
   useEffect(() => {
     let isMounted = true
@@ -54,6 +59,13 @@ export default function AdminOrdersPage() {
       })
       .finally(() => {
         if (isMounted) setIsLoading(false)
+      })
+    fetchSettings()
+      .then((data) => {
+        if (isMounted) setWhatsappTemplate(data.whatsappMessageTemplate ?? null)
+      })
+      .catch(() => {
+        /* لو تعذر التحميل، الزر هيستخدم القالب الافتراضي عادي */
       })
     return () => {
       isMounted = false
@@ -294,6 +306,17 @@ export default function AdminOrdersPage() {
                       <span className="font-bold text-on-surface">{formatPrice(order.total)}</span>
                     </div>
                   </Link>
+                  {/* زر تواصل سريع عبر واتساب — منفصل عن رابط تفاصيل الطلب */}
+                  <a
+                    href={buildOrderWhatsAppLink(order, whatsappTemplate)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-[#25D366] py-2 text-sm font-bold text-white active:scale-95"
+                  >
+                    <span className="material-symbols-outlined text-lg">chat</span>
+                    تواصل واتساب
+                  </a>
                 </li>
               ))}
             </ul>
@@ -311,6 +334,7 @@ export default function AdminOrdersPage() {
                   <th className="p-4 font-bold">الدفع</th>
                   <th className="p-4 font-bold">الحالة</th>
                   <th className="p-4 font-bold">التاريخ</th>
+                  <th className="p-4 font-bold">تواصل</th>
                 </tr>
               </thead>
               <tbody>
@@ -352,6 +376,17 @@ export default function AdminOrdersPage() {
                       </span>
                     </td>
                     <td className="p-4 text-on-surface-variant">{formatDate(order.createdAt)}</td>
+                    <td className="p-4">
+                      <a
+                        href={buildOrderWhatsAppLink(order, whatsappTemplate)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title="تواصل عبر واتساب"
+                        className="flex h-8 w-8 items-center justify-center rounded-full bg-[#25D366] text-white hover:brightness-95"
+                      >
+                        <span className="material-symbols-outlined text-lg">chat</span>
+                      </a>
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -388,11 +423,7 @@ export default function AdminOrdersPage() {
                 </tr>
                 <tr>
                   <td className="py-1 font-bold">العنوان</td>
-                  <td className="py-1">
-                    {order.address.governorate} — {order.address.city}، {order.address.district}
-                    ، {order.address.street}، عمارة {order.address.buildingNumber}، الدور{' '}
-                    {order.address.floor}، شقة {order.address.apartment}
-                  </td>
+                  <td className="whitespace-pre-line py-1">{formatAddress(order.address)}</td>
                 </tr>
                 <tr>
                   <td className="py-1 font-bold">حالة الدفع</td>
@@ -402,6 +433,18 @@ export default function AdminOrdersPage() {
                       : 'غير مدفوع — كاش عند الاستلام'}
                   </td>
                 </tr>
+                {order.notes && (
+                  <tr>
+                    <td className="py-1 font-bold">ملاحظات العميل</td>
+                    <td className="py-1">{order.notes}</td>
+                  </tr>
+                )}
+                {order.adminNotes && (
+                  <tr>
+                    <td className="py-1 font-bold">ملاحظات داخلية</td>
+                    <td className="py-1">{order.adminNotes}</td>
+                  </tr>
+                )}
               </tbody>
             </table>
 
