@@ -34,7 +34,7 @@ mysql --default-character-set=utf8mb4 -u root -p < seed.sql
 5. بيانات الاتصال هتستخدمها بعدين في متغيرات البيئة (`.env`) بتاعة الباك اند:
 
 ```env
-DB_HOST=localhost
+DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_USER=اسم_المستخدم_من_hPanel
 DB_PASSWORD=الباسورد_بتاعه
