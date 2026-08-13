@@ -204,8 +204,9 @@ export default function AdminOrdersPage() {
         </div>
       </div>
 
-      {/* أزرار فلتر الحالة مع عداد لكل حالة */}
-      <div className="hide-scrollbar mb-5 flex gap-2 overflow-x-auto print:hidden">
+      {/* أزرار فلتر الحالة مع عداد لكل حالة — Flex Wrap بدل سكرول أفقي، لتفادي مشكلة معروفة
+          في متصفحات الموبايل بتسريب عرض عناصر السكرول الأفقي الداخلي لصفحات RTL بالكامل */}
+      <div className="mb-5 flex w-full flex-wrap gap-2 print:hidden">
         <button
           type="button"
           onClick={() => setStatusFilter('all')}

@@ -175,27 +175,6 @@ export default function ProductDetailPage() {
             {product.name}
           </h1>
 
-          {/* التقييم */}
-          <div className="mb-4 flex items-center gap-2">
-            <div className="flex items-center gap-0.5">
-              {[1, 2, 3, 4, 5].map((star) => (
-                <span
-                  key={star}
-                  className={`material-symbols-outlined text-lg ${
-                    star <= Math.round(product.rating) ? 'text-amber-400' : 'text-outline-variant'
-                  }`}
-                  style={{ fontVariationSettings: '"FILL" 1' }}
-                >
-                  star
-                </span>
-              ))}
-            </div>
-            <span className="text-sm font-bold text-on-surface">{product.rating}</span>
-            <span className="text-sm text-on-surface-variant">
-              ({product.reviewCount} تقييم)
-            </span>
-          </div>
-
           {/* السعر */}
           <div className="mb-5 flex items-end gap-3 border-y border-outline-variant/60 py-4">
             <span className="font-display text-3xl font-black text-primary md:text-4xl">
@@ -303,7 +282,7 @@ export default function ProductDetailPage() {
                 : 'border-transparent text-on-surface-variant hover:text-on-surface'
             }`}
           >
-            الوصف والتقييمات
+            الوصف
           </button>
         </div>
 
@@ -329,37 +308,6 @@ export default function ProductDetailPage() {
             <p className="max-w-3xl leading-relaxed text-on-surface-variant">
               {product.description}
             </p>
-
-            {/* ملخص التقييمات — عرض مبسط بانتظار نظام تقييمات كامل */}
-            <div className="rounded-2xl border border-outline-variant bg-surface-container-lowest p-6">
-              <div className="mb-4 flex items-center gap-4">
-                <span className="font-display text-4xl font-black text-on-surface">
-                  {product.rating}
-                </span>
-                <div>
-                  <div className="flex gap-0.5">
-                    {[1, 2, 3, 4, 5].map((star) => (
-                      <span
-                        key={star}
-                        className={`material-symbols-outlined text-lg ${
-                          star <= Math.round(product.rating) ? 'text-amber-400' : 'text-outline-variant'
-                        }`}
-                        style={{ fontVariationSettings: '"FILL" 1' }}
-                      >
-                        star
-                      </span>
-                    ))}
-                  </div>
-                  <span className="text-sm text-on-surface-variant">
-                    بناءً على {product.reviewCount} تقييم
-                  </span>
-                </div>
-              </div>
-              <p className="text-sm text-on-surface-variant">
-                {/* TODO: ربط هذا بالـ API عند توفر الباك إند — عرض قائمة تقييمات حقيقية للعملاء */}
-                لا توجد تقييمات مفصّلة بعد. كن أول من يقيّم هذا المنتج بعد الشراء.
-              </p>
-            </div>
           </div>
         )}
       </div>

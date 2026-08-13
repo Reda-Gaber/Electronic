@@ -39,8 +39,6 @@ export interface Product {
   inStock: boolean
   /** رقم قديم من قاعدة البيانات (افتراضي 0) — غير مستخدَم كحد للشراء؛ التوفر يتحكم فيه الأدمن يدوياً عبر inStock فقط */
   stockCount: number
-  rating: number
-  reviewCount: number
   isFeatured?: boolean
   isNew?: boolean
   /** حالة النشر — المسودات لا تظهر في المتجر */

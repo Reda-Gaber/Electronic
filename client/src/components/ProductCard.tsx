@@ -144,17 +144,7 @@ export default function ProductCard({
             </h3>
           </Link>
 
-          <div className="mb-4 flex items-center gap-1">
-            <span
-              className="material-symbols-outlined text-sm text-amber-400"
-              style={{ fontVariationSettings: '"FILL" 1' }}
-            >
-              star
-            </span>
-            <span className="text-xs text-on-surface-variant">
-              {product.rating} ({product.reviewCount} تقييم)
-            </span>
-          </div>
+          <div className="mb-4" />
 
           <div className="mt-auto flex items-end justify-between gap-3">
             <div className="flex flex-col">
@@ -245,19 +235,6 @@ export default function ProductCard({
 
       {/* معلومات المنتج */}
       <div className="flex flex-1 flex-col p-3 md:p-4">
-        {/* التقييم */}
-        <div className="mb-1 flex items-center gap-1">
-          <span
-            className="material-symbols-outlined text-[11px] text-yellow-500 md:text-xs"
-            style={{ fontVariationSettings: '"FILL" 1' }}
-          >
-            star
-          </span>
-          <span className="text-[9px] font-bold text-on-surface-variant md:text-xs">
-            {product.rating} ({product.reviewCount} تقييم)
-          </span>
-        </div>
-
         {/* اسم المنتج */}
         <h4 className="mb-2 line-clamp-2 min-h-[34px] text-xs font-bold leading-snug text-on-surface md:min-h-[40px] md:text-base">
           {product.name}

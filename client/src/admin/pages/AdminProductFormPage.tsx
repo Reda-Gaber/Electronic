@@ -34,10 +34,8 @@ export default function AdminProductFormPage() {
   const [notFound, setNotFound] = useState(false)
 
   // بيانات إضافية من المنتج الحالي (وقت التعديل) مش موجودة كحقول في الفورم
-  // لكن لازم تتحفظ زي ما هي عند إعادة الحفظ (rating, reviewCount, isFeatured, isNew)
+  // لكن لازم تتحفظ زي ما هي عند إعادة الحفظ (isFeatured, isNew)
   const [preservedFields, setPreservedFields] = useState({
-    rating: 0,
-    reviewCount: 0,
     isFeatured: false,
     isNew: true,
   })
@@ -95,8 +93,6 @@ export default function AdminProductFormPage() {
           )
           setImages(product.images)
           setPreservedFields({
-            rating: product.rating,
-            reviewCount: product.reviewCount,
             isFeatured: product.isFeatured ?? false,
             isNew: product.isNew ?? false,
           })

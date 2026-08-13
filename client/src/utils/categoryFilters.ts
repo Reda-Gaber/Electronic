@@ -77,7 +77,8 @@ export function filterAndSortProducts(
       result.sort((a, b) => b.price - a.price)
       break
     case 'popular':
-      result.sort((a, b) => b.reviewCount - a.reviewCount)
+      // "الأكثر شعبية" بقت بتعتمد على تمييز الأدمن للمنتج بدل نظام التقييمات (اتشال)
+      result.sort((a, b) => Number(b.isFeatured) - Number(a.isFeatured))
       break
     case 'newest':
     default:
