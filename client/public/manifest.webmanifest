@@ -1,8 +1,8 @@
 {
-  "name": "عبدالنبي للإلكترونيات",
-  "short_name": "عبدالنبي",
-  "description": "متجر مكونات الحاسوب — كروت شاشة، معالجات، ذاكرة، وأكثر",
-  "start_url": "/",
+  "name": "عبدالنبي للإلكترونيات — لوحة التحكم",
+  "short_name": "لوحة التحكم",
+  "description": "لوحة تحكم متجر عبدالنبي للإلكترونيات — إدارة الطلبات والمنتجات",
+  "start_url": "/admin/dashboard",
   "scope": "/",
   "display": "standalone",
   "background_color": "#ffffff",
