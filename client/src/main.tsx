@@ -15,3 +15,13 @@ createRoot(document.getElementById('root')!).render(
     </BrowserRouter>
   </StrictMode>,
 )
+
+// تسجيل الـ Service Worker — شرط لازم عشان كروم/أندرويد يظهر خيار "تثبيت
+// التطبيق"، ومش بيأثر على أي حاجة تانية في الموقع
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {
+      /* لو فشل التسجيل لأي سبب، الموقع بيفضل شغال عادي من غيره */
+    })
+  })
+}
