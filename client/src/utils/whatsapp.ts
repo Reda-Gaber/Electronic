@@ -46,6 +46,11 @@ function toWhatsAppPhone(phone: string): string {
 
 /** استبدال كل متغيّرات القالب ببيانات الطلب الفعلية */
 function fillTemplate(template: string, order: Order): string {
+  // توحيد رموز نهاية السطر أولاً — لو القالب اتلصق من برنامج زي Word أو
+  // Notepad على ويندوز، بيستخدم أحيانًا \r\n بدل \n، وده ممكن يسبب مشاكل
+  // في عرض الأسطر على واتساب
+  const normalizedTemplate = template.replace(/\r\n/g, '\n')
+
   const itemsList = order.items
     .map(
       (item) =>
@@ -71,7 +76,7 @@ function fillTemplate(template: string, order: Order): string {
     paymentMethod: getPaymentMethodLabel(order.paymentMethod),
   }
 
-  return template.replace(/\{\{(\w+)\}\}/g, (match, key) => values[key] ?? match)
+  return normalizedTemplate.replace(/\{\{(\w+)\}\}/g, (match, key) => values[key] ?? match)
 }
 
 /** بناء نص رسالة واتساب من قالب مخصّص (أو الافتراضي لو مفيش قالب) */

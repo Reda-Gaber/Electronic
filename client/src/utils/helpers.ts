@@ -3,12 +3,15 @@
 import type { Order, ShippingAddress } from '@/types'
 
 /** تنسيق السعر بالجنيه المصري مع فواصل الآلاف */
+/**
+ * تنسيق السعر بأرقام عادية (مش أرقام هندية) وبدون أي رموز تحكّم اتجاه خفية —
+ * التنسيق العربي الكامل (Intl.NumberFormat ar-EG) بيحط رموز Bidi غير مرئية
+ * جوه النص عشان يظبط الاتجاه، والرموز دي بتتعامل معاها واتساب بشكل غريب
+ * وبتسبب تشوه في شكل الرسالة والمسافات، فبنبني التنسيق يدويًا بدالها
+ */
 export function formatPrice(amount: number): string {
-  return new Intl.NumberFormat('ar-EG', {
-    style: 'currency',
-    currency: 'EGP',
-    maximumFractionDigits: 0,
-  }).format(amount)
+  const withCommas = Math.round(amount).toLocaleString('en-US')
+  return `${withCommas} ج.م.`
 }
 
 /** توليد رقم طلب مرجعي وهمي — سيُستبدل برقم من API */
