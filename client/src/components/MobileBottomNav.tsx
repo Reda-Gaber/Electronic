@@ -2,19 +2,13 @@
  * MobileBottomNav — شريط تنقل سفلي للموبايل
  *
  * الوظيفة: تنقل سريع بين الرئيسية، الفئات، العروض، الدفع/تتبع الطلب، والسلة
- * Props:
- *   - onOpenCategories: دالة فتح نافذة بوكسات التصنيفات (بدل التنقل المباشر)
  * الاستخدام: StoreLayout — يظهر على الموبايل فقط (md:hidden)
  */
 import { Link, useLocation } from 'react-router-dom'
 import { useCart } from '@/context/CartContext'
 import { getLastOrderId } from '@/utils/lastOrder'
 
-interface MobileBottomNavProps {
-  onOpenCategories: () => void
-}
-
-export default function MobileBottomNav({ onOpenCategories }: MobileBottomNavProps) {
+export default function MobileBottomNav() {
   const location = useLocation()
   const { itemCount, openCart } = useCart()
   const lastOrderId = getLastOrderId()
@@ -56,15 +50,16 @@ export default function MobileBottomNav({ onOpenCategories }: MobileBottomNavPro
           <span className="text-[10px] font-medium">الرئيسية</span>
         </Link>
 
-        {/* الفئات — تفتح نافذة بوكسات التصنيفات بدل التنقل المباشر */}
-        <button
-          type="button"
-          onClick={onOpenCategories}
-          className="flex flex-col items-center justify-center text-on-surface-variant transition-transform active:scale-90"
+        {/* الفئات — صفحة حقيقية بقت ليها رابط خاص بيها (بدل نافذة منبثقة) */}
+        <Link
+          to="/categories"
+          className={`flex flex-col items-center justify-center transition-transform active:scale-90 ${
+            location.pathname === '/categories' ? 'font-bold text-primary' : 'text-on-surface-variant'
+          }`}
         >
           <span className="material-symbols-outlined">category</span>
           <span className="text-[10px] font-medium">الفئات</span>
-        </button>
+        </Link>
 
         {/* العروض */}
         <Link

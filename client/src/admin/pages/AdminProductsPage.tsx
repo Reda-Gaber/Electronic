@@ -114,7 +114,7 @@ export default function AdminProductsPage() {
       </div>
 
       {/* جدول/كروت المنتجات */}
-      <div className="rounded-2xl border border-outline-variant bg-surface-container-lowest">
+      <div className="overflow-hidden rounded-2xl border border-outline-variant bg-surface-container-lowest">
         {filteredProducts.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 text-center">
             <span className="material-symbols-outlined mb-3 text-4xl text-outline">
@@ -136,7 +136,7 @@ export default function AdminProductsPage() {
                   />
                   <div className="min-w-0 flex-1">
                     <p className="truncate font-bold text-on-surface">{product.name}</p>
-                    <p className="text-xs text-on-surface-variant">
+                    <p className="truncate text-xs text-on-surface-variant">
                       {product.brand} — {product.categoryName}
                     </p>
                     <div className="mt-1 flex flex-wrap items-center gap-1.5">
@@ -159,10 +159,10 @@ export default function AdminProductsPage() {
                       )}
                     </div>
                   </div>
-                  <div className="flex shrink-0 flex-col gap-1">
+                  <div className="flex shrink-0 flex-col gap-1.5">
                     <Link
                       to={`/admin/products/${product.id}/edit`}
-                      className="flex h-8 w-8 items-center justify-center rounded-lg text-on-surface-variant transition-colors active:bg-surface-container-high"
+                      className="flex h-9 w-9 items-center justify-center rounded-lg bg-surface-container-high text-primary shadow-sm transition-colors active:bg-primary/10"
                       aria-label={`تعديل ${product.name}`}
                     >
                       <span className="material-symbols-outlined text-lg">edit</span>
@@ -170,7 +170,7 @@ export default function AdminProductsPage() {
                     <button
                       type="button"
                       onClick={() => setProductToDelete(product.id)}
-                      className="flex h-8 w-8 items-center justify-center rounded-lg text-on-surface-variant transition-colors active:bg-error-container active:text-on-error-container"
+                      className="flex h-9 w-9 items-center justify-center rounded-lg bg-surface-container-high text-error shadow-sm transition-colors active:bg-error-container"
                       aria-label={`حذف ${product.name}`}
                     >
                       <span className="material-symbols-outlined text-lg">delete</span>

@@ -6,7 +6,9 @@ import ScrollToTop from '@/components/ScrollToTop'
 
 // صفحات المتجر
 import HomePage from '@/pages/HomePage'
+import CategoriesPage from '@/pages/CategoriesPage'
 import CategoryPage from '@/pages/CategoryPage'
+import AllProductsPage from '@/pages/AllProductsPage'
 import ProductDetailPage from '@/pages/ProductDetailPage'
 import CheckoutPage from '@/pages/CheckoutPage'
 import OrderConfirmationPage from '@/pages/OrderConfirmationPage'
@@ -38,6 +40,8 @@ export default function App() {
       {/* مسارات المتجر — تستخدم StoreLayout (Header + Footer + CartDrawer) */}
       <Route element={<StoreLayout />}>
         <Route path="/" element={<HomePage />} />
+        <Route path="/categories" element={<CategoriesPage />} />
+        <Route path="/products" element={<AllProductsPage />} />
         <Route path="/category/:slug" element={<CategoryPage />} />
         <Route path="/product/:slug" element={<ProductDetailPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />

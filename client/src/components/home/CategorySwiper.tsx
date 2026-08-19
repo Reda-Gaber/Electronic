@@ -40,32 +40,35 @@ export default function CategorySwiper() {
           </p>
         </div>
         <Link
-          to="/category/graphics-cards"
+          to="/categories"
           className="shrink-0 text-sm font-bold text-primary transition-colors hover:text-primary-container"
         >
           عرض الكل
         </Link>
       </div>
 
-      {/* شبكة Bento — أول تصنيف يأخذ عمودين لإبرازه */}
+      {/* شبكة Bento — على الموبايل كل البوكسات متساوية (بوكسين في كل سطر)،
+          وعلى الديسكتوب أول تصنيف ياخد عمودين لإبرازه */}
       <div className="grid grid-cols-2 gap-4 md:grid-cols-6">
         {categories.map((category, index) => (
           <Link
             key={category.id}
             to={`/category/${category.slug}`}
             className={`group flex flex-col items-center justify-center gap-4 rounded-2xl border border-outline-variant/50 bg-surface-container-low p-6 text-center transition-all hover:shadow-xl md:p-8 ${
-              index === 0 ? 'col-span-2 md:col-span-2' : 'col-span-1'
+              index === 0 ? 'md:col-span-2' : ''
             }`}
           >
             <div
               className={`flex items-center justify-center overflow-hidden rounded-full bg-primary/10 text-primary transition-transform group-hover:scale-110 ${
-                index === 0 ? 'h-20 w-20' : 'h-16 w-16'
+                index === 0 ? 'h-16 w-16 md:h-20 md:w-20' : 'h-16 w-16'
               }`}
             >
               {category.isCustomIcon ? (
                 <img src={category.icon} alt={category.name} className="h-full w-full object-cover" />
               ) : (
-                <span className={`material-symbols-outlined ${index === 0 ? 'text-4xl' : 'text-3xl'}`}>
+                <span
+                  className={`material-symbols-outlined text-3xl ${index === 0 ? 'md:text-4xl' : ''}`}
+                >
                   {category.icon || 'category'}
                 </span>
               )}

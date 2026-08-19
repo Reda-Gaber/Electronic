@@ -13,11 +13,7 @@ import { mainNavLinks } from '@/data/mockData'
 import SearchOverlay from '@/components/SearchOverlay'
 import Logo from '@/components/Logo'
 
-interface HeaderProps {
-  onOpenCategories: () => void
-}
-
-export default function Header({ onOpenCategories }: HeaderProps) {
+export default function Header() {
   const { itemCount, openCart } = useCart()
   const location = useLocation()
   const [isSearchOpen, setIsSearchOpen] = useState(false)
@@ -63,14 +59,11 @@ export default function Header({ onOpenCategories }: HeaderProps) {
           </Link>
         )}
 
-        {/* الفئات — تفتح نافذة بوكسات التصنيفات بدل التنقل المباشر لتصنيف واحد */}
-        <button
-          type="button"
-          onClick={onOpenCategories}
-          className="rounded-lg px-3 py-2 text-sm font-medium text-on-surface-variant transition-colors hover:bg-surface-container-high hover:text-on-surface"
-        >
+        {/* الفئات — صفحة حقيقية بقت ليها رابط خاص بيها (بدل نافذة منبثقة)
+            عشان زرار "رجوع" من صفحة أي فئة يرجّع هنا صح تلقائيًا */}
+        <Link to="/categories" className={linkClass('/categories')}>
           الفئات
-        </button>
+        </Link>
 
         {/* العروض */}
         {offersLink && (

@@ -189,12 +189,13 @@ export default function AdminCategoriesPage() {
               </span>
             )}
 
-            {/* أزرار التعديل والحذف — تظهر عند الـ hover */}
-            <div className="absolute left-3 top-3 flex gap-1 opacity-0 transition-opacity group-hover:opacity-100">
+            {/* أزرار التعديل والحذف — ظاهرة دايمًا في وضع الموبايل (مفيش hover أصلاً
+                على اللمس)، وبتفضل مخفية لحد الـ hover في وضع الديسكتوب زي ما كانت */}
+            <div className="absolute left-3 top-3 flex gap-1 opacity-100 transition-opacity md:opacity-0 md:group-hover:opacity-100">
               <button
                 type="button"
                 onClick={() => openEditModal(category)}
-                className="flex h-7 w-7 items-center justify-center rounded-lg bg-surface-container-high text-on-surface-variant hover:text-primary"
+                className="flex h-7 w-7 items-center justify-center rounded-lg bg-surface-container-high text-on-surface-variant shadow-sm hover:text-primary"
                 aria-label={`تعديل ${category.name}`}
               >
                 <span className="material-symbols-outlined text-sm">edit</span>
@@ -205,7 +206,7 @@ export default function AdminCategoriesPage() {
                   setCategoryToDelete(category.id)
                   setDeleteError(null)
                 }}
-                className="flex h-7 w-7 items-center justify-center rounded-lg bg-surface-container-high text-on-surface-variant hover:text-error"
+                className="flex h-7 w-7 items-center justify-center rounded-lg bg-surface-container-high text-on-surface-variant shadow-sm hover:text-error"
                 aria-label={`حذف ${category.name}`}
               >
                 <span className="material-symbols-outlined text-sm">delete</span>
