@@ -6,10 +6,13 @@ import FeaturedProducts from '@/components/home/FeaturedProducts'
 import FeaturedCategoryBoxes from '@/components/home/FeaturedCategoryBoxes'
 import FeaturedDeals from '@/components/home/FeaturedDeals'
 import PartnerLogos from '@/components/home/PartnerLogos'
+import Seo from '@/components/Seo'
 
 export default function HomePage() {
   return (
     <div className="container-main pb-24 pt-4 md:pb-8 md:pt-6">
+      <Seo title="عبدالنبي للإلكترونيات" path="/" />
+
       {/* البانر الترويجي الرئيسي */}
       <HeroBanner />
 

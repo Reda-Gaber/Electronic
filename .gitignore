@@ -24,8 +24,7 @@ yarn-error.log*
 *.log
 
 # === Uploads (ملفات رفعها المستخدمين — مش لازم تتحفظ في الريبو) ===
-server/uploads/*
-!server/uploads/.gitkeep
+
 
 # === Editor / OS ===
 .vscode/

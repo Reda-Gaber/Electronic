@@ -273,8 +273,8 @@ npm install
 npm run dev
 ```
 
-- المتجر: `http://localhost:5173/`
-- الأدمن: `http://localhost:5173/admin/login`
+- المتجر: `http://localhost:5000/`
+- الأدمن: `http://localhost:5000/admin/login`
 
 ---
 

@@ -23,7 +23,7 @@ export default function AdminLayout() {
   return (
     <div className="flex min-h-screen overflow-x-hidden bg-surface-container-low print:block print:min-h-0 print:bg-white">
       {/* المحتوى الرئيسي — على اليسار في RTL */}
-      <div className="flex flex-1 flex-col print:block">
+      <div className="flex min-w-0 flex-1 flex-col print:block">
         {/* === هيدر الديسكتوب: بيانات الأدمن أقصى اليمين + بحث في المنتصف — من lg فما فوق فقط === */}
         <header className="hidden h-16 items-center border-b border-outline-variant bg-surface-container-lowest px-6 print:hidden lg:flex">
           {/* بيانات الأدمن الحالي — أقصى اليمين */}

@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import Breadcrumb from '@/components/category/Breadcrumb'
 import ProductCard from '@/components/ProductCard'
+import Seo from '@/components/Seo'
 import { useCart } from '@/context/CartContext'
 import { fetchProductBySlug, fetchProducts } from '@/services/products'
 import type { Product } from '@/types'
@@ -107,6 +108,23 @@ export default function ProductDetailPage() {
 
   return (
     <div className="container-main pb-28 pt-4 md:pb-12 md:pt-6">
+      {/* بيانات السيو الخاصة بهذا المنتج — عنوان ووصف وOpen Graph وJSON-LD،
+          كلها من بيانات product المحمّلة بالفعل فوق، بدون أي طلب إضافي */}
+      <Seo
+        title={product.name}
+        description={product.description || `اشترِ ${product.name} بأفضل سعر من ${'عبدالنبي للإلكترونيات'}`}
+        path={`/product/${product.slug}`}
+        image={product.image}
+        product={{
+          name: product.name,
+          description: product.description,
+          price: product.price,
+          image: product.image,
+          inStock: product.inStock,
+          brand: product.brand,
+        }}
+      />
+
       {/* مسار التنقل: الرئيسية > التصنيف > اسم المنتج */}
       <Breadcrumb
         items={[

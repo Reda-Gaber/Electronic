@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState, type CSSProperties } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import Breadcrumb from '@/components/category/Breadcrumb'
 import CategoryFilters from '@/components/category/CategoryFilters'
+import Seo from '@/components/Seo'
 import CategoryToolbar from '@/components/category/CategoryToolbar'
 import ProductCard from '@/components/ProductCard'
 import { fetchCategoryBySlug } from '@/services/categories'
@@ -110,6 +111,13 @@ export default function CategoryPage() {
 
   return (
     <div className="container-main pb-24 pt-4 md:pb-8 md:pt-6">
+      <Seo
+        title={category.name}
+        description={category.description || `تسوّق ${category.name} بأفضل الأسعار في مصر`}
+        path={`/category/${category.slug}`}
+        image={category.image}
+      />
+
       {/* مسار التنقل */}
       <Breadcrumb
         items={[
@@ -180,12 +188,12 @@ export default function CategoryPage() {
             </div>
           ) : (
             <>
-              <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+              <div className="grid grid-cols-2 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-3">
                 {visibleProducts.map((product, index) => (
                   <ProductCard
                     key={product.id}
                     product={product}
-                    variant="category"
+                    variant="grid"
                     className="animate-card"
                     style={{ animationDelay: `${index * 0.05}s` } as CSSProperties}
                   />

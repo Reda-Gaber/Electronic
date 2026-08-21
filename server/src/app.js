@@ -25,7 +25,7 @@ const app = express()
 // فمش محتاجين CORS خالص، بس بنسيبه شغال براحة عشان ميعملش مشاكل لو حد شغّلهم منفصلين
 app.use(
   cors({
-    origin: process.env.CLIENT_ORIGIN || 'http://localhost:5173',
+    origin: process.env.CLIENT_ORIGIN || 'http://localhost:5000',
   }),
 )
 

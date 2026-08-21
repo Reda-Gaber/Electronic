@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# صفحات الأدمن ولوحة التحكم مش محتاجة تتفهرس في جوجل
+Disallow: /admin
+Disallow: /login
+
+Sitemap: https://abdelnaby.shop/sitemap.xml
