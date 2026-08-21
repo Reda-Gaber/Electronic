@@ -50,27 +50,30 @@ export default function CategorySwiper() {
       {/* شبكة Bento — على الموبايل كل البوكسات متساوية (بوكسين في كل سطر)،
           وعلى الديسكتوب أول تصنيف ياخد عمودين لإبرازه */}
       <div className="grid grid-cols-2 gap-4 md:grid-cols-6">
-        {categories.map((category, index) => (
+        {/* بوكس ثابت لكل المنتجات — أول عنصر دايمًا، بعرض بوكسين على كل المقاسات */}
+        <Link
+          to="/products"
+          className="group col-span-2 flex flex-col items-center justify-center gap-4 rounded-2xl border border-outline-variant/50 bg-surface-container-low p-6 text-center transition-all hover:shadow-xl md:p-8"
+        >
+          <div className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-full bg-primary/10 text-primary transition-transform group-hover:scale-110 md:h-20 md:w-20">
+            <span className="material-symbols-outlined text-3xl md:text-4xl">apps</span>
+          </div>
+          <span className="font-display text-sm font-bold text-on-surface md:text-base">
+            كل المنتجات
+          </span>
+        </Link>
+
+        {categories.map((category) => (
           <Link
             key={category.id}
             to={`/category/${category.slug}`}
-            className={`group flex flex-col items-center justify-center gap-4 rounded-2xl border border-outline-variant/50 bg-surface-container-low p-6 text-center transition-all hover:shadow-xl md:p-8 ${
-              index === 0 ? 'md:col-span-2' : ''
-            }`}
+            className="group flex flex-col items-center justify-center gap-4 rounded-2xl border border-outline-variant/50 bg-surface-container-low p-6 text-center transition-all hover:shadow-xl md:p-8"
           >
-            <div
-              className={`flex items-center justify-center overflow-hidden rounded-full bg-primary/10 text-primary transition-transform group-hover:scale-110 ${
-                index === 0 ? 'h-16 w-16 md:h-20 md:w-20' : 'h-16 w-16'
-              }`}
-            >
+            <div className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-full bg-primary/10 text-primary transition-transform group-hover:scale-110">
               {category.isCustomIcon ? (
                 <img src={category.icon} alt={category.name} className="h-full w-full object-cover" />
               ) : (
-                <span
-                  className={`material-symbols-outlined text-3xl ${index === 0 ? 'md:text-4xl' : ''}`}
-                >
-                  {category.icon || 'category'}
-                </span>
+                <span className="material-symbols-outlined text-3xl">{category.icon || 'category'}</span>
               )}
             </div>
             <span className="font-display text-sm font-bold text-on-surface md:text-base">

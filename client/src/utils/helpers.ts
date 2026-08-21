@@ -10,7 +10,10 @@ import type { Order, ShippingAddress } from '@/types'
  * وبتسبب تشوه في شكل الرسالة والمسافات، فبنبني التنسيق يدويًا بدالها
  */
 export function formatPrice(amount: number): string {
-  const withCommas = Math.round(amount).toLocaleString('en-US')
+  const withCommas = amount.toLocaleString('en-US', {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 2,
+  })
   return `${withCommas} ج.م.`
 }
 
